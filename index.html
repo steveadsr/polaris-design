@@ -1221,152 +1221,996 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
   </div>
 </section>
 
-<!-- 11 SCREEN: MARKETPLACE -->
+<!-- 11 SCREEN: MARKETPLACE (B2C) -->
 <section class="ds-section">
-  <div class="section-label">11 / Screens</div>
+  <div class="section-label">11 / Screen</div>
   <h2 class="section-title">Marketplace</h2>
-  <p style="color:var(--t2);font-size:13px;margin-top:4px;margin-bottom:24px">Discovery layer for plugins and license templates.</p>
-  <div class="screen-wrap">
-    <div class="app-shell">
-      <div class="sidebar">
-        <div class="sidebar-header">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABCCAYAAACCTCKqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAxpJREFUeAHt3O1x00AUheFrKkgJ7gA6gHSQEpYKoAO2BDogVJISoIPrVAAdHNZYmtlxHFu72o+zyn1nNPl3tdITOTOSHBFLANyF7Rfq9kOsdjVCNdyWNUY13BZ1QjXcmnVGNdwakaDOGW6JwIU6Z7hrAifqnOHmBG7UuaK4O9l44YTdhR9PYfsg/D3udrvPUqBNww6GOlcE951suwcZC/WYg/3NvV04SR5jZri3guFuN5TFVdiDA55QBlfDtoc9FeIK63A1bPtoluEyhTxcRYQazTJcppCGq7iAGs0yXKawDFdxBTWaZbhM4TquYgFqNMtwmcJlXE1BjWYZLlNnuJqDGs0yXKYmXF2DGs0yXKZweiJUbJbhbjTDPavRCVEU+NglOZa5/7iUz2PR7gH5/rif2rjhwfnf8OM+bL+lfs/CGPq8n6TYxpXrhTH0felMMTauF8bA8SahYkxcL4yB6/VQxVi4XhgD5zu/ijFwvTAG7he5Fdy4XhjDGG/nKzhxvTCGMVDnFFy4XhjDWKhzCg5cL4xhTNQ5RV9cL4xhbNQ5RR9cL4xhG6hzira4XjKq/m07tP/G28+wfZTTDf5aHcJ2H27uH+QthvZX6uO03/10ZdVM0eDKpQudUKP9G27p0Bk1WsewuGHml2n2Exh+eUCCGq1nONww61vN+TkLokKN1jUMLl6iFp2fsyBK1Gh99Lh4HbXI/JwFUaNG66TFxW3UVfOTwyCo0XrpcLEcNWt+zkkaCjVaNw0u0lGT5uecnCFRo/V3x0U+6qL5OSdlaNToOLrhYj1qPH/911KwEdToeLrgouw+v54fV9I3AdDhhn640e6kYtON/ONb+gep117qnrM/khs2dqVeOL6aV667sL8HlOlokvdRjI2jRsdZA9dd2Z/Dugw14XhL4roF+8vFNdTUUAbXJewvFddQc8M6XCeJYTmuoa4NebhOMsNtXEMtFdJwnawMr+MaaumwDNdJofAS11Brheu4Tgo37e87Tv+iyFBrhsu4Thgz1LTOcJ2QtsPpBvJ7adNzuDfrZfBwuqH/KRzLo5D2D2wQhxUMy/98AAAAAElFTkSuQmCC" height="18" alt="PL" class="sidebar-logo"/>
-          <div class="sidebar-brand">
-            <div class="sidebar-name">stevejfoulds+zen02</div>
-            <div class="sidebar-sub">Licensing Platform</div>
+  <p style="color:var(--t2);font-size:14px;margin:0 0 24px;line-height:1.6">Public B2C storefront — no login required. Vendors list on-chain software licenses; buyers purchase and own them as verifiable Solana assets.</p>
+  
+  <div style="border-radius:12px;overflow:hidden;border:1px solid var(--b1)">
+    <div style="font-family:var(--sans);background:var(--bg)">
+    
+      <!-- NAV -->
+      <nav style="background:var(--s1);border-bottom:1px solid var(--b1);padding:0 28px;height:52px;display:flex;align-items:center;gap:20px">
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polygon points="12,2 22,8 22,16 12,22 2,16 2,8" fill="#22D9A0"/></svg>
+          <span style="font-size:14px;font-weight:700;color:var(--t1);letter-spacing:-0.02em">Polaris</span>
+          <span style="font-size:10px;color:#22D9A0;background:rgba(34,217,160,0.1);padding:2px 7px;border-radius:4px;font-family:var(--mono);letter-spacing:0.08em">MARKET</span>
+        </div>
+        <div style="flex:1;max-width:340px;background:var(--b1);border:1px solid var(--b2);border-radius:8px;padding:7px 12px 7px 30px;position:relative">
+          <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%)" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3A3A3A" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+          <span style="color:var(--t3);font-size:12px">Search plugins, tools, games...</span>
+        </div>
+        <div style="display:flex;gap:18px;font-size:12px">
+          <span style="color:var(--hi);font-weight:500">Browse</span>
+          <span style="color:var(--t2)">Top Sellers</span>
+          <span style="color:var(--t2)">New Arrivals</span>
+          <span style="color:var(--t2)">Vendors</span>
+          <span style="color:var(--t2)">Docs</span>
+        </div>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:10px">
+          <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">12,847 listings</span>
+          <div style="background:var(--hi);color:#0A0A0A;border-radius:8px;padding:7px 16px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:0.03em">Connect Wallet</div>
+        </div>
+      </nav>
+      
+      <!-- HERO -->
+      <div style="padding:32px 28px 24px;border-bottom:1px solid var(--b1);background:linear-gradient(135deg,rgba(34,217,160,0.04) 0%,transparent 55%)">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px">
+          <div style="flex:1">
+            <div style="font-size:10px;color:var(--hi);font-family:var(--mono);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px">
+              <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--hi)"></span>
+              Live on Solana Mainnet
+            </div>
+            <h1 style="font-size:26px;font-weight:700;color:var(--t1);margin:0 0 10px;letter-spacing:-0.03em;line-height:1.2">Buy Software.<br>Own it On-Chain.</h1>
+            <p style="font-size:13px;color:var(--t2);margin:0 0 18px;max-width:400px;line-height:1.65">Verified licenses from independent vendors. Transferable, resellable, cryptographically yours. No subscriptions. No platform lock-in.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:8px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer">Browse All Licenses</div>
+              <div style="background:transparent;color:var(--t1);border:1px solid var(--b2);border-radius:8px;padding:9px 20px;font-size:12px;cursor:pointer">Sell Your Software →</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:1px;background:var(--b1);border-radius:10px;overflow:hidden;flex-shrink:0">
+            <div style="background:var(--s1);padding:18px 22px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--t1);font-family:var(--mono)">12,847</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:3px">Listings</div>
+            </div>
+            <div style="background:var(--s1);padding:18px 22px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--t1);font-family:var(--mono)">384</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:3px">Vendors</div>
+            </div>
+            <div style="background:var(--s1);padding:18px 22px;text-align:center">
+              <div style="font-size:20px;font-weight:700;color:var(--hi);font-family:var(--mono)">$2.4M</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:3px">30d Volume</div>
+            </div>
           </div>
         </div>
-        <nav class="sidebar-nav"><div class="nav-section-label">MAIN</div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span class="nav-label">Overview</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span class="nav-label">Products</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg><span class="nav-label">Licenses</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg><span class="nav-label">Mint Keys</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="nav-label">Transactions</span></div><div class="nav-section-label">MORE</div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg><span class="nav-label">Analytics</span><span class="soon-badge">Soon</span></div><div class="nav-item nav-active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg><span class="nav-label">Marketplace</span><span class="soon-badge">Soon</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg><span class="nav-label">Developers</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l-.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">Settings</span><span class="soon-badge">Soon</span></div></nav>
-        <div class="sidebar-footer">
-          <div class="user-avatar">SF</div>
-          <div class="user-info">
-            <div class="user-name">stevejfoulds+zen02</div>
-            <div class="user-email">stevejfoulds+zen02@g...</div>
-          </div>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        
+        <!-- Categories -->
+        <div style="display:flex;gap:6px;margin-top:22px;flex-wrap:wrap">
+          <div style="background:var(--hi);color:#0A0A0A;border-radius:20px;padding:5px 16px;font-size:11px;font-weight:700;cursor:pointer">All</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">🎛 Audio Plugins</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">⌨ Dev Tools</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">🎮 Games</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">✏ Design</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">🔒 Security</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">📚 Education</div>
+          <div style="background:var(--s2);color:var(--t2);border:1px solid var(--b1);border-radius:20px;padding:5px 14px;font-size:11px;cursor:pointer">⚡ Productivity</div>
         </div>
       </div>
-      <div class="main-content">
-        <div class="topbar">
-          <div class="topbar-left">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--t2)"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input placeholder="Search plugins, templates..." disabled style="width:200px;background:transparent;border:none;font-size:13px;color:var(--t2);font-family:var(--sans);outline:none;cursor:default"/>
-          </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-secondary btn-sm">Filter</button>
-            <button class="btn btn-primary btn-sm">Submit Plugin</button>
-          </div>
-        </div>
-        <div style="height:38px;border-bottom:1px solid var(--b1);display:flex;align-items:stretch;padding:0 20px;flex-shrink:0;background:var(--s1)">
-          <div style="padding:0 12px;display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--hi);border-bottom:2px solid var(--hi)">All</div>
-          <div style="padding:0 12px;display:flex;align-items:center;font-size:12px;color:var(--t2)">Audio</div>
-          <div style="padding:0 12px;display:flex;align-items:center;font-size:12px;color:var(--t2)">Dev Tools</div>
-          <div style="padding:0 12px;display:flex;align-items:center;font-size:12px;color:var(--t2)">Templates</div>
-          <div style="padding:0 12px;display:flex;align-items:center;font-size:12px;color:var(--t2)">Games</div>
-          <div style="margin-left:auto;padding:0 12px;display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t2)">Sort: Popular <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
-        </div>
-        <div class="content-scroll" style="padding:16px;position:relative">
-          <!-- Featured banner -->
-          <div style="background:rgba(34,217,160,0.06);border:1px solid rgba(34,217,160,0.18);border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px">
-            <div style="width:36px;height:36px;background:var(--hi-t);border-radius:6px;border:1px solid rgba(34,217,160,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22D9A0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+      
+      <!-- BODY -->
+      <div style="padding:22px 28px">
+        
+        <!-- Featured banner -->
+        <div style="background:linear-gradient(135deg,#0f2820,#0b1e1a);border:1px solid rgba(34,217,160,0.2);border-radius:10px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div style="display:flex;align-items:center;gap:16px">
+            <div style="background:rgba(34,217,160,0.12);border-radius:10px;width:52px;height:52px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22D9A0" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:10px;font-family:var(--mono);color:var(--hi);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:2px">Featured This Week</div>
-              <div style="font-size:13px;font-weight:600;color:var(--t1)">SynthLicense Pro — <span style="font-weight:400;color:var(--t2)">Hardware-locked licensing with dongle emulation. 2,400+ activations.</span></div>
-            </div>
-            <button class="btn btn-primary btn-sm" style="flex-shrink:0">View Plugin</button>
-          </div>
-          <!-- Plugin grid -->
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px">
-            <div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">KeyGuard</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Device fingerprinting & revocation</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">Free</span>
-                <span style="font-size:10px;color:var(--t3)">8.2K</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">LicenseKit</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Electron SDK drop-in</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$49/mo</span>
-                <span style="font-size:10px;color:var(--t3)">3.8K</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">TrialForge</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Time-limited trial keys</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$19/mo</span>
-                <span style="font-size:10px;color:var(--t3)">1.2K</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">BundlePass</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Multi-product bundles</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$29/mo</span>
-                <span style="font-size:10px;color:var(--t3)">960</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">TeamVault</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Seat-based licensing</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$99/mo</span>
-                <span style="font-size:10px;color:var(--t3)">540</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">AuditLog</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Event analytics & alerts</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">Free</span>
-                <span style="font-size:10px;color:var(--t3)">420</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">WebhookRelay</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Real-time webhooks</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$9/mo</span>
-                <span style="font-size:10px;color:var(--t3)">310</span>
-              </div>
-            </div><div style="background:var(--s1);border:1px solid var(--b1);border-radius:7px;padding:12px">
-              <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:2px">GeoBlock</div>
-              <div style="font-size:11px;color:var(--t2);margin-bottom:8px;line-height:1.4">Region-locked keys</div>
-              <div style="display:flex;justify-content:space-between;align-items:center">
-                <span style="font-family:var(--mono);font-size:11px;color:var(--hi)">$14/mo</span>
-                <span style="font-size:10px;color:var(--t3)">180</span>
+            <div>
+              <div style="font-size:9px;color:var(--hi);font-family:var(--mono);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px">✦ Featured Launch</div>
+              <div style="font-size:16px;font-weight:700;color:var(--t1);letter-spacing:-0.02em">KeyGuard SDK v2.0</div>
+              <div style="font-size:12px;color:var(--t2);margin-top:2px">Enterprise license management SDK &nbsp;·&nbsp; by <span style="color:var(--t1)">KeyGuard Labs</span> <span style="color:var(--hi);font-size:9px">✓ verified</span></div>
+              <div style="display:flex;gap:6px;margin-top:8px">
+                <span style="background:rgba(75,184,255,0.15);color:#4DB8FF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Dev Tools</span>
+                <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+                <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">891 sold</span>
               </div>
             </div>
           </div>
-          <!-- Detail popup panel -->
-          <div style="position:absolute;top:16px;right:16px;width:240px;background:var(--s1);border:1px solid var(--b2);border-radius:9px;padding:16px;box-shadow:0 16px 48px rgba(0,0,0,0.5)">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
-              <span style="font-size:13px;font-weight:600;color:var(--t1)">KeyGuard</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--t3)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <div style="display:flex;align-items:center;gap:20px;flex-shrink:0">
+            <div style="text-align:right">
+              <div style="font-size:22px;font-weight:700;color:var(--t1)">$299</div>
+              <div style="font-size:10px;color:var(--t2)">/ year · perpetual option $899</div>
             </div>
-            <div style="font-size:11px;color:var(--t2);line-height:1.6;margin-bottom:12px">Hardware fingerprinting, grace-period tokens, and one-click revocation. Works with Electron, Tauri, and native macOS.</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:12px">
-              <div style="background:var(--s2);border-radius:5px;padding:7px;text-align:center">
-                <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:var(--t1)">8.2K</div>
-                <div style="font-size:10px;color:var(--t3);margin-top:2px">Activations</div>
-              </div>
-              <div style="background:var(--s2);border-radius:5px;padding:7px;text-align:center">
-                <div style="font-family:var(--mono);font-size:13px;font-weight:700;color:var(--hi)">4.9</div>
-                <div style="font-size:10px;color:var(--t3);margin-top:2px">Rating</div>
-              </div>
-            </div>
-            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px">
-              <span style="background:var(--s2);border:1px solid var(--b1);border-radius:3px;padding:2px 7px;font-size:10px;color:var(--t2)">electron</span>
-              <span style="background:var(--s2);border:1px solid var(--b1);border-radius:3px;padding:2px 7px;font-size:10px;color:var(--t2)">hardware</span>
-              <span style="background:var(--s2);border:1px solid var(--b1);border-radius:3px;padding:2px 7px;font-size:10px;color:var(--hi)">free</span>
-            </div>
-            <button class="btn btn-primary btn-sm" style="width:100%;margin-bottom:6px">Install Plugin</button>
-            <button class="btn btn-secondary btn-sm" style="width:100%">View Docs</button>
+            <div style="background:var(--hi);color:#0A0A0A;border-radius:8px;padding:10px 22px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">Buy License</div>
           </div>
         </div>
+        
+        <!-- Sort bar -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <div style="font-size:12px;color:var(--t2)">Showing <span style="color:var(--t1);font-weight:600">12,847</span> results</div>
+          <div style="display:flex;gap:6px;font-size:11px;color:var(--t2);align-items:center">
+            <span>Sort:</span>
+            <span style="background:var(--s2);border:1px solid var(--b2);border-radius:6px;padding:4px 10px;color:var(--t1);cursor:pointer">Most Popular ▾</span>
+            <span style="background:var(--s2);border:1px solid var(--b2);border-radius:6px;padding:4px 10px;cursor:pointer">Price ▾</span>
+            <span style="background:var(--s2);border:1px solid var(--b2);border-radius:6px;padding:4px 10px;cursor:pointer">New ▾</span>
+          </div>
+        </div>
+        
+        <!-- 4-column product grid -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#9B6DFF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">Harmonic Pro</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">SonicLabs <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#9B6DFF18;color:#9B6DFF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Audio</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">2.3k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$89</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#4DB8FF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4DB8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">KeyGuard SDK</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">KeyGuard Labs <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#4DB8FF18;color:#4DB8FF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Dev Tools</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">891 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$299</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#FF6B9D18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B9D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">PixelCraft</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">PixelForge <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#FF6B9D18;color:#FF6B9D;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Design</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">1.2k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$149</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#9B6DFF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 8h10M7 12h10M7 16h4"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">Synthwave Bundle</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">RetroAudio <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#9B6DFF18;color:#9B6DFF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Audio</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">3.1k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$199</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#4DB8FF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4DB8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="12" rx="3" ry="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">DataForge Pro</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">ForgeWorks <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#4DB8FF18;color:#4DB8FF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Dev Tools</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">445 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$449</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#FF7B5418;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7B54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="11" width="12" height="10" rx="2"/><path d="M12 3v8M9 7l3-4 3 4"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">NeonRun</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">PixelPunk <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#FF7B5418;color:#FF7B54;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Games</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">8.7k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$29</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#9B6DFF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">VocalForge</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">VoiceCraft <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#9B6DFF18;color:#9B6DFF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Audio</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">967 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$79</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#F0A04018;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F0A040" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">CodeSentry<span style="background:#22D9A020;color:#22D9A0;font-size:8px;padding:1px 5px;border-radius:3px;margin-left:4px">NEW</span></div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">SecureOps <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#F0A04018;color:#F0A040;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Security</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">312 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$599</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#FF6B9D18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B9D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M4 12s3-7 8-7 8 7 8 7-3 7-8 7-8-7-8-7z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">MotionKit</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">MotionCraft <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#FF6B9D18;color:#FF6B9D;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Design</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">678 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$129</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#9B6DFF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9B6DFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">BeatLab Suite</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">DrumWorks <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#9B6DFF18;color:#9B6DFF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Audio</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Perpetual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★★</span>
+              <span style="font-size:9px;color:var(--t3)">1.8k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$249</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#4DB8FF18;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4DB8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">GridMapper</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">CartoCraft <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#4DB8FF18;color:#4DB8FF;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Dev Tools</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">534 sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$189</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="background:#22D9A018;border-radius:7px;height:44px;display:flex;align-items:center;justify-content:center">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22D9A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:600;color:var(--t1)">EduFlow<span style="background:#22D9A020;color:#22D9A0;font-size:8px;padding:1px 5px;border-radius:3px;margin-left:4px">NEW</span></div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">LearnStack <span style="color:var(--hi);font-size:8px">✓</span></div>
+            </div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap">
+              <span style="background:#22D9A018;color:#22D9A0;font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600">Education</span>
+              <span style="background:var(--b1);color:var(--t3);font-size:9px;padding:2px 7px;border-radius:4px">Annual</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:9px;color:#F0A040">★★★★☆</span>
+              <span style="font-size:9px;color:var(--t3)">2.1k sold</span>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid var(--b1)">
+              <div><div style="font-size:14px;font-weight:700;color:var(--t1)">$59</div><div style="font-size:9px;color:var(--t3)">one-time</div></div>
+              <div style="background:var(--hi);color:#0A0A0A;border-radius:6px;padding:6px 12px;font-size:10px;font-weight:700;cursor:pointer">Buy</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Load more -->
+        <div style="text-align:center;margin-top:24px">
+          <div style="display:inline-block;border:1px solid var(--b2);color:var(--t2);border-radius:8px;padding:9px 28px;font-size:12px;cursor:pointer">Load more (12,835 remaining)</div>
+        </div>
+      </div>
+      
+      <!-- FOOTER BAR -->
+      <div style="background:var(--s1);border-top:1px solid var(--b1);padding:16px 28px;display:flex;align-items:center;justify-content:space-between">
+        <div style="font-size:11px;color:var(--t3)">All licenses are on-chain Solana assets · transfers are immutable · Polaris charges 2.5% platform fee</div>
+        <div style="display:flex;gap:16px;font-size:11px;color:var(--t3)">
+          <span style="cursor:pointer">Terms</span>
+          <span style="cursor:pointer">Privacy</span>
+          <span style="cursor:pointer">Vendor Docs</span>
+          <span style="cursor:pointer">Support</span>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- 12 SCREEN: ANALYTICS DASHBOARD -->
+<section class="ds-section">
+  <div class="section-label">12 / Screen</div>
+  <h2 class="section-title">Analytics Dashboard</h2>
+  <p style="color:var(--t2);font-size:14px;margin:0 0 24px;line-height:1.6">32 metrics across licence issuance, ownership, activation, operations, and compliance. Real-time (🟢), near-real-time (🟡), and batch (🔵).</p>
+  
+  <div style="border-radius:12px;overflow:hidden;border:1px solid var(--b1)">
+    <div style="font-family:var(--sans);background:var(--bg)">
+    
+      <!-- ANALYTICS NAV -->
+      <div style="background:var(--s1);border-bottom:1px solid var(--b1);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:1px;height:100%">
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid var(--hi);font-size:12px;color:var(--t1);font-weight:500">Overview</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Issuance</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Ownership</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Activation</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Platform</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid rgba(255,90,90,0.6);font-size:12px;color:#FF5A5A">Compliance ⚠</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div style="display:flex;gap:1px;background:var(--b1);border-radius:6px;overflow:hidden;font-size:11px">
+            <span style="background:var(--hi);color:#0A0A0A;padding:5px 10px;cursor:pointer;font-weight:600">7d</span>
+            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">30d</span>
+            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">90d</span>
+            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">1y</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--hi)">
+            <span class="pulse-dot"></span>
+            <span>Live</span>
+          </div>
+          <div style="background:var(--s2);border:1px solid var(--b2);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--t2);cursor:pointer">Export ↓</div>
+        </div>
+      </div>
+      
+      <!-- CONTENT -->
+      <div style="padding:20px 24px">
+      
+        <!-- KPI STRIP -->
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px">
+        
+          <!-- KPI 1: Licences Issued -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>Licences Issued</span>
+              <span class="pulse-dot"></span>
+            </div>
+            <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">847,293</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+              <span style="font-size:10px;color:var(--hi)">↑12.4% this week</span>
+              <svg width="80" height="28" viewBox="0 0 80 28"><rect x="0.0" y="21.0" width="1.7" height="7.0" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="2.7" y="20.1" width="1.7" height="7.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="5.3" y="18.3" width="1.7" height="9.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="8.0" y="19.2" width="1.7" height="8.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="10.7" y="17.1" width="1.7" height="10.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="13.3" y="16.1" width="1.7" height="11.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="16.0" y="15.4" width="1.7" height="12.6" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="18.7" y="13.9" width="1.7" height="14.1" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="21.3" y="14.6" width="1.7" height="13.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="24.0" y="12.5" width="1.7" height="15.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="26.7" y="13.1" width="1.7" height="14.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="29.3" y="11.5" width="1.7" height="16.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="32.0" y="12.2" width="1.7" height="15.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="34.7" y="10.8" width="1.7" height="17.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="37.3" y="9.6" width="1.7" height="18.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="40.0" y="10.1" width="1.7" height="17.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="42.7" y="7.8" width="1.7" height="20.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="45.3" y="7.3" width="1.7" height="20.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="48.0" y="6.6" width="1.7" height="21.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="50.7" y="5.2" width="1.7" height="22.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="53.3" y="5.5" width="1.7" height="22.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="56.0" y="4.3" width="1.7" height="23.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="58.7" y="4.8" width="1.7" height="23.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="61.3" y="3.4" width="1.7" height="24.6" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="64.0" y="3.8" width="1.7" height="24.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="66.7" y="3.1" width="1.7" height="24.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="69.3" y="2.5" width="1.7" height="25.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="72.0" y="2.9" width="1.7" height="25.1" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="74.7" y="2.0" width="1.7" height="26.0" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="77.3" y="3.1" width="1.7" height="24.9" fill="#22D9A0" opacity="0.7" rx="1"/></svg>
+            </div>
+          </div>
+          
+          <!-- KPI 2: Active Licences -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>Active Licences</span>
+              <span class="pulse-dot"></span>
+            </div>
+            <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">623,841</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+              <span style="font-size:10px;color:var(--hi)">↑3.2% this week</span>
+              <svg width="80" height="28" viewBox="0 0 80 28"><rect x="0.0" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="2.7" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="5.3" y="3.9" width="1.7" height="24.1" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="8.0" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="10.7" y="3.8" width="1.7" height="24.2" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="13.3" y="3.7" width="1.7" height="24.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="16.0" y="3.5" width="1.7" height="24.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="18.7" y="3.7" width="1.7" height="24.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="21.3" y="3.4" width="1.7" height="24.6" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="24.0" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="26.7" y="3.5" width="1.7" height="24.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="29.3" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="32.0" y="3.2" width="1.7" height="24.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="34.7" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="37.3" y="3.0" width="1.7" height="25.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="40.0" y="3.0" width="1.7" height="25.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="42.7" y="3.2" width="1.7" height="24.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="45.3" y="2.9" width="1.7" height="25.1" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="48.0" y="2.8" width="1.7" height="25.2" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="50.7" y="2.6" width="1.7" height="25.4" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="53.3" y="2.7" width="1.7" height="25.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="56.0" y="2.4" width="1.7" height="25.6" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="58.7" y="2.5" width="1.7" height="25.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="61.3" y="2.3" width="1.7" height="25.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="64.0" y="2.2" width="1.7" height="25.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="66.7" y="2.3" width="1.7" height="25.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="69.3" y="2.1" width="1.7" height="25.9" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="72.0" y="2.0" width="1.7" height="26.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="74.7" y="2.2" width="1.7" height="25.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="77.3" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/></svg>
+            </div>
+          </div>
+          
+          <!-- KPI 3: Issuance Velocity -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>Issuance Velocity</span>
+              <span class="pulse-dot"></span>
+            </div>
+            <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">142<span style="font-size:13px;color:var(--t3)">/hr</span></div>
+            <div style="font-size:10px;color:var(--hi);margin-top:6px">↑24% vs last week</div>
+          </div>
+          
+          <!-- KPI 4: API Latency -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>API Latency</span>
+              <span class="pulse-dot" style="background:#22D9A0"></span>
+            </div>
+            <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">23<span style="font-size:13px;color:var(--t3)">ms</span></div>
+            <div style="font-size:10px;color:var(--hi);margin-top:6px">p99 · ↓2ms this week</div>
+          </div>
+          
+          <!-- KPI 5: Compliance -->
+          <div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
+            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
+              <span>Compliance Rate</span>
+              <span class="pulse-dot" style="background:#22D9A0"></span>
+            </div>
+            <div style="font-size:22px;font-weight:700;color:var(--hi);font-family:var(--mono)">99.2%</div>
+            <div style="font-size:10px;color:#FF5A5A;margin-top:6px">⚠ 4 active alerts</div>
+          </div>
+          
+        </div>
+        
+        <!-- CHARTS ROW 1: velocity + activations -->
+        <div style="display:grid;grid-template-columns:3fr 2fr;gap:12px;margin-bottom:12px">
+        
+          <!-- Issuance Velocity Chart -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+              <div>
+                <div style="font-size:12px;font-weight:600;color:var(--t1)">Issuance Velocity</div>
+                <div style="font-size:10px;color:var(--t2);margin-top:2px">Licences issued per hour · 30-day trend</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:16px;font-weight:700;color:var(--hi);font-family:var(--mono)">142/hr</div>
+                <div style="font-size:9px;color:var(--t2)">current</div>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:28px 1fr;gap:4px;align-items:stretch">
+              <div style="display:flex;flex-direction:column;justify-content:space-between;padding-bottom:2px">
+                <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">200</span>
+                <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">100</span>
+                <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">0</span>
+              </div>
+              <div>
+                <svg width="100%" viewBox="0 0 420 90" preserveAspectRatio="none">
+  <defs><linearGradient id="g22D9A0" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#22D9A0" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#22D9A0" stop-opacity="0"/>
+  </linearGradient></defs>
+  <path d="M 2.0,71.2 L 2.0,71.2 L 16.3,64.9 L 30.7,65.5 L 45.0,60.8 L 59.4,62.1 L 73.7,65.8 L 88.1,51.2 L 102.4,63.9 L 116.8,60.7 L 131.1,53.0 L 145.4,52.4 L 159.8,46.9 L 174.1,44.7 L 188.5,37.8 L 202.8,46.3 L 217.2,48.3 L 231.5,48.8 L 245.9,41.5 L 260.2,40.2 L 274.6,35.0 L 288.9,18.1 L 303.2,32.1 L 317.6,29.9 L 331.9,30.8 L 346.3,34.5 L 360.6,29.2 L 375.0,27.8 L 389.3,13.3 L 403.7,16.1 L 418.0,16.6 L 418.0,90 L 2.0,90 Z" fill="url(#g22D9A0)"/>
+  <polyline points="2.0,71.2 16.3,64.9 30.7,65.5 45.0,60.8 59.4,62.1 73.7,65.8 88.1,51.2 102.4,63.9 116.8,60.7 131.1,53.0 145.4,52.4 159.8,46.9 174.1,44.7 188.5,37.8 202.8,46.3 217.2,48.3 231.5,48.8 245.9,41.5 260.2,40.2 274.6,35.0 288.9,18.1 303.2,32.1 317.6,29.9 331.9,30.8 346.3,34.5 360.6,29.2 375.0,27.8 389.3,13.3 403.7,16.1 418.0,16.6" fill="none" stroke="#22D9A0" stroke-width="1.5"/>
+</svg>
+                <div style="display:flex;justify-content:space-between;margin-top:2px">
+                  <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">Apr 1</span>
+                  <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">Apr 15</span>
+                  <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">Today</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Daily Activations Bar Chart -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+              <div>
+                <div style="font-size:12px;font-weight:600;color:var(--t1)">Daily Activations</div>
+                <div style="font-size:10px;color:var(--t2);margin-top:2px">First-time software activations</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:16px;font-weight:700;color:#4DB8FF;font-family:var(--mono)">3,420</div>
+                <div style="font-size:9px;color:var(--t2)">today</div>
+              </div>
+            </div>
+            <svg width="100%" viewBox="0 0 420 90" preserveAspectRatio="none"><rect x="2.0" y="74.2" width="13.0" height="13.8" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="16.0" y="65.5" width="13.0" height="22.5" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="30.1" y="67.3" width="13.0" height="20.7" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="44.1" y="69.0" width="13.0" height="19.0" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="58.1" y="66.0" width="13.0" height="22.0" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="72.2" y="58.6" width="13.0" height="29.4" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="86.2" y="69.4" width="13.0" height="18.6" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="100.2" y="60.6" width="13.0" height="27.4" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="114.3" y="52.1" width="13.0" height="35.9" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="128.3" y="54.0" width="13.0" height="34.0" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="142.3" y="55.6" width="13.0" height="32.4" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="156.4" y="52.7" width="13.0" height="35.3" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="170.4" y="45.3" width="13.0" height="42.7" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="184.4" y="56.1" width="13.0" height="31.9" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="198.5" y="47.1" width="13.0" height="40.9" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="212.5" y="38.7" width="13.0" height="49.3" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="226.5" y="40.8" width="13.0" height="47.2" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="240.6" y="42.2" width="13.0" height="45.8" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="254.6" y="39.3" width="13.0" height="48.7" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="268.6" y="32.1" width="13.0" height="55.9" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="282.7" y="42.7" width="13.0" height="45.3" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="296.7" y="33.5" width="13.0" height="54.5" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="310.7" y="25.4" width="13.0" height="62.6" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="324.8" y="27.5" width="13.0" height="60.5" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="338.8" y="28.9" width="13.0" height="59.1" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="352.8" y="25.9" width="13.0" height="62.1" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="366.9" y="18.8" width="13.0" height="69.2" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="380.9" y="29.3" width="13.0" height="58.7" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="394.9" y="20.0" width="13.0" height="68.0" fill="#4DB8FF" opacity="0.5" rx="1"/><rect x="409.0" y="12.0" width="13.0" height="76.0" fill="#22D9A0" opacity="0.9" rx="1"/></svg>
+            <div style="display:flex;justify-content:space-between;margin-top:4px">
+              <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">Apr 1</span>
+              <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">Today</span>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- CHARTS ROW 2: by-product + wallet donut + geographic -->
+        <div style="display:grid;grid-template-columns:2fr 1fr 2fr;gap:12px;margin-bottom:12px">
+        
+          <!-- By-Product Bars -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Issuance by Product</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:14px">Distribution across SKUs</div>
+            <div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Harmonic Pro</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">234,891</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#9B6DFF;border-radius:3px;height:5px;width:28%"></div>
+                </div>
+              </div><div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">KeyGuard SDK</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">187,432</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#4DB8FF;border-radius:3px;height:5px;width:22%"></div>
+                </div>
+              </div><div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Synthwave Bundle</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">156,244</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#9B6DFF;border-radius:3px;height:5px;width:18%"></div>
+                </div>
+              </div><div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">PixelCraft Studio</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">124,891</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#FF6B9D;border-radius:3px;height:5px;width:15%"></div>
+                </div>
+              </div><div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">DataForge Pro</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">89,442</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#4DB8FF;border-radius:3px;height:5px;width:11%"></div>
+                </div>
+              </div><div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Others</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">54,393</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#3A3A3A;border-radius:3px;height:5px;width:6%"></div>
+                </div>
+              </div>
+          </div>
+          
+          <!-- Wallet Distribution Donut -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Licences per Wallet</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:12px">Concentration</div>
+            <div style="display:flex;justify-content:center;margin-bottom:12px">
+              <svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#22D9A0" stroke-width="14" stroke-dasharray="113.10 251.33" stroke-dashoffset="-0.00" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="#4DB8FF" stroke-width="14" stroke-dasharray="80.42 251.33" stroke-dashoffset="-113.10" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="#9B6DFF" stroke-width="14" stroke-dasharray="57.81 251.33" stroke-dashoffset="-193.52" transform="rotate(-90 50 50)"/></svg>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:#22D9A0"></div><span style="font-size:10px;color:var(--t2)">1 licence</span></div>
+                <span style="font-size:10px;font-family:var(--mono);color:var(--t1)">45%</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:#4DB8FF"></div><span style="font-size:10px;color:var(--t2)">2-3 licences</span></div>
+                <span style="font-size:10px;font-family:var(--mono);color:var(--t1)">32%</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:#9B6DFF"></div><span style="font-size:10px;color:var(--t2)">4+ licences</span></div>
+                <span style="font-size:10px;font-family:var(--mono);color:var(--t1)">23%</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Geographic Distribution -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Issuance by Region</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:14px">Geographic distribution · 30d</div>
+            
+            <!-- Mini world map SVG -->
+            <div style="background:var(--s2);border-radius:6px;padding:8px;margin-bottom:12px;position:relative;overflow:hidden">
+              <svg width="100%" viewBox="0 0 280 120" style="display:block">
+                <!-- Simplified continent blobs -->
+                <!-- North America -->
+                <ellipse cx="60" cy="48" rx="38" ry="28" fill="#22D9A040" stroke="#22D9A0" stroke-width="1"/>
+                <text x="60" y="52" text-anchor="middle" font-size="7" fill="#22D9A0" font-family="monospace">34%</text>
+                <!-- Europe -->
+                <ellipse cx="138" cy="42" rx="22" ry="18" fill="#4DB8FF30" stroke="#4DB8FF" stroke-width="1"/>
+                <text x="138" y="46" text-anchor="middle" font-size="7" fill="#4DB8FF" font-family="monospace">28%</text>
+                <!-- Asia Pacific -->
+                <ellipse cx="210" cy="52" rx="40" ry="30" fill="#9B6DFF30" stroke="#9B6DFF" stroke-width="1"/>
+                <text x="210" y="56" text-anchor="middle" font-size="7" fill="#9B6DFF" font-family="monospace">24%</text>
+                <!-- Latin America -->
+                <ellipse cx="72" cy="88" rx="20" ry="16" fill="#F0A04020" stroke="#F0A040" stroke-width="0.8"/>
+                <text x="72" y="92" text-anchor="middle" font-size="6" fill="#F0A040" font-family="monospace">8%</text>
+                <!-- Africa -->
+                <ellipse cx="148" cy="85" rx="18" ry="20" fill="#88888820" stroke="#888" stroke-width="0.8"/>
+                <text x="148" y="89" text-anchor="middle" font-size="6" fill="#888" font-family="monospace">6%</text>
+              </svg>
+            </div>
+            
+            <div style="margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">North America</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">34%</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#22D9A0;border-radius:3px;height:5px;width:34%;transition:width 1s"></div>
+                </div>
+              </div><div style="margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Europe</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">28%</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#4DB8FF;border-radius:3px;height:5px;width:28%;transition:width 1s"></div>
+                </div>
+              </div><div style="margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Asia Pacific</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">24%</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#9B6DFF;border-radius:3px;height:5px;width:24%;transition:width 1s"></div>
+                </div>
+              </div><div style="margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Latin America</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">8%</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#F0A040;border-radius:3px;height:5px;width:8%;transition:width 1s"></div>
+                </div>
+              </div><div style="margin-bottom:10px">
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                  <span style="font-size:11px;color:var(--t2)">Middle East & Africa</span>
+                  <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">6%</span>
+                </div>
+                <div style="background:var(--b1);border-radius:3px;height:5px">
+                  <div style="background:#888888;border-radius:3px;height:5px;width:6%;transition:width 1s"></div>
+                </div>
+              </div>
+          </div>
+          
+        </div>
+        
+        <!-- ROW 3: API latency sparkline + new holder acquisition + concurrent usage -->
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px">
+        
+          <!-- API Latency -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+              <div>
+                <div style="font-size:12px;font-weight:600;color:var(--t1)">API Latency</div>
+                <div style="font-size:10px;color:var(--t2);margin-top:2px">Validation endpoint · p50 / p99 · 60min</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:16px;font-weight:700;color:#9B6DFF;font-family:var(--mono)">23ms</div>
+                <div style="font-size:9px;color:var(--t2)">p99: 41ms</div>
+              </div>
+            </div>
+            <svg width="100%" viewBox="0 0 420 60" preserveAspectRatio="none">
+  <defs><linearGradient id="g9B6DFF" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#9B6DFF" stop-opacity="0.25"/>
+    <stop offset="100%" stop-color="#9B6DFF" stop-opacity="0"/>
+  </linearGradient></defs>
+  <path d="M 2.0,32.7 L 2.0,32.7 L 9.1,29.5 L 16.1,30.6 L 23.2,33.9 L 30.2,36.3 L 37.3,33.3 L 44.3,30.4 L 51.4,29.3 L 58.4,33.8 L 65.5,35.3 L 72.5,35.1 L 79.6,30.0 L 86.6,30.2 L 93.7,31.4 L 100.7,36.5 L 107.8,34.2 L 114.8,32.6 L 121.9,28.3 L 128.9,32.5 L 136.0,33.9 L 143.0,36.9 L 150.1,31.2 L 157.1,30.8 L 164.2,29.2 L 171.2,35.7 L 178.3,34.5 L 185.3,34.9 L 192.4,28.4 L 199.4,31.5 L 206.5,31.9 L 213.5,37.6 L 220.6,32.7 L 227.6,32.1 L 234.7,27.9 L 241.7,34.2 L 248.8,34.1 L 255.8,36.7 L 262.9,29.6 L 269.9,31.0 L 277.0,29.9 L 284.0,36.9 L 291.1,33.9 L 298.1,33.9 L 305.2,27.8 L 312.2,32.4 L 319.3,32.9 L 326.3,37.5 L 333.4,31.6 L 340.4,31.3 L 347.5,28.6 L 354.5,35.1 L 361.6,34.6 L 368.6,35.4 L 375.7,29.0 L 382.7,30.9 L 389.8,31.5 L 396.8,37.0 L 403.9,33.7 L 410.9,32.2 L 418.0,28.3 L 418.0,60 L 2.0,60 Z" fill="url(#g9B6DFF)"/>
+  <polyline points="2.0,32.7 9.1,29.5 16.1,30.6 23.2,33.9 30.2,36.3 37.3,33.3 44.3,30.4 51.4,29.3 58.4,33.8 65.5,35.3 72.5,35.1 79.6,30.0 86.6,30.2 93.7,31.4 100.7,36.5 107.8,34.2 114.8,32.6 121.9,28.3 128.9,32.5 136.0,33.9 143.0,36.9 150.1,31.2 157.1,30.8 164.2,29.2 171.2,35.7 178.3,34.5 185.3,34.9 192.4,28.4 199.4,31.5 206.5,31.9 213.5,37.6 220.6,32.7 227.6,32.1 234.7,27.9 241.7,34.2 248.8,34.1 255.8,36.7 262.9,29.6 269.9,31.0 277.0,29.9 284.0,36.9 291.1,33.9 298.1,33.9 305.2,27.8 312.2,32.4 319.3,32.9 326.3,37.5 333.4,31.6 340.4,31.3 347.5,28.6 354.5,35.1 361.6,34.6 368.6,35.4 375.7,29.0 382.7,30.9 389.8,31.5 396.8,37.0 403.9,33.7 410.9,32.2 418.0,28.3" fill="none" stroke="#9B6DFF" stroke-width="1.5"/>
+</svg>
+            <div style="display:flex;justify-content:space-between;margin-top:4px">
+              <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">60m ago</span>
+              <span style="font-size:8px;color:var(--t3);font-family:var(--mono)">now</span>
+            </div>
+          </div>
+          
+          <!-- New vs Returning Holders -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">New vs Returning</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:16px">Holder acquisition trend</div>
+            <div style="margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="font-size:11px;color:var(--t2)">New holders</span>
+                <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">61%</span>
+              </div>
+              <div style="background:var(--b1);border-radius:3px;height:6px;margin-bottom:8px">
+                <div style="background:var(--hi);border-radius:3px;height:6px;width:61%"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="font-size:11px;color:var(--t2)">Returning</span>
+                <span style="font-size:11px;font-family:var(--mono);color:var(--t1)">39%</span>
+              </div>
+              <div style="background:var(--b1);border-radius:3px;height:6px">
+                <div style="background:#4DB8FF;border-radius:3px;height:6px;width:39%"></div>
+              </div>
+            </div>
+            <div style="background:var(--s2);border-radius:6px;padding:8px">
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">184,291</div>
+              <div style="font-size:10px;color:var(--t2)">Unique licence holders</div>
+            </div>
+          </div>
+          
+          <!-- Transaction Throughput -->
+          <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Platform Throughput</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:16px">On-chain + API events</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:var(--s2);border-radius:6px;padding:10px">
+                <div style="font-size:16px;font-weight:700;color:var(--t1);font-family:var(--mono)">8,472</div>
+                <div style="font-size:10px;color:var(--t2)">Txns / min · on-chain</div>
+              </div>
+              <div style="background:var(--s2);border-radius:6px;padding:10px">
+                <div style="font-size:16px;font-weight:700;color:var(--t1);font-family:var(--mono)">124,891</div>
+                <div style="font-size:10px;color:var(--t2)">Validation requests today</div>
+              </div>
+              <div style="background:var(--s2);border-radius:6px;padding:10px">
+                <div style="font-size:16px;font-weight:700;color:var(--hi);font-family:var(--mono)">3,241</div>
+                <div style="font-size:10px;color:var(--t2)">New wallet activations today</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- COMPLIANCE & RISK SECTION -->
+        <div style="margin-bottom:12px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div>
+              <div style="font-size:14px;font-weight:700;color:var(--t1)">Compliance &amp; Risk Monitoring</div>
+              <div style="font-size:11px;color:var(--t2);margin-top:2px">Security, fraud detection, and honey token network · 13 metrics</div>
+            </div>
+            <div style="background:#FF5A5A20;border:1px solid rgba(255,90,90,0.3);border-radius:6px;padding:6px 12px;font-size:11px;color:#FF5A5A">⚠ 4 active alerts → review</div>
+          </div>
+          
+          <!-- Honey token explainer -->
+          <div style="background:linear-gradient(135deg,#1a0d0d,#150a0a);border:1px solid rgba(255,90,90,0.2);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px">
+            <div style="font-size:18px;flex-shrink:0">🍯</div>
+            <div>
+              <div style="font-size:11px;font-weight:600;color:var(--t1)">Honey Token Network</div>
+              <div style="font-size:10px;color:var(--t2);line-height:1.5">Decoy licences seeded across distribution channels. Any activation, transfer, or validation of a honey token triggers an alert — exposing grey market activity, channel leaks, and unauthorised redistribution before it scales.</div>
+            </div>
+            <div style="flex-shrink:0;text-align:right">
+              <div style="font-size:16px;font-weight:700;color:#FF5A5A;font-family:var(--mono)">2</div>
+              <div style="font-size:9px;color:var(--t2)">triggers this week</div>
+            </div>
+          </div>
+          
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+            <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">20</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#FF5A5A"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">1,247</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Revoked Licences</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">↑3 this week</div>
+            </div>
+<div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">21</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#F0A040"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">23<span style="background:#FF5A5A18;color:#FF5A5A;font-size:9px;padding:1px 6px;border-radius:3px;margin-left:4px">ALERT</span></div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Suspicious Transfers</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Active alerts → review</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">22</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#F0A040"></span><span style="font-size:9px;color:var(--t3)">near-RT</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">8 clusters</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Grey Market Activity</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Rapid resale detected</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">23</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#22D9A0"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">4,891</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Licence Expiry Events</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Expiring in 30 days</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">24</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#22D9A0"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">99.2%</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Compliance Rate</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Valid / total issued</div>
+            </div>
+<div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">25</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#FF5A5A"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">2<span style="background:#FF5A5A18;color:#FF5A5A;font-size:9px;padding:1px 6px;border-radius:3px;margin-left:4px">ALERT</span></div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Honey Token Activations</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">This week · investigate</div>
+            </div>
+<div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">27</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#FF5A5A"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">14<span style="background:#FF5A5A18;color:#FF5A5A;font-size:9px;padding:1px 6px;border-radius:3px;margin-left:4px">ALERT</span></div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Repeated Activation Attempts</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">On honeypot licences</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">28</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#F0A040"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">6</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Unknown Wallet Activations</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Honey token xfers</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">29</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#22D9A0"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">341</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Honey Validation Requests</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Fake licence verify calls</div>
+            </div>
+<div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">30</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#FF5A5A"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">1<span style="background:#FF5A5A18;color:#FF5A5A;font-size:9px;padding:1px 6px;border-radius:3px;margin-left:4px">ALERT</span></div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Channel Leak Detection</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Outside intended channel</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">31</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#22D9A0"></span><span style="font-size:9px;color:var(--t3)">near-RT</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">0</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Partner Activation Monitor</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">All partners nominal</div>
+            </div>
+<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">32</span>
+                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#F0A040"></span><span style="font-size:9px;color:var(--t3)">near-RT</span></div>
+              </div>
+              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">3</div>
+              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Reseller Territory Violations</div>
+              <div style="font-size:10px;color:var(--t2);margin-top:2px">Out-of-region activations</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- LIVE FEED -->
+        <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="pulse-dot"></span>
+              <span style="font-size:12px;font-weight:600;color:var(--t1)">Live Activity Feed</span>
+            </div>
+            <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">auto-refreshing</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#22D9A0;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">License Activated</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">Harmonic Pro · PL-2024-ALPH-0847</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">2s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#4DB8FF;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">License Issued</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">KeyGuard SDK · 5 new licences minted</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">4s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#FF5A5A;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">Suspicious Transfer</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">PL-2024-BETA-1204 transferred 3× in 1hr</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">12s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#22D9A0;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">Validation Request</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">CodeSentry · API check · 18ms</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">15s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#F0A040;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">Honey Token Triggered</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">PL-HONEY-0042 activated in JP · review</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">28s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#22D9A0;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">New Wallet Holder</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">8xKq...mN9p registered first licence</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">34s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#4DB8FF;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">Licence Issued</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">Synthwave Bundle · 12 new licences</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">41s ago</span>
+              </div><div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--b1)">
+                <div style="width:6px;height:6px;border-radius:50%;background:#22D9A0;flex-shrink:0"></div>
+                <div style="flex:1">
+                  <span style="font-size:12px;color:var(--t1)">Validation Request</span>
+                  <span style="font-size:11px;color:var(--t2);margin-left:8px">Harmonic Pro · SDK check · 21ms</span>
+                </div>
+                <span style="font-size:10px;color:var(--t3);font-family:var(--mono);flex-shrink:0">45s ago</span>
+              </div>
+        </div>
+        
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- FOOTER -->
 <!-- 08 SETTINGS FORM -->
@@ -1538,9 +2382,7 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
       <div class="logo-bg-label">Black on teal</div>
     </div>
   </div>
-  <div style="margin-top:24px;max-width:560px">
-    <p style="font-size:13px;color:var(--t2);line-height:1.7">The PL mark is a wordmark treated as a precision instrument. Maintain minimum clear space equal to the cap-height of the letterforms on all sides. Never recolor, stretch, or apply effects. Use the white variant on dark surfaces, the black variant on light or teal surfaces.</p>
-  </div>
+
 </section>
 
 
