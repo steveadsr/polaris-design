@@ -1583,41 +1583,60 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
 <section class="ds-section">
   <div class="section-label">12 / Screen</div>
   <h2 class="section-title">Analytics Dashboard</h2>
-  <p style="color:var(--t2);font-size:14px;margin:0 0 24px;line-height:1.6">32 metrics across licence issuance, ownership, activation, operations, and compliance. Real-time (🟢), near-real-time (🟡), and batch (🔵).</p>
+  <p style="color:var(--t2);font-size:14px;margin:0 0 24px;line-height:1.6">Metrics across licence issuance, ownership, activation, and operations.</p>
   
-  <div style="border-radius:12px;overflow:hidden;border:1px solid var(--b1)">
-    <div style="font-family:var(--sans);background:var(--bg)">
-    
-      <!-- ANALYTICS NAV -->
-      <div style="background:var(--s1);border-bottom:1px solid var(--b1);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between">
-        <div style="display:flex;gap:1px;height:100%">
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid var(--hi);font-size:12px;color:var(--t1);font-weight:500">Overview</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Issuance</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Ownership</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Activation</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2)">Platform</div>
-          <div style="display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:2px solid rgba(255,90,90,0.6);font-size:12px;color:#FF5A5A">Compliance ⚠</div>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <div style="display:flex;gap:1px;background:var(--b1);border-radius:6px;overflow:hidden;font-size:11px">
-            <span style="background:var(--hi);color:#0A0A0A;padding:5px 10px;cursor:pointer;font-weight:600">7d</span>
-            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">30d</span>
-            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">90d</span>
-            <span style="color:var(--t2);padding:5px 10px;cursor:pointer">1y</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--hi)">
-            <span class="pulse-dot"></span>
-            <span>Live</span>
-          </div>
-          <div style="background:var(--s2);border:1px solid var(--b2);border-radius:6px;padding:5px 12px;font-size:11px;color:var(--t2);cursor:pointer">Export ↓</div>
-        </div>
-      </div>
-      
-      <!-- CONTENT -->
-      <div style="padding:20px 24px">
+  <div class="screen-wrap">
+    <div class="app-shell">
+      <div class="sidebar">
+  <div class="sidebar-header">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAABCCAYAAACCTCKqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAOdEVYdFNvZnR3YXJlAEZpZ21hnrGWYwAAAxpJREFUeAHt3O1x00AUheFrKkgJ7gA6gHSQEpYKoAO2BDogVJISoIPrVAAdHNZYmtlxHFu72o+zyn1nNPl3tdITOTOSHBFLANyF7Rfq9kOsdjVCNdyWNUY13BZ1QjXcmnVGNdwakaDOGW6JwIU6Z7hrAifqnOHmBG7UuaK4O9l44YTdhR9PYfsg/D3udrvPUqBNww6GOlcE951suwcZC/WYg/3NvV04SR5jZri3guFuN5TFVdiDA55QBlfDtoc9FeIK63A1bPtoluEyhTxcRYQazTJcppCGq7iAGs0yXKawDFdxBTWaZbhM4TquYgFqNMtwmcJlXE1BjWYZLlNnuJqDGs0yXKYmXF2DGs0yXKZweiJUbJbhbjTDPavRCVEU+NglOZa5/7iUz2PR7gH5/rif2rjhwfnf8OM+bL+lfs/CGPq8n6TYxpXrhTH0felMMTauF8bA8SahYkxcL4yB6/VQxVi4XhgD5zu/ijFwvTAG7he5Fdy4XhjDGG/nKzhxvTCGMVDnFFy4XhjDWKhzCg5cL4xhTNQ5RV9cL4xhbNQ5RR9cL4xhG6hzira4XjKq/m07tP/G28+wfZTTDf5aHcJ2H27uH+QthvZX6uO03/10ZdVM0eDKpQudUKP9G27p0Bk1WsewuGHml2n2Exh+eUCCGq1nONww61vN+TkLokKN1jUMLl6iFp2fsyBK1Gh99Lh4HbXI/JwFUaNG66TFxW3UVfOTwyCo0XrpcLEcNWt+zkkaCjVaNw0u0lGT5uecnCFRo/V3x0U+6qL5OSdlaNToOLrhYj1qPH/911KwEdToeLrgouw+v54fV9I3AdDhhn640e6kYtON/ONb+gep117qnrM/khs2dqVeOL6aV667sL8HlOlokvdRjI2jRsdZA9dd2Z/Dugw14XhL4roF+8vFNdTUUAbXJewvFddQc8M6XCeJYTmuoa4NebhOMsNtXEMtFdJwnawMr+MaaumwDNdJofAS11Brheu4Tgo37e87Tv+iyFBrhsu4Thgz1LTOcJ2QtsPpBvJ7adNzuDfrZfBwuqH/KRzLo5D2D2wQhxUMy/98AAAAAElFTkSuQmCC" height="18" alt="PL" class="sidebar-logo" />
+    <div class="sidebar-brand">
+      <div class="sidebar-name">stevejfoulds+zen02</div>
+      <div class="sidebar-sub">Licensing Platform</div>
+    </div>
+  </div>
+  <nav class="sidebar-nav"><div class="nav-section-label">MAIN</div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg><span class="nav-label">Overview</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><span class="nav-label">Products</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg><span class="nav-label">Licenses</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg><span class="nav-label">Mint Keys</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg><span class="nav-label">Transactions</span></div><div class="nav-section-label">MORE</div><div class="nav-item nav-active"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg><span class="nav-label">Analytics</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/></svg><span class="nav-label">Marketplace</span><span class="soon-badge">Soon</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg><span class="nav-label">Developers</span></div><div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">Settings</span><span class="soon-badge">Soon</span></div></nav>
+  <div class="sidebar-footer">
+    <div class="user-avatar">SF</div>
+    <div class="user-info">
+      <div class="user-name">stevejfoulds+zen02</div>
+      <div class="user-email">stevejfoulds+zen02@g...</div>
+    </div>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+</div>
+      <div class="main-content">
+        <div class="topbar">
+  <div class="topbar-left">
+    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button>
+    <span class="topbar-title">Analytics</span>
+  </div>
+  <div class="topbar-right">
+    <div style="display:flex;gap:1px;background:var(--b1);border-radius:6px;overflow:hidden;font-size:11px">
+      <span style="background:var(--hi);color:#0A0A0A;padding:5px 10px;cursor:pointer;font-weight:600">7d</span>
+      <span style="color:var(--t2);padding:5px 10px;cursor:pointer">30d</span>
+      <span style="color:var(--t2);padding:5px 10px;cursor:pointer">90d</span>
+      <span style="color:var(--t2);padding:5px 10px;cursor:pointer">1y</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--hi)">
+      <span class="pulse-dot"></span>
+      <span>Live</span>
+    </div>
+    <button class="icon-btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></button>
+  </div>
+</div>
+        <div style="background:var(--s2);border-bottom:1px solid var(--b1);padding:0 20px;display:flex;gap:0">
+    <div style="padding:10px 16px;border-bottom:2px solid var(--hi);font-size:12px;color:var(--t1);font-weight:500;cursor:pointer">Overview</div>
+    <div style="padding:10px 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2);cursor:pointer">Issuance</div>
+    <div style="padding:10px 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2);cursor:pointer">Ownership</div>
+    <div style="padding:10px 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2);cursor:pointer">Activation</div>
+    <div style="padding:10px 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2);cursor:pointer">Platform</div>
+    <div style="padding:10px 16px;border-bottom:2px solid transparent;font-size:12px;color:var(--t2);cursor:pointer">Security</div>
+  </div>
+        <div style="padding:20px 24px">
       
         <!-- KPI STRIP -->
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px">
         
           <!-- KPI 1: Licences Issued -->
           <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
@@ -1626,10 +1645,7 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
               <span class="pulse-dot"></span>
             </div>
             <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">847,293</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
-              <span style="font-size:10px;color:var(--hi)">↑12.4% this week</span>
-              <svg width="80" height="28" viewBox="0 0 80 28"><rect x="0.0" y="21.0" width="1.7" height="7.0" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="2.7" y="20.1" width="1.7" height="7.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="5.3" y="18.3" width="1.7" height="9.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="8.0" y="19.2" width="1.7" height="8.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="10.7" y="17.1" width="1.7" height="10.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="13.3" y="16.1" width="1.7" height="11.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="16.0" y="15.4" width="1.7" height="12.6" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="18.7" y="13.9" width="1.7" height="14.1" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="21.3" y="14.6" width="1.7" height="13.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="24.0" y="12.5" width="1.7" height="15.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="26.7" y="13.1" width="1.7" height="14.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="29.3" y="11.5" width="1.7" height="16.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="32.0" y="12.2" width="1.7" height="15.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="34.7" y="10.8" width="1.7" height="17.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="37.3" y="9.6" width="1.7" height="18.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="40.0" y="10.1" width="1.7" height="17.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="42.7" y="7.8" width="1.7" height="20.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="45.3" y="7.3" width="1.7" height="20.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="48.0" y="6.6" width="1.7" height="21.4" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="50.7" y="5.2" width="1.7" height="22.8" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="53.3" y="5.5" width="1.7" height="22.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="56.0" y="4.3" width="1.7" height="23.7" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="58.7" y="4.8" width="1.7" height="23.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="61.3" y="3.4" width="1.7" height="24.6" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="64.0" y="3.8" width="1.7" height="24.2" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="66.7" y="3.1" width="1.7" height="24.9" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="69.3" y="2.5" width="1.7" height="25.5" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="72.0" y="2.9" width="1.7" height="25.1" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="74.7" y="2.0" width="1.7" height="26.0" fill="#22D9A0" opacity="0.7" rx="1"/><rect x="77.3" y="3.1" width="1.7" height="24.9" fill="#22D9A0" opacity="0.7" rx="1"/></svg>
-            </div>
+            <div style="font-size:10px;color:var(--hi);margin-top:6px">↑12.4% this week</div>
           </div>
           
           <!-- KPI 2: Active Licences -->
@@ -1639,10 +1655,7 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
               <span class="pulse-dot"></span>
             </div>
             <div style="font-size:22px;font-weight:700;color:var(--t1);font-family:var(--mono)">623,841</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
-              <span style="font-size:10px;color:var(--hi)">↑3.2% this week</span>
-              <svg width="80" height="28" viewBox="0 0 80 28"><rect x="0.0" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="2.7" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="5.3" y="3.9" width="1.7" height="24.1" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="8.0" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="10.7" y="3.8" width="1.7" height="24.2" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="13.3" y="3.7" width="1.7" height="24.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="16.0" y="3.5" width="1.7" height="24.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="18.7" y="3.7" width="1.7" height="24.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="21.3" y="3.4" width="1.7" height="24.6" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="24.0" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="26.7" y="3.5" width="1.7" height="24.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="29.3" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="32.0" y="3.2" width="1.7" height="24.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="34.7" y="3.3" width="1.7" height="24.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="37.3" y="3.0" width="1.7" height="25.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="40.0" y="3.0" width="1.7" height="25.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="42.7" y="3.2" width="1.7" height="24.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="45.3" y="2.9" width="1.7" height="25.1" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="48.0" y="2.8" width="1.7" height="25.2" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="50.7" y="2.6" width="1.7" height="25.4" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="53.3" y="2.7" width="1.7" height="25.3" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="56.0" y="2.4" width="1.7" height="25.6" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="58.7" y="2.5" width="1.7" height="25.5" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="61.3" y="2.3" width="1.7" height="25.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="64.0" y="2.2" width="1.7" height="25.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="66.7" y="2.3" width="1.7" height="25.7" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="69.3" y="2.1" width="1.7" height="25.9" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="72.0" y="2.0" width="1.7" height="26.0" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="74.7" y="2.2" width="1.7" height="25.8" fill="#4DB8FF" opacity="0.7" rx="1"/><rect x="77.3" y="4.0" width="1.7" height="24.0" fill="#4DB8FF" opacity="0.7" rx="1"/></svg>
-            </div>
+            <div style="font-size:10px;color:var(--hi);margin-top:6px">↑3.2% this week</div>
           </div>
           
           <!-- KPI 3: Issuance Velocity -->
@@ -1665,15 +1678,6 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
             <div style="font-size:10px;color:var(--hi);margin-top:6px">p99 · ↓2ms this week</div>
           </div>
           
-          <!-- KPI 5: Compliance -->
-          <div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
-            <div style="font-size:10px;color:var(--t3);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">
-              <span>Compliance Rate</span>
-              <span class="pulse-dot" style="background:#22D9A0"></span>
-            </div>
-            <div style="font-size:22px;font-weight:700;color:var(--hi);font-family:var(--mono)">99.2%</div>
-            <div style="font-size:10px;color:#FF5A5A;margin-top:6px">⚠ 4 active alerts</div>
-          </div>
           
         </div>
         
@@ -1797,8 +1801,8 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
           
           <!-- Wallet Distribution Donut -->
           <div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:16px">
-            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Licences per Wallet</div>
-            <div style="font-size:10px;color:var(--t2);margin-bottom:12px">Concentration</div>
+            <div style="font-size:12px;font-weight:600;color:var(--t1);margin-bottom:4px">Licences per User</div>
+            <div style="font-size:10px;color:var(--t2);margin-bottom:12px">Distribution across users</div>
             <div style="display:flex;justify-content:center;margin-bottom:12px">
               <svg width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="#22D9A0" stroke-width="14" stroke-dasharray="113.10 251.33" stroke-dashoffset="-0.00" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="#4DB8FF" stroke-width="14" stroke-dasharray="80.42 251.33" stroke-dashoffset="-113.10" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="40" fill="none" stroke="#9B6DFF" stroke-width="14" stroke-dasharray="57.81 251.33" stroke-dashoffset="-193.52" transform="rotate(-90 50 50)"/></svg>
             </div>
@@ -1808,7 +1812,7 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
                 <span style="font-size:10px;font-family:var(--mono);color:var(--t1)">45%</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center">
-                <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:#4DB8FF"></div><span style="font-size:10px;color:var(--t2)">2-3 licences</span></div>
+                <div style="display:flex;align-items:center;gap:6px"><div style="width:8px;height:8px;border-radius:2px;background:#4DB8FF"></div><span style="font-size:10px;color:var(--t2)">2–3 licences</span></div>
                 <span style="font-size:10px;font-family:var(--mono);color:var(--t1)">32%</span>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center">
@@ -1967,14 +1971,14 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
           
         </div>
         
-        <!-- COMPLIANCE & RISK SECTION -->
+        <!-- SECURITY & FRAUD DETECTION SECTION -->
         <div style="margin-bottom:12px">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
             <div>
-              <div style="font-size:14px;font-weight:700;color:var(--t1)">Compliance &amp; Risk Monitoring</div>
-              <div style="font-size:11px;color:var(--t2);margin-top:2px">Security, fraud detection, and honey token network · 13 metrics</div>
+              <div style="font-size:14px;font-weight:700;color:var(--t1)">Security &amp; Fraud Detection</div>
+              <div style="font-size:11px;color:var(--t2);margin-top:2px">Fraud detection, suspicious activity monitoring, and decoy licence network</div>
             </div>
-            <div style="background:#FF5A5A20;border:1px solid rgba(255,90,90,0.3);border-radius:6px;padding:6px 12px;font-size:11px;color:#FF5A5A">⚠ 4 active alerts → review</div>
+            <div style="background:#FF5A5A20;border:1px solid rgba(255,90,90,0.3);border-radius:6px;padding:6px 12px;font-size:11px;color:#FF5A5A">⚠ 4 active security alerts → review</div>
           </div>
           
           <!-- Honey token explainer -->
@@ -2027,15 +2031,7 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
               <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Licence Expiry Events</div>
               <div style="font-size:10px;color:var(--t2);margin-top:2px">Expiring in 30 days</div>
             </div>
-<div style="background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:14px">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-                <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">24</span>
-                <div style="display:flex;align-items:center;gap:4px"><span class="pulse-dot" style="background:#22D9A0"></span><span style="font-size:9px;color:var(--t3)">real-time</span></div>
-              </div>
-              <div style="font-size:18px;font-weight:700;color:var(--t1);font-family:var(--mono)">99.2%</div>
-              <div style="font-size:11px;color:var(--t1);margin-top:3px;font-weight:500">Compliance Rate</div>
-              <div style="font-size:10px;color:var(--t2);margin-top:2px">Valid / total issued</div>
-            </div>
+
 <div style="background:var(--s1);border:1px solid rgba(255,90,90,0.3);border-radius:10px;padding:14px">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
                 <span style="font-size:10px;color:var(--t3);font-family:var(--mono)">25</span>
@@ -2171,10 +2167,10 @@ tbody td { padding: 11px 12px; color: var(--t1); vertical-align: middle; }
         </div>
         
       </div>
+      </div>
     </div>
   </div>
 </section>
-
 
 <!-- FOOTER -->
 <!-- 08 SETTINGS FORM -->
