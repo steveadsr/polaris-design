@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Polaris — Form Builder v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0A0A0A;--sur:#111111;--sur2:#161616;--bs:#1E1E1E;--bv:#2A2A2A;--ac:#22D9A0;--adim:rgba(34,217,160,.10);--abr:rgba(34,217,160,.28);--tx:#EFEFEF;--mu:#888;--di:#444;--er:#FF5A5A;--wa:#F0A040;--r:8px;--rl:12px;--font:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);font-size:13.5px;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-thumb{background:var(--bv);border-radius:2px}
+.hidden{display:none!important}
+
+/* switcher */
+.swbar{background:var(--sur);border-bottom:1px solid var(--bv);padding:9px 20px;display:flex;align-items:center;gap:10px;flex-shrink:0;z-index:50}
+.swbar span{color:var(--di);font-size:10.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.swbtn{border:1px solid var(--bv);background:transparent;color:var(--mu);font-family:var(--font);font-size:12px;font-weight:500;padding:5px 13px;border-radius:var(--r);cursor:pointer;transition:all .15s}
+.swbtn.on{background:var(--adim);border-color:var(--abr);color:var(--ac)}
+.swbtn:hover:not(.on){color:var(--tx);border-color:var(--di)}
+
+/* app */
+.app{display:flex;flex:1;overflow:hidden}
+
+/* sidebar */
+.sidebar{width:216px;flex-shrink:0;background:var(--sur);border-right:1px solid var(--bs);display:flex;flex-direction:column;padding:14px 10px}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 8px 18px}
+.logom{width:22px;height:22px;border-radius:5px;background:var(--ac);display:flex;align-items:center;justify-content:center}
+.logom svg{width:11px;height:11px;color:#000}
+.logot{font-weight:700;font-size:14px;letter-spacing:-.02em}
+.nsl{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--di);padding:0 8px 5px;margin-top:6px}
+.ni{display:flex;align-items:center;gap:9px;padding:7px 8px;border-radius:6px;font-size:13px;font-weight:500;color:var(--mu);cursor:pointer;margin-bottom:1px;text-decoration:none;transition:all .12s}
+.ni:hover{background:var(--sur2);color:var(--tx)}
+.ni.on{background:var(--adim);color:var(--ac)}
+.ni svg{width:14px;height:14px;flex-shrink:0;opacity:.7}
+.ni.on svg{opacity:1}
+.sfooter{margin-top:auto;padding-top:14px;border-top:1px solid var(--bs)}
+.urow{display:flex;align-items:center;gap:8px;padding:7px 8px}
+.uav{width:26px;height:26px;border-radius:50%;background:var(--bv);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--mu);flex-shrink:0}
+.un{font-size:12px;font-weight:600}
+.ue{font-size:10.5px;color:var(--mu)}
+
+/* main */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.phdr{background:var(--sur);border-bottom:1px solid var(--bs);padding:11px 22px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.bc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--mu)}
+.bc a{color:var(--mu);text-decoration:none}.bc a:hover{color:var(--tx)}
+.bc .sep{color:var(--di)}.bc .cur{color:var(--tx);font-weight:500}
+.hact{display:flex;gap:7px}
+.btn{padding:6px 13px;border-radius:var(--r);font-family:var(--font);font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all .15s}
+.btng{background:transparent;border-color:var(--bv);color:var(--mu)}.btng:hover{color:var(--tx);border-color:var(--di)}
+.btnp{background:var(--ac);color:#000;border-color:var(--ac)}.btnp:hover{background:#1fc48f}
+.btns{background:var(--sur2);border-color:var(--bv);color:var(--tx)}
+
+/* product tabs */
+.ptabs{background:var(--sur);border-bottom:1px solid var(--bs);padding:0 22px;display:flex;flex-shrink:0}
+.ptab{padding:10px 15px;font-size:13px;font-weight:500;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .12s;white-space:nowrap}
+.ptab:hover{color:var(--tx)}
+.ptab.on{color:var(--ac);border-bottom-color:var(--ac)}
+.pmeta{padding:14px 22px 11px;background:var(--bg);border-bottom:1px solid var(--bs);display:flex;align-items:center;gap:11px;flex-shrink:0}
+.picon{width:34px;height:34px;border-radius:var(--r);background:var(--sur);border:1px solid var(--bv);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.pname{font-size:15px;font-weight:700}
+.pdesc{font-size:11.5px;color:var(--mu)}
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:10.5px;font-weight:600;font-family:var(--mono)}
+.bac{background:var(--adim);color:var(--ac)}
+.bdr{background:rgba(255,255,255,.05);color:var(--mu)}
+.bwa{background:rgba(240,160,64,.1);color:var(--wa)}
+
+/* step wizard */
+.wizard{flex:1;overflow:hidden;display:flex;flex-direction:column}
+.stepbar{padding:16px 22px 14px;background:var(--bg);border-bottom:1px solid var(--bs);display:flex;align-items:center;gap:0;flex-shrink:0}
+.step-item{display:flex;align-items:center;gap:8px}
+.stepnum{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--bv);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--mu);transition:all .2s;flex-shrink:0}
+.step-item.done .stepnum{background:var(--ac);border-color:var(--ac);color:#000}
+.step-item.active .stepnum{border-color:var(--ac);color:var(--ac)}
+.steplabel{font-size:12px;font-weight:500;color:var(--mu);transition:all .2s}
+.step-item.active .steplabel{color:var(--tx)}
+.step-item.done .steplabel{color:var(--mu)}
+.stepline{flex:1;height:1px;background:var(--bs);margin:0 10px;min-width:20px;transition:background .2s}
+.stepline.done{background:var(--ac)}
+.wbody{flex:1;overflow-y:auto;padding:22px}
+.wnav{padding:14px 22px;border-top:1px solid var(--bs);background:var(--sur);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.wnav-left{display:flex;gap:8px}
+.wnav-right{display:flex;gap:8px;align-items:center}
+.step-hint{font-size:12px;color:var(--mu)}
+
+/* step 1: mode select */
+.mode-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:0 auto}
+.mode-card{border:2px solid var(--bv);border-radius:var(--rl);padding:22px;cursor:pointer;transition:all .2s;background:var(--sur);position:relative}
+.mode-card:hover{border-color:var(--di)}
+.mode-card.sel{border-color:var(--ac);background:var(--adim)}
+.mode-card-icon{font-size:28px;margin-bottom:12px}
+.mode-card-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.mode-card-desc{font-size:12.5px;color:var(--mu);line-height:1.6}
+.mode-card-tag{position:absolute;top:14px;right:14px;font-size:10px;font-family:var(--mono);padding:2px 7px;border-radius:100px}
+.mode-card.sel .mode-card-tag{background:var(--adim);border:1px solid var(--abr);color:var(--ac)}
+.mode-card:not(.sel) .mode-card-tag{background:var(--sur2);border:1px solid var(--bs);color:var(--di)}
+.mode-preview{margin-top:14px;border-radius:var(--r);overflow:hidden;border:1px solid var(--bv);background:var(--sur2);padding:12px 14px}
+.mprow{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.mprow:last-child{margin-bottom:0}
+.mpfield{flex:1;height:26px;border-radius:5px;background:var(--bg);border:1px solid var(--bv);font-size:10px;font-family:var(--mono);color:var(--di);display:flex;align-items:center;padding:0 8px}
+.mpbtn{height:26px;border-radius:5px;background:var(--ac);color:#000;font-size:10px;font-weight:700;padding:0 12px;display:flex;align-items:center}
+.mpchip{background:var(--sur);border:1px solid var(--bv);border-radius:4px;padding:3px 7px;font-size:9.5px;font-family:var(--mono);color:var(--mu)}
+
+/* step 2: templates */
+.tpl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px}
+.tpl-card{border:2px solid var(--bv);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:all .2s;background:var(--sur)}
+.tpl-card:hover{border-color:var(--di)}
+.tpl-card.sel{border-color:var(--ac)}
+.tpl-thumb{height:140px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.tpl-label{padding:10px 12px;border-top:1px solid var(--bs)}
+.tpl-name{font-size:12.5px;font-weight:600;margin-bottom:2px}
+.tpl-desc{font-size:11px;color:var(--mu)}
+.tpl-card.sel .tpl-label{border-top-color:var(--abr)}
+.tpl-card.sel .tpl-name{color:var(--ac)}
+
+/* template thumbs CSS */
+.tt-dark{background:#0A0A0A;width:100%;height:100%;padding:14px;display:flex;flex-direction:column;gap:6px}
+.tt-light{background:#F4F4F4;width:100%;height:100%;padding:14px;display:flex;flex-direction:column;gap:6px}
+.tt-warm{background:#0D0B09;width:100%;height:100%;padding:14px;display:flex;flex-direction:column;gap:6px}
+.tt-compact{background:#0A0A0A;width:100%;height:100%;padding:10px;display:flex;flex-direction:column;gap:4px}
+.tfi{height:20px;border-radius:3px;border:1px solid;font-size:8px;display:flex;align-items:center;padding:0 6px}
+.tfl{height:11px;border-radius:2px;width:60%;margin-bottom:2px}
+.tfbtn{height:20px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700}
+.ttlogo{height:14px;border-radius:2px;width:40%;margin-bottom:8px}
+/* dark theme */
+.td .tfl{background:#2A2A2A}
+.td .tfi{background:#161616;border-color:#2A2A2A;color:#555}
+.td .tfbtn{background:#22D9A0;color:#000}
+/* light theme */
+.tl .tfl{background:#DDD}
+.tl .tfi{background:#FFF;border-color:#DDD;color:#AAA}
+.tl .tfbtn{background:#1A1A1A;color:#FFF}
+/* warm theme */
+.tw .tfl{background:#2A2520}
+.tw .tfi{background:#1A1510;border-color:#3A3020;color:#666}
+.tw .tfbtn{background:#F0A040;color:#000}
+/* compact theme */
+.tc .tfl{background:#222;width:45%;height:9px}
+.tc .tfi{height:17px;background:#111;border-color:#222;color:#444;font-size:7px}
+.tc .tfbtn{height:18px;background:#22D9A0;color:#000;font-size:7px}
+
+/* step 3: configure */
+.cfg-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px}
+.cfg-card{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.cfg-card-hdr{padding:13px 16px;border-bottom:1px solid var(--bs);font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+.cfg-card-body{padding:14px 16px}
+.field-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--bs)}
+.field-row:last-child{border-bottom:none}
+.frdrag{color:var(--di);cursor:grab;font-size:13px}
+.frname{flex:1;font-size:13px;font-weight:500}
+.frid{font-family:var(--mono);font-size:10px;color:var(--mu);background:var(--sur2);padding:2px 6px;border-radius:4px}
+.frlocked{font-size:10px;color:var(--di);font-family:var(--mono)}
+.toggle{width:34px;height:19px;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0;transition:background .2s}
+.toggle.on{background:var(--ac)}.toggle.on::after{left:17px}
+.toggle.off{background:var(--bv)}.toggle.off::after{left:3px}
+.toggle::after{content:'';position:absolute;top:2.5px;width:14px;height:14px;background:#000;border-radius:50%;transition:left .2s}
+.toggle.on::after{background:#000}.toggle.off::after{background:var(--mu)}
+.cfg-label{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--di);margin-bottom:7px;margin-top:12px}
+.cfg-label:first-child{margin-top:0}
+.cfg-input{width:100%;background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:13px;padding:7px 10px;border-radius:6px;outline:none;transition:border-color .15s}
+.cfg-input:focus{border-color:var(--ac)}
+.cfg-textarea{width:100%;background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:13px;padding:7px 10px;border-radius:6px;outline:none;resize:none;line-height:1.5;transition:border-color .15s}
+.cfg-textarea:focus{border-color:var(--ac)}
+.cfg-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0}
+.cfg-row-label{font-size:13px;font-weight:500}
+.cfg-row-sub{font-size:11px;color:var(--mu)}
+.logo-preview{display:flex;align-items:center;gap:10px;padding:10px;background:var(--sur2);border:1px solid var(--bv);border-radius:6px;margin-bottom:10px}
+.logo-box{width:36px;height:36px;border-radius:5px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000;flex-shrink:0}
+.logo-info{flex:1;min-width:0}
+.logo-name{font-size:12.5px;font-weight:600}
+.logo-src{font-size:11px;color:var(--mu)}
+.webhook-input-row{display:flex;gap:7px;margin-top:7px}
+.webhook-input-row .cfg-input{flex:1}
+.gdpr-box{background:var(--sur2);border:1px solid var(--bs);border-radius:6px;padding:10px 12px;font-size:12px;color:var(--mu);margin-top:8px;border-left:2px solid var(--abr)}
+.note{font-size:11.5px;color:var(--mu);background:var(--sur2);border:1px solid var(--bs);border-radius:6px;padding:8px 11px;margin-top:8px;border-left:2px solid var(--abr)}
+.note a{color:var(--ac);text-decoration:none}
+
+/* preview screen */
+.preview-wrap{display:flex;gap:20px;max-width:900px}
+.preview-frame{flex:1;background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.preview-topbar{background:#1A1A1A;padding:8px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bs)}
+.preview-dot{width:8px;height:8px;border-radius:50%}
+.preview-title{flex:1;text-align:center;font-size:11px;color:var(--mu);font-family:var(--mono)}
+.preview-body{padding:22px}
+.preview-logo{display:flex;align-items:center;gap:9px;margin-bottom:18px}
+.preview-logo-box{width:32px;height:32px;border-radius:6px;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#000}
+.preview-product{font-size:14px;font-weight:700}
+.preview-sub{font-size:11.5px;color:var(--mu)}
+.pv-label{font-size:11px;font-weight:600;color:var(--mu);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em;font-family:var(--mono)}
+.pv-input{width:100%;background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:13px;padding:8px 11px;border-radius:6px;margin-bottom:13px}
+.pv-btn{width:100%;background:var(--ac);color:#000;border:none;padding:10px;border-radius:6px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
+.pv-gdpr{display:flex;align-items:flex-start;gap:8px;margin-bottom:12px;font-size:11.5px;color:var(--mu);line-height:1.5}
+.pv-check{width:14px;height:14px;border:1px solid var(--bv);border-radius:3px;background:var(--sur2);flex-shrink:0;margin-top:1px}
+.preview-sidebar{width:220px;flex-shrink:0}
+.prev-info-card{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);padding:14px;margin-bottom:12px}
+.prev-info-title{font-size:12px;font-weight:600;margin-bottom:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em;font-family:var(--mono)}
+.prev-info-row{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--bs)}
+.prev-info-row:last-child{border-bottom:none}
+.prev-info-key{color:var(--mu)}
+.prev-info-val{font-weight:500}
+
+/* success screen preview */
+.success-preview{text-align:center;padding:24px 20px}
+.success-icon{width:48px;height:48px;border-radius:50%;background:var(--adim);border:2px solid var(--abr);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px}
+.success-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.success-sub{font-size:12.5px;color:var(--mu);line-height:1.6}
+.success-btn{background:var(--sur2);border:1px solid var(--bv);color:var(--tx);padding:8px 20px;border-radius:6px;font-family:var(--font);font-size:12.5px;font-weight:600;cursor:pointer;margin-top:14px}
+
+/* analytics tab */
+.analytics-body{padding:20px 22px;overflow-y:auto;flex:1}
+.stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat-card{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);padding:14px 16px}
+.stat-val{font-size:26px;font-weight:700;font-family:var(--mono);color:var(--tx);margin-bottom:2px}
+.stat-val span{font-size:14px;color:var(--ac)}
+.stat-label{font-size:11.5px;color:var(--mu)}
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.ac-card{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.ac-hdr{padding:12px 16px;border-bottom:1px solid var(--bs);font-size:12.5px;font-weight:600}
+.ac-body{padding:14px 16px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{font-size:12px;color:var(--mu);width:110px;flex-shrink:0;text-align:right}
+.bar-track{flex:1;height:8px;background:var(--sur2);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;background:var(--ac);transition:width .5s}
+.bar-val{font-size:11px;font-family:var(--mono);color:var(--mu);width:38px;text-align:right;flex-shrink:0}
+.resp-table{width:100%;border-collapse:collapse}
+.resp-table th{text-align:left;font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--di);padding:8px 16px;border-bottom:1px solid var(--bs);background:var(--bg)}
+.resp-table td{padding:9px 16px;border-bottom:1px solid var(--bs);font-size:13px}
+.resp-table tr:last-child td{border-bottom:none}
+
+/* json tab */
+.json-body{padding:16px 22px;overflow-y:auto;flex:1}
+.jblock{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.jhdr{padding:10px 14px;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:space-between}
+.jlbl{font-size:10.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--mu)}
+pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;color:var(--mu);overflow-x:auto}
+.jk{color:#7DD3C0}.js{color:#A3C09A}.jn{color:#D4A06A}.jc{color:var(--di);font-style:italic}
+
+/* docs tab */
+.docs-body{padding:16px 22px;overflow-y:auto;flex:1}
+.doc-link{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--sur);border:1px solid var(--bv);border-radius:var(--r);text-decoration:none;color:var(--tx);margin-bottom:8px;transition:all .15s}
+.doc-link:hover{border-color:var(--di);background:var(--sur2)}
+.dli{font-size:16px;flex-shrink:0}.dlt{font-size:13px;font-weight:600}.dld{font-size:11.5px;color:var(--mu)}
+
+/* license detail screen */
+.ld-body{overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px;flex:1}
+.card{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl)}
+.card-hdr{padding:13px 16px;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:space-between}
+.card-title{font-size:13.5px;font-weight:600}
+.card-body{padding:14px 16px}
+.igrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ilbl{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--di);margin-bottom:3px}
+.ival{font-size:13px;font-weight:500}
+.kchip{font-family:var(--mono);font-size:12px;background:var(--sur2);border:1px solid var(--bv);padding:5px 11px;border-radius:6px;letter-spacing:.04em}
+.cpbtn{background:var(--sur2);border:1px solid var(--bv);color:var(--mu);padding:5px 9px;border-radius:6px;cursor:pointer;font-size:12px}
+.frt{width:100%;border-collapse:collapse}
+.frt th{text-align:left;font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--di);padding:8px 16px;border-bottom:1px solid var(--bs);background:var(--bg)}
+.frt td{padding:9px 16px;border-bottom:1px solid var(--bs)}
+.frt tr:last-child td{border-bottom:none}
+.fk{font-family:var(--mono);font-size:11px;color:var(--mu);width:160px}
+.fv{font-size:13px;font-weight:500}
+.ft{font-family:var(--mono);font-size:10px;color:var(--di);width:80px}
+.sdot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:5px}
+.s-ac{background:var(--ac);box-shadow:0 0 6px var(--ac)}
+
+/* ── API Builder 3-panel ── */
+.blayout{display:flex;flex:1;overflow:hidden}
+.flib{width:215px;flex-shrink:0;border-right:1px solid var(--bs);background:var(--sur);overflow-y:auto;display:flex;flex-direction:column}
+.flib-hdr{padding:12px 12px 8px;font-size:10.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--mu);border-bottom:1px solid var(--bs);flex-shrink:0}
+.flib-sec{padding:9px 9px 5px}
+.flib-sec-lbl{font-size:9.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--di);margin-bottom:5px;padding:0 3px}
+.fchip{display:flex;align-items:center;gap:7px;padding:6px 7px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--tx);cursor:grab;border:1px solid transparent;margin-bottom:2px;transition:all .1s}
+.fchip:hover{background:var(--sur2);border-color:var(--bv)}
+.fchip-ic{width:23px;height:23px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px}
+.fc-std{background:var(--sur2)}
+.fc-sp{background:var(--adim);border:1px solid var(--abr)}
+.fchip.pl{color:var(--ac)}
+.fchip-drag{color:var(--di);font-size:10px}
+.fcanvas{flex:1;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
+.ctoolbar{padding:10px 14px;border-bottom:1px solid var(--bs);background:var(--sur);display:flex;align-items:center;gap:9px;flex-shrink:0}
+.ctoolbar input{background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:14px;font-weight:600;padding:5px 9px;border-radius:6px;outline:none;flex:1}
+.ctoolbar input:focus{border-color:var(--ac)}
+.ctabs{display:flex;border-bottom:1px solid var(--bs);background:var(--sur);flex-shrink:0}
+.ctab{padding:8px 13px;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .12s}
+.ctab:hover{color:var(--tx)}
+.ctab.on{color:var(--tx);border-bottom-color:var(--bv)}
+.cbody{padding:14px;display:flex;flex-direction:column;gap:7px;overflow-y:auto;flex:1}
+.ffcard{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);display:flex;align-items:center;gap:9px;padding:10px 13px;cursor:pointer;transition:all .15s}
+.ffcard:hover{border-color:var(--di)}
+.ffcard.sel{border-color:var(--abr);background:var(--adim)}
+.dhandle{color:var(--di);font-size:13px;cursor:grab;flex-shrink:0}
+.ford{font-family:var(--mono);font-size:10px;color:var(--di);width:14px;text-align:center;flex-shrink:0}
+.finfo{flex:1;min-width:0}
+.flbl{font-size:13px;font-weight:600}
+.fcode{font-family:var(--mono);font-size:10px;color:var(--mu);margin-top:1px}
+.fcode span{background:var(--sur2);padding:1px 5px;border-radius:3px}
+.ffcard.sel .fcode span{background:rgba(34,217,160,.15);color:var(--ac)}
+.fbadges{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.tbadge{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:100px;background:var(--sur2);border:1px solid var(--bv);color:var(--mu)}
+.rbadge{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:100px}
+.req{background:rgba(34,217,160,.1);border:1px solid var(--abr);color:var(--ac)}
+.opt{background:var(--sur2);border:1px solid var(--bs);color:var(--di)}
+.plbadge{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:100px;background:rgba(240,160,64,.1);border:1px solid rgba(240,160,64,.3);color:var(--wa)}
+.delbtn{background:transparent;border:none;color:var(--di);cursor:pointer;padding:3px;border-radius:4px;font-size:13px;transition:color .12s}
+.delbtn:hover{color:var(--er)}
+.dropz{border:1.5px dashed var(--bv);border-radius:var(--rl);padding:18px;text-align:center;color:var(--di);font-size:12px;background:var(--sur);cursor:pointer}
+.dropz:hover{border-color:var(--abr);color:var(--mu)}
+.apinote{margin:0 0 2px;padding:9px 13px;background:var(--sur);border:1px solid var(--bs);border-radius:var(--r);border-left:2px solid var(--ac);font-size:11.5px;color:var(--mu)}
+.apinote code{font-family:var(--mono);font-size:10.5px;color:var(--ac)}
+.cpanel{width:262px;flex-shrink:0;border-left:1px solid var(--bs);background:var(--sur);overflow-y:auto;display:flex;flex-direction:column}
+.cp-hdr{padding:12px 13px 9px;font-size:10.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--mu);border-bottom:1px solid var(--bs);flex-shrink:0}
+.cpsec{padding:11px 13px;border-bottom:1px solid var(--bs)}
+.cplbl{font-size:9.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--di);margin-bottom:6px}
+.cpinput{width:100%;background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:13px;padding:6px 9px;border-radius:6px;outline:none;margin-bottom:9px;transition:border-color .15s}
+.cpinput:focus{border-color:var(--ac)}
+.cpinput.mono{font-family:var(--mono);font-size:11.5px;color:var(--ac)}
+.cpsel{width:100%;background:var(--sur2);border:1px solid var(--bv);color:var(--tx);font-family:var(--font);font-size:13px;padding:6px 9px;border-radius:6px;outline:none;margin-bottom:9px;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center}
+.cprow{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.cprow-lbl{font-size:13px;font-weight:500}
+.cprow-sub{font-size:11px;color:var(--mu)}
+.fidexpl{font-size:11px;color:var(--mu);background:var(--sur2);border:1px solid var(--bs);border-radius:5px;padding:7px 9px;margin-bottom:9px}
+.fidexpl strong{color:var(--tx);font-family:var(--mono);font-size:10.5px}
+.vtag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:var(--sur2);border:1px solid var(--bv);border-radius:100px;font-size:10.5px;color:var(--mu);margin:2px;cursor:pointer}
+.vtag.on{background:var(--adim);border-color:var(--abr);color:var(--ac)}
+.jview{padding:14px;overflow-y:auto;flex:1}
+</style>
+</head>
+<body>
+
+<div class="swbar">
+  <span>Mockup:</span>
+  <button class="swbtn on" onclick="showMain('builder')">Screen 1 — Form Builder</button>
+  <button class="swbtn" onclick="showMain('license')">Screen 2 — License Detail</button>
+  <span style="margin-left:auto;font-size:10.5px;color:var(--di)">Polaris · Form Builder v2 · May 2026</span>
+</div>
+
+<div class="app">
+  <!-- sidebar -->
+  <nav class="sidebar">
+    <div class="logo">
+      <div class="logom"><svg viewBox="0 0 12 12" fill="currentColor"><polygon points="6,1 11,4 11,8 6,11 1,8 1,4"/></svg></div>
+      <span class="logot">Polaris</span>
+    </div>
+    <div class="nsl">Platform</div>
+    <a class="ni" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3"/><rect width="7" height="5" x="14" y="3"/><rect width="7" height="9" x="14" y="12"/><rect width="7" height="5" x="3" y="16"/></svg>Overview</a>
+    <a class="ni on" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Products</a>
+    <a class="ni" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Licenses</a>
+    <a class="ni" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>Mint Keys</a>
+    <a class="ni" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Transactions</a>
+    <div class="sfooter">
+      <div class="urow">
+        <div class="uav">SF</div>
+        <div><div class="un">Steve Foulds</div><div class="ue">steve@polaris.dev</div></div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- ══ SCREEN 1: FORM BUILDER ══ -->
+    <div id="main-builder" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+      <div class="phdr">
+        <div class="bc"><a href="#">Dashboard</a><span class="sep">/</span><a href="#">Products</a><span class="sep">/</span><span class="cur">Surge XT</span><span class="sep">/</span><span class="cur">Form Builder</span></div>
+        <div class="hact">
+          <button class="btn btng" onclick="goToStep(4)">Preview Form</button>
+          <button class="btn btng">View API</button>
+          <button class="btn btnp">Save &amp; Publish</button>
+        </div>
+      </div>
+      <div class="ptabs">
+        <div class="ptab on" onclick="showPTab('builder',this)">Form Builder</div>
+        <div class="ptab" onclick="showPTab('schema',this)">JSON Schema</div>
+        <div class="ptab" onclick="showPTab('analytics',this)">Analytics</div>
+        <div class="ptab" onclick="showPTab('docs',this)">API Docs</div>
+      </div>
+      <div class="pmeta">
+        <div class="picon">🎛️</div>
+        <div>
+          <div class="pname" style="display:flex;align-items:center;gap:8px">Surge XT <span class="badge bac">Active</span></div>
+          <div class="pdesc">VST3 / AU / CLAP synthesizer · 3 activations per license</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+          <span style="font-size:11.5px;color:var(--mu)">Form:</span>
+          <span class="badge bdr" id="form-status-badge">Draft</span>
+        </div>
+      </div>
+
+      <!-- BUILDER TAB -->
+      <div id="ptab-builder" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+        <div class="wizard">
+          <!-- step indicator -->
+          <div class="stepbar" id="stepbar">
+            <div class="step-item active" id="si-1"><div class="stepnum">1</div><span class="steplabel">Choose Type</span></div>
+            <div class="stepline" id="sl-1"></div>
+            <div class="step-item" id="si-2"><div class="stepnum">2</div><span class="steplabel">Pick Template</span></div>
+            <div class="stepline" id="sl-2"></div>
+            <div class="step-item" id="si-3"><div class="stepnum">3</div><span class="steplabel">Configure</span></div>
+            <div class="stepline" id="sl-3"></div>
+            <div class="step-item" id="si-4"><div class="stepnum">4</div><span class="steplabel">Preview</span></div>
+          </div>
+
+          <!-- STEP 1 -->
+          <div id="step-1" class="wbody">
+            <div style="max-width:760px;margin:0 auto">
+              <div style="margin-bottom:18px">
+                <div style="font-size:18px;font-weight:700;margin-bottom:5px">How should this form work?</div>
+                <div style="font-size:13px;color:var(--mu)">Choose how the activation form is delivered and rendered in your plugin.</div>
+              </div>
+              <div class="mode-cards">
+                <div class="mode-card sel" id="mode-gui" onclick="selectMode('gui')">
+                  <span class="mode-card-tag">Recommended</span>
+                  <div class="mode-card-icon">🎨</div>
+                  <div class="mode-card-title">GUI Template</div>
+                  <div class="mode-card-desc">Polaris renders a hosted activation form. Choose a visual template, toggle fields, add your branding. No code required in the plugin — just call <code style="font-family:var(--mono);font-size:11px;color:var(--ac)">openActivationForm()</code>.</div>
+                  <div class="mode-preview" style="margin-top:14px">
+                    <div class="td">
+                      <div class="tfl td" style="background:#222;height:10px;width:45%;margin-bottom:8px"></div>
+                      <div class="tfl td" style="height:8px;width:70%;margin-bottom:10px"></div>
+                      <div class="tfl td" style="height:8px;width:55%;margin-bottom:4px"></div>
+                      <div class="tfi td" style="border-color:#2A2A2A;color:#444;margin-bottom:6px">Full name</div>
+                      <div class="tfl td" style="height:8px;width:40%;margin-bottom:4px"></div>
+                      <div class="tfi td" style="border-color:#2A2A2A;color:#444;margin-bottom:8px">Email address</div>
+                      <div class="tfbtn td">Activate Plugin →</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mode-card" id="mode-api" onclick="selectMode('api')">
+                  <span class="mode-card-tag">Advanced</span>
+                  <div class="mode-card-icon">⚙️</div>
+                  <div class="mode-card-title">API-Driven</div>
+                  <div class="mode-card-desc">Define a JSON Schema. Your plugin fetches the schema and renders its own native activation UI. Full control over every pixel. Use Polaris field types for license key validation and machine capture.</div>
+                  <div class="mode-preview" style="margin-top:14px">
+                    <div style="display:flex;flex-direction:column;gap:5px">
+                      <div style="display:flex;gap:6px;align-items:center"><div class="mpchip">user_full_name</div><span style="font-size:9px;color:var(--di)">→</span><div class="mpchip">string</div></div>
+                      <div style="display:flex;gap:6px;align-items:center"><div class="mpchip">user_email</div><span style="font-size:9px;color:var(--di)">→</span><div class="mpchip">email</div></div>
+                      <div style="display:flex;gap:6px;align-items:center"><div class="mpchip" style="color:var(--ac);border-color:var(--abr)">activation_code</div><span style="font-size:9px;color:var(--di)">→</span><div class="mpchip" style="color:var(--wa);border-color:rgba(240,160,64,.3)">license-key</div></div>
+                      <div style="display:flex;gap:6px;align-items:center"><div class="mpchip" style="color:var(--ac);border-color:var(--abr)">machine_name</div><span style="font-size:9px;color:var(--di)">→</span><div class="mpchip" style="color:var(--ac);border-color:var(--abr)">machine-id</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2: template picker -->
+          <div id="step-2" class="wbody hidden">
+            <div style="max-width:900px;margin:0 auto">
+              <div style="margin-bottom:16px">
+                <div style="font-size:17px;font-weight:700;margin-bottom:4px">Choose a template</div>
+                <div style="font-size:13px;color:var(--mu)">Your company logo and product name are applied automatically. You can toggle individual fields in the next step.</div>
+              </div>
+              <div class="tpl-grid">
+                <!-- Dark Minimal -->
+                <div class="tpl-card sel" id="tpl-dark" onclick="selTpl('dark')">
+                  <div class="tpl-thumb">
+                    <div class="tt-dark td" style="width:100%;height:100%;padding:16px">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#22D9A0"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2A2A"></div></div>
+                      <div class="tfl td" style="height:7px;width:80%;margin-bottom:10px"></div>
+                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi td" style="margin-bottom:7px"></div>
+                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi td" style="margin-bottom:7px"></div>
+                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi td" style="border-color:#22D9A0;margin-bottom:9px"></div>
+                      <div class="tfbtn td">Activate</div>
+                    </div>
+                  </div>
+                  <div class="tpl-label"><div class="tpl-name">Dark Minimal</div><div class="tpl-desc">Matches Polaris brand</div></div>
+                </div>
+                <!-- Light Clean -->
+                <div class="tpl-card" id="tpl-light" onclick="selTpl('light')">
+                  <div class="tpl-thumb" style="background:#EFEFEF">
+                    <div class="tt-light tl" style="width:100%;height:100%;padding:16px">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#1A1A1A"></div><div style="width:50px;height:8px;border-radius:2px;background:#DDD"></div></div>
+                      <div class="tfl tl" style="height:7px;width:80%;margin-bottom:10px"></div>
+                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tl" style="margin-bottom:7px"></div>
+                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tl" style="margin-bottom:7px"></div>
+                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tl" style="margin-bottom:9px"></div>
+                      <div class="tfbtn tl" style="background:#1A1A1A;color:#FFF">Activate</div>
+                    </div>
+                  </div>
+                  <div class="tpl-label"><div class="tpl-name">Light Clean</div><div class="tpl-desc">Neutral, works anywhere</div></div>
+                </div>
+                <!-- Warm Dark -->
+                <div class="tpl-card" id="tpl-warm" onclick="selTpl('warm')">
+                  <div class="tpl-thumb">
+                    <div class="tt-warm tw" style="width:100%;height:100%;padding:16px">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#F0A040"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2520"></div></div>
+                      <div class="tfl tw" style="height:7px;width:80%;margin-bottom:10px"></div>
+                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tw" style="margin-bottom:7px"></div>
+                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tw" style="margin-bottom:7px"></div>
+                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
+                      <div class="tfi tw" style="margin-bottom:9px"></div>
+                      <div class="tfbtn tw" style="background:#F0A040;color:#000">Activate</div>
+                    </div>
+                  </div>
+                  <div class="tpl-label"><div class="tpl-name">Warm Dark</div><div class="tpl-desc">Amber accent, rich tone</div></div>
+                </div>
+                <!-- Compact -->
+                <div class="tpl-card" id="tpl-compact" onclick="selTpl('compact')">
+                  <div class="tpl-thumb">
+                    <div class="tt-compact tc" style="width:100%;height:100%;padding:12px">
+                      <div style="display:flex;align-items:center;gap:5px;margin-bottom:8px"><div style="width:14px;height:14px;border-radius:2px;background:#22D9A0"></div><div style="width:40px;height:7px;border-radius:2px;background:#222"></div></div>
+                      <div class="tfl tc" style="margin-bottom:2px"></div>
+                      <div class="tfi tc" style="margin-bottom:5px"></div>
+                      <div class="tfl tc" style="margin-bottom:2px"></div>
+                      <div class="tfi tc" style="margin-bottom:5px"></div>
+                      <div class="tfl tc" style="margin-bottom:2px"></div>
+                      <div class="tfi tc" style="margin-bottom:5px"></div>
+                      <div class="tfbtn tc" style="background:#22D9A0;color:#000;margin-top:4px">Activate →</div>
+                    </div>
+                  </div>
+                  <div class="tpl-label"><div class="tpl-name">Compact</div><div class="tpl-desc">Small plugin windows</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3: configure -->
+          <div id="step-3" class="wbody hidden">
+            <div class="cfg-layout">
+              <!-- Left: Fields -->
+              <div>
+                <div class="cfg-card" style="margin-bottom:14px">
+                  <div class="cfg-card-hdr">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Form Fields
+                  </div>
+                  <div class="cfg-card-body">
+                    <div style="font-size:11.5px;color:var(--mu);margin-bottom:10px">Toggle fields on/off. Drag to reorder. License Key is always required.</div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname">Full Name</span>
+                      <span class="frid">user_full_name</span>
+                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname">Email Address</span>
+                      <span class="frid">user_email</span>
+                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname" style="color:var(--ac)">License Key</span>
+                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">activation_code</span>
+                      <span class="frlocked">locked</span>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname" style="color:var(--mu)">Company</span>
+                      <span class="frid">user_company</span>
+                      <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname" style="color:var(--mu)">Phone Number</span>
+                      <span class="frid">user_phone</span>
+                      <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname" style="color:var(--ac)">Computer Name</span>
+                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">machine_name</span>
+                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="field-row">
+                      <span class="frdrag">⠿</span>
+                      <span class="frname" style="color:var(--ac)">DAW / Plugin Host</span>
+                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">plugin_host</span>
+                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- GDPR -->
+                <div class="cfg-card">
+                  <div class="cfg-card-hdr">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    GDPR &amp; Privacy
+                  </div>
+                  <div class="cfg-card-body">
+                    <div class="cfg-row">
+                      <div><div class="cfg-row-label">Require consent checkbox</div><div class="cfg-row-sub">User must tick before submitting</div></div>
+                      <div class="toggle on" id="gdpr-toggle" onclick="toggleGDPR()"></div>
+                    </div>
+                    <div id="gdpr-fields">
+                      <div class="cfg-label">Privacy Policy URL</div>
+                      <input class="cfg-input" type="text" value="https://surgext.com/privacy" style="margin-bottom:10px"/>
+                      <div class="cfg-label">Consent Text</div>
+                      <textarea class="cfg-textarea" rows="2">I agree to the processing of my personal data in accordance with the Privacy Policy.</textarea>
+                      <div class="note" style="margin-top:8px">Data is stored per-license and accessible via API. <a href="#">Data retention settings →</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Branding + Success + Webhooks -->
+              <div>
+                <!-- Branding -->
+                <div class="cfg-card" style="margin-bottom:14px">
+                  <div class="cfg-card-hdr">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+                    Branding
+                  </div>
+                  <div class="cfg-card-body">
+                    <div class="logo-preview">
+                      <div class="logo-box">BA</div>
+                      <div class="logo-info">
+                        <div class="logo-name">Baby Audio</div>
+                        <div class="logo-src">From account settings · <a href="#" style="color:var(--ac);text-decoration:none">Change →</a></div>
+                      </div>
+                    </div>
+                    <div class="cfg-label">Product Name</div>
+                    <input class="cfg-input" type="text" value="Surge XT" style="margin-bottom:10px"/>
+                    <div class="cfg-label">Tagline (optional)</div>
+                    <input class="cfg-input" type="text" placeholder="e.g. Next-gen synthesis engine" style="margin-bottom:0"/>
+                  </div>
+                </div>
+
+                <!-- Success screen -->
+                <div class="cfg-card" style="margin-bottom:14px">
+                  <div class="cfg-card-hdr">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Success Screen
+                  </div>
+                  <div class="cfg-card-body">
+                    <div class="cfg-label">Heading</div>
+                    <input class="cfg-input" type="text" value="Surge XT is now activated" style="margin-bottom:10px"/>
+                    <div class="cfg-label">Sub-message</div>
+                    <textarea class="cfg-textarea" rows="2">Thank you for your purchase. All features are now unlocked on this machine.</textarea>
+                    <div class="cfg-label" style="margin-top:10px">Close Button Label</div>
+                    <input class="cfg-input" type="text" value="Close" style="margin-bottom:0"/>
+                  </div>
+                </div>
+
+                <!-- Webhooks -->
+                <div class="cfg-card">
+                  <div class="cfg-card-hdr">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                    Notifications &amp; Webhooks
+                  </div>
+                  <div class="cfg-card-body">
+                    <div class="cfg-row">
+                      <div><div class="cfg-row-label">Dashboard notification</div><div class="cfg-row-sub">Bell alert on each activation</div></div>
+                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                    </div>
+                    <div class="cfg-row" style="border-top:1px solid var(--bs);padding-top:10px">
+                      <div><div class="cfg-row-label">Webhook on submission</div><div class="cfg-row-sub">POST form data to your endpoint</div></div>
+                      <div class="toggle on" id="wh-toggle" onclick="toggleWebhook()"></div>
+                    </div>
+                    <div id="wh-fields">
+                      <div class="webhook-input-row">
+                        <input class="cfg-input" type="text" placeholder="https://your-server.com/webhook" value="https://api.surgext.com/polaris-webhook"/>
+                        <button class="btn btns" style="font-size:11.5px;white-space:nowrap">Test</button>
+                      </div>
+                      <div class="note">Polaris sends a POST with <code style="font-family:var(--mono);font-size:10.5px;color:var(--ac)">{ license_key, form_data, product_id, activated_at }</code></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4: preview -->
+          <div id="step-4" class="wbody hidden">
+            <div style="margin-bottom:16px;max-width:900px">
+              <div style="font-size:17px;font-weight:700;margin-bottom:4px">Form Preview</div>
+              <div style="font-size:13px;color:var(--mu)">This is how the activation form will appear in your plugin. Click Submit to see the success screen.</div>
+            </div>
+            <div class="preview-wrap" style="max-width:900px">
+              <div class="preview-frame">
+                <div class="preview-topbar">
+                  <div class="preview-dot" style="background:#FF5F57"></div>
+                  <div class="preview-dot" style="background:#FEBC2E"></div>
+                  <div class="preview-dot" style="background:#28C840"></div>
+                  <div class="preview-title">Surge XT — Activation</div>
+                </div>
+                <!-- Form state -->
+                <div id="pv-form" class="preview-body">
+                  <div class="preview-logo">
+                    <div class="preview-logo-box">BA</div>
+                    <div><div class="preview-product">Surge XT</div><div class="preview-sub">Baby Audio · Activation</div></div>
+                  </div>
+                  <div class="pv-label">Full Name</div>
+                  <input class="pv-input" type="text" placeholder="Your full name"/>
+                  <div class="pv-label">Email Address</div>
+                  <input class="pv-input" type="email" placeholder="your@email.com"/>
+                  <div class="pv-label">License Key</div>
+                  <input class="pv-input" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" style="font-family:var(--mono);letter-spacing:.05em"/>
+                  <div class="pv-gdpr">
+                    <div class="pv-check"></div>
+                    I agree to the processing of my personal data in accordance with the <a href="#" style="color:var(--ac)">Privacy Policy</a>.
+                  </div>
+                  <button class="pv-btn" onclick="showSuccess()">Activate Plugin →</button>
+                </div>
+                <!-- Success state -->
+                <div id="pv-success" class="hidden preview-body">
+                  <div class="success-preview">
+                    <div class="success-icon">✓</div>
+                    <div class="success-title">Surge XT is now activated</div>
+                    <div class="success-sub">Thank you for your purchase. All features are now unlocked on this machine.</div>
+                    <button class="success-btn" onclick="showForm()">Close</button>
+                  </div>
+                </div>
+              </div>
+              <div class="preview-sidebar">
+                <div class="prev-info-card">
+                  <div class="prev-info-title">Active Fields</div>
+                  <div class="prev-info-row"><span class="prev-info-key">user_full_name</span><span class="prev-info-val" style="color:var(--ac)">on</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">user_email</span><span class="prev-info-val" style="color:var(--ac)">on</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">activation_code</span><span class="prev-info-val" style="color:var(--ac)">on</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">machine_name</span><span class="prev-info-val" style="color:var(--ac)">auto</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">plugin_host</span><span class="prev-info-val" style="color:var(--ac)">auto</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">gdpr_consent</span><span class="prev-info-val" style="color:var(--ac)">on</span></div>
+                </div>
+                <div class="prev-info-card">
+                  <div class="prev-info-title">Template</div>
+                  <div class="prev-info-row"><span class="prev-info-key">style</span><span class="prev-info-val">Dark Minimal</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">logo</span><span class="prev-info-val">Baby Audio</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">webhook</span><span class="prev-info-val" style="color:var(--ac)">enabled</span></div>
+                  <div class="prev-info-row"><span class="prev-info-key">gdpr</span><span class="prev-info-val" style="color:var(--ac)">enabled</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- STEP API: 3-panel builder -->
+          <div id="step-api" class="hidden blayout">
+            <!-- Left: Field Library -->
+            <div class="flib">
+              <div class="flib-hdr">Field Library</div>
+              <div class="flib-sec">
+                <div class="flib-sec-lbl">Standard</div>
+                <div class="fchip"><div class="fchip-ic fc-std">Tt</div><span style="flex:1">Text</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">@</div><span style="flex:1">Email</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">#</div><span style="flex:1">Number</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">▿</div><span style="flex:1">Select</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">☑</div><span style="flex:1">Checkbox</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">¶</div><span style="flex:1">Textarea</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">📅</div><span style="flex:1">Date</span><span class="fchip-drag">⠿</span></div>
+                <div class="fchip"><div class="fchip-ic fc-std">🔗</div><span style="flex:1">URL</span><span class="fchip-drag">⠿</span></div>
+              </div>
+              <div class="flib-sec" style="border-top:1px solid var(--bs);padding-top:11px">
+                <div class="flib-sec-lbl" style="color:var(--ac);opacity:.8">Polaris Types</div>
+                <div class="fchip pl"><div class="fchip-ic fc-sp">🔑</div><span style="flex:1">License Key</span><span class="fchip-drag" style="color:var(--abr)">⠿</span></div>
+                <div class="fchip pl"><div class="fchip-ic fc-sp">💻</div><span style="flex:1">Machine ID</span><span class="fchip-drag" style="color:var(--abr)">⠿</span></div>
+                <div class="fchip pl"><div class="fchip-ic fc-sp">🎚️</div><span style="flex:1">Plugin Host</span><span class="fchip-drag" style="color:var(--abr)">⠿</span></div>
+                <div class="fchip pl"><div class="fchip-ic fc-sp">🖥️</div><span style="flex:1">OS Version</span><span class="fchip-drag" style="color:var(--abr)">⠿</span></div>
+              </div>
+              <div style="padding:11px 12px;margin-top:auto;border-top:1px solid var(--bs)">
+                <div style="font-size:11px;color:var(--di);line-height:1.5">Drag fields onto the canvas, or click to append. <span style="color:var(--ac)">Polaris types</span> auto-capture system data.</div>
+              </div>
+            </div>
+
+            <!-- Center: Canvas -->
+            <div class="fcanvas">
+              <div class="ctoolbar">
+                <input type="text" value="Activation Form"/>
+                <button class="btn btng" style="font-size:11.5px;padding:5px 10px;white-space:nowrap">+ Add Section</button>
+              </div>
+              <div class="ctabs">
+                <div class="ctab on" id="actab-builder" onclick="showApiTab('builder')">Builder</div>
+                <div class="ctab" id="actab-schema" onclick="showApiTab('schema')">JSON Schema</div>
+                <div class="ctab" id="actab-docs" onclick="showApiTab('docs')">API Docs</div>
+              </div>
+
+              <!-- Builder -->
+              <div id="ac-builder" class="cbody">
+                <div class="apinote">Form available at <code>GET /api/v1/products/surge-xt/form</code> · Used by the JUCE SDK to render activation UI. Submitted data is stored per-license.</div>
+                <div class="ffcard" onclick="selField(this,'User Full Name','user_full_name','Text','text','')">
+                  <span class="dhandle">⠿</span><span class="ford">1</span>
+                  <div class="finfo"><div class="flbl">User Full Name</div><div class="fcode">field_id: <span>user_full_name</span></div></div>
+                  <div class="fbadges"><span class="tbadge">text</span><span class="rbadge req">required</span></div>
+                  <button class="delbtn">✕</button>
+                </div>
+                <div class="ffcard sel" id="api-sel-card" onclick="selField(this,'Email Address','user_email','Email','email','your@email.com')">
+                  <span class="dhandle">⠿</span><span class="ford">2</span>
+                  <div class="finfo"><div class="flbl">Email Address</div><div class="fcode">field_id: <span>user_email</span></div></div>
+                  <div class="fbadges"><span class="tbadge">email</span><span class="rbadge req">required</span></div>
+                  <button class="delbtn">✕</button>
+                </div>
+                <div class="ffcard" onclick="selField(this,'License Key','activation_code','String','string','')">
+                  <span class="dhandle">⠿</span><span class="ford">3</span>
+                  <div class="finfo"><div class="flbl">License Key</div><div class="fcode">field_id: <span>activation_code</span></div></div>
+                  <div class="fbadges"><span class="tbadge">string</span><span class="rbadge req">required</span><span class="plbadge">polaris</span></div>
+                  <button class="delbtn">✕</button>
+                </div>
+                <div class="ffcard" onclick="selField(this,'Computer Name','machine_name','Text','text','')">
+                  <span class="dhandle">⠿</span><span class="ford">4</span>
+                  <div class="finfo"><div class="flbl">Computer Name</div><div class="fcode">field_id: <span>machine_name</span></div></div>
+                  <div class="fbadges"><span class="tbadge">text</span><span class="rbadge opt">optional</span><span class="plbadge">polaris</span></div>
+                  <button class="delbtn">✕</button>
+                </div>
+                <div class="ffcard" onclick="selField(this,'DAW / Plugin Host','plugin_host','Select','select','')">
+                  <span class="dhandle">⠿</span><span class="ford">5</span>
+                  <div class="finfo"><div class="flbl">DAW / Plugin Host</div><div class="fcode">field_id: <span>plugin_host</span></div></div>
+                  <div class="fbadges"><span class="tbadge">select</span><span class="rbadge opt">optional</span><span class="plbadge">polaris</span></div>
+                  <button class="delbtn">✕</button>
+                </div>
+                <div class="dropz">＋ Drag a field here, or click to choose from the library</div>
+              </div>
+
+              <!-- JSON Schema -->
+              <div id="ac-schema" class="jview hidden">
+                <div class="jblock">
+                  <div class="jhdr"><span class="jlbl">W3C Draft 2020-12 · Ajv-compatible</span><div style="display:flex;gap:6px"><button class="btn btng" style="font-size:11px;padding:3px 8px">Copy</button><button class="btn btng" style="font-size:11px;padding:3px 8px">Download</button></div></div>
+<pre class="json">{
+  <span class="jk">"$schema"</span>: <span class="js">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="jk">"$id"</span>: <span class="js">"https://api.polaris.dev/v1/products/surge-xt/form"</span>,
+  <span class="jk">"title"</span>: <span class="js">"Activation Form"</span>,
+  <span class="jk">"type"</span>: <span class="js">"object"</span>,
+  <span class="jk">"required"</span>: [<span class="js">"user_full_name"</span>, <span class="js">"user_email"</span>, <span class="js">"activation_code"</span>],
+  <span class="jk">"properties"</span>: {
+    <span class="jk">"user_full_name"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"Full Name"</span>, <span class="jk">"minLength"</span>: <span class="jn">2</span> },
+    <span class="jk">"user_email"</span>:    { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"Email Address"</span>, <span class="jk">"format"</span>: <span class="js">"email"</span> },
+    <span class="jk">"activation_code"</span>: {
+      <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"License Key"</span>,
+      <span class="jk">"pattern"</span>: <span class="js">"^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$"</span>,
+      <span class="jk">"x-polaris-type"</span>: <span class="js">"license-key"</span>
+    },
+    <span class="jk">"machine_name"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"x-polaris-type"</span>: <span class="js">"machine-id"</span> },   <span class="jc">// auto-captured</span>
+    <span class="jk">"plugin_host"</span>:   { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"x-polaris-type"</span>: <span class="js">"plugin-host"</span>,
+      <span class="jk">"enum"</span>: [<span class="js">"Ableton Live"</span>, <span class="js">"Logic Pro"</span>, <span class="js">"Pro Tools"</span>, <span class="js">"Cubase"</span>, <span class="js">"FL Studio"</span>, <span class="js">"Reaper"</span>, <span class="js">"Other"</span>]
+    }
+  }
+}</pre>
+                </div>
+              </div>
+
+              <!-- API Docs -->
+              <div id="ac-docs" class="jview hidden">
+                <div class="jblock" style="margin-bottom:14px">
+                  <div class="jhdr"><span class="jlbl">JUCE SDK — API-driven mode</span></div>
+<pre class="json"><span class="jc">// Fetch schema, render your own UI, submit on activate</span>
+<span class="jk">PolarisClient</span> client(<span class="js">"YOUR_API_KEY"</span>);
+auto schema = client.<span class="jk">getFormSchema</span>(<span class="js">"surge-xt"</span>);
+
+juce::<span class="jk">var</span> data;
+data.setProperty(<span class="js">"user_full_name"</span>, nameInput.getText());
+data.setProperty(<span class="js">"user_email"</span>,    emailInput.getText());
+data.setProperty(<span class="js">"activation_code"</span>, keyInput.getText());
+<span class="jc">// machine_name and plugin_host captured automatically</span>
+auto result = client.<span class="jk">activateLicense</span>(licenseKey, data);</pre>
+                </div>
+                <a class="doc-link" href="#"><span class="dli">📄</span><div><div class="dlt">JSON Schema Specification</div><div class="dld">W3C Draft 2020-12 · types, formats, validation keywords</div></div><span style="color:var(--di)">↗</span></a>
+                <a class="doc-link" href="#"><span class="dli">🔌</span><div><div class="dlt">Polaris JUCE SDK</div><div class="dld">C++ SDK · getFormSchema(), activateLicense(), x-polaris-type</div></div><span style="color:var(--di)">↗</span></a>
+                <a class="doc-link" href="#"><span class="dli">🛡️</span><div><div class="dlt">Ajv Validation</div><div class="dld">Server-side validation against schema before storage</div></div><span style="color:var(--di)">↗</span></a>
+              </div>
+            </div>
+
+            <!-- Right: Config Panel -->
+            <div class="cpanel">
+              <div class="cp-hdr" id="cp-title">Field Config — Email Address</div>
+              <div class="cpsec">
+                <div class="cplbl">Label</div>
+                <input class="cpinput" id="cp-label" type="text" value="Email Address"/>
+                <div class="cplbl">Field ID <span style="color:var(--di);font-size:8.5px">(code identifier)</span></div>
+                <input class="cpinput mono" id="cp-fieldid" type="text" value="user_email"/>
+                <div class="fidexpl">This key is used in the JSON schema and stored with each license. The JUCE SDK reads it as <strong id="cp-fid-ref">user_email</strong>. Changing it after publishing will break existing integrations.</div>
+                <div class="cplbl">Type</div>
+                <select class="cpsel" id="cp-type">
+                  <option selected>Email</option><option>Text</option><option>Number</option>
+                  <option>Select</option><option>Checkbox</option><option>Textarea</option>
+                  <option>License Key</option><option>Machine ID</option>
+                </select>
+                <div class="cplbl">Placeholder</div>
+                <input class="cpinput" id="cp-placeholder" type="text" value="your@email.com"/>
+              </div>
+              <div class="cpsec">
+                <div class="cprow"><div><div class="cprow-lbl">Required</div><div class="cprow-sub">Submission fails if empty</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+                <div class="cprow"><div><div class="cprow-lbl">Unique per license</div><div class="cprow-sub">Warn if email already used</div></div><div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+              </div>
+              <div class="cpsec">
+                <div class="cplbl">Validation Rules</div>
+                <div>
+                  <span class="vtag on">✓ Valid email format</span>
+                  <span class="vtag">Min length</span>
+                  <span class="vtag">Max length</span>
+                  <span class="vtag">+ Add rule</span>
+                </div>
+              </div>
+              <div class="cpsec">
+                <div class="cplbl">JSON Preview</div>
+                <div class="jblock"><pre class="json" id="cp-json-preview" style="font-size:10.5px;padding:9px">{
+  <span class="jk">"type"</span>: <span class="js">"string"</span>,
+  <span class="jk">"title"</span>: <span class="js">"Email Address"</span>,
+  <span class="jk">"format"</span>: <span class="js">"email"</span>
+}</pre></div>
+              </div>
+              <div style="padding:12px;display:flex;gap:7px;margin-top:auto">
+                <button class="btn btng" style="flex:1;font-size:12px">Delete Field</button>
+                <button class="btn btns" style="flex:1;font-size:12px">Duplicate</button>
+              </div>
+            </div>
+          </div>
+          <!-- nav bar -->
+          <div class="wnav">
+            <div class="wnav-left">
+              <button class="btn btng" id="btn-back" onclick="stepBack()" style="display:none">← Back</button>
+            </div>
+            <div class="wnav-right">
+              <span class="step-hint" id="step-hint">Select a mode to continue</span>
+              <button class="btn btnp" id="btn-next" onclick="stepNext()">Next →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JSON SCHEMA TAB -->
+      <div id="ptab-schema" class="json-body hidden">
+        <div style="margin-bottom:12px;font-size:17px;font-weight:700">JSON Schema Output</div>
+        <div class="jblock">
+          <div class="jhdr"><span class="jlbl">W3C Draft 2020-12 · Ajv-compatible</span><div style="display:flex;gap:7px"><button class="btn btng" style="font-size:11px;padding:4px 9px">Copy</button><button class="btn btng" style="font-size:11px;padding:4px 9px">Download</button></div></div>
+<pre class="json">{
+  <span class="jk">"$schema"</span>: <span class="js">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="jk">"$id"</span>: <span class="js">"https://api.polaris.dev/v1/products/surge-xt/form"</span>,
+  <span class="jk">"title"</span>: <span class="js">"Activation Form"</span>,
+  <span class="jk">"type"</span>: <span class="js">"object"</span>,
+  <span class="jk">"required"</span>: [<span class="js">"user_full_name"</span>, <span class="js">"user_email"</span>, <span class="js">"activation_code"</span>],
+  <span class="jk">"properties"</span>: {
+    <span class="jk">"user_full_name"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"Full Name"</span>, <span class="jk">"minLength"</span>: <span class="jn">2</span> },
+    <span class="jk">"user_email"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"Email Address"</span>, <span class="jk">"format"</span>: <span class="js">"email"</span> },
+    <span class="jk">"activation_code"</span>: {
+      <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"title"</span>: <span class="js">"License Key"</span>,
+      <span class="jk">"pattern"</span>: <span class="js">"^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$"</span>,
+      <span class="jk">"x-polaris-type"</span>: <span class="js">"license-key"</span>
+    },
+    <span class="jk">"machine_name"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"x-polaris-type"</span>: <span class="js">"machine-id"</span> },   <span class="jc">// auto-captured</span>
+    <span class="jk">"plugin_host"</span>: { <span class="jk">"type"</span>: <span class="js">"string"</span>, <span class="jk">"x-polaris-type"</span>: <span class="js">"plugin-host"</span> }, <span class="jc">// auto-detected</span>
+    <span class="jk">"gdpr_consent"</span>: { <span class="jk">"type"</span>: <span class="js">"boolean"</span>, <span class="jk">"const"</span>: <span class="jn">true</span>, <span class="jk">"x-polaris-type"</span>: <span class="js">"gdpr-consent"</span> }
+  }
+}</pre>
+        </div>
+      </div>
+
+      <!-- ANALYTICS TAB -->
+      <div id="ptab-analytics" class="analytics-body hidden">
+        <div style="font-size:17px;font-weight:700;margin-bottom:16px">Form Analytics — Surge XT</div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-val">247<span> total</span></div><div class="stat-label">Activations submitted</div></div>
+          <div class="stat-card"><div class="stat-val" style="color:var(--ac)">94.3<span>%</span></div><div class="stat-label">Completion rate</div></div>
+          <div class="stat-card"><div class="stat-val">28<span>s</span></div><div class="stat-label">Avg. time to complete</div></div>
+          <div class="stat-card"><div class="stat-val">3<span> fields</span></div><div class="stat-label">Skipped most often</div></div>
+        </div>
+        <div class="analytics-grid">
+          <div class="ac-card">
+            <div class="ac-hdr">Field Completion Rate</div>
+            <div class="ac-body">
+              <div class="bar-row"><span class="bar-label">activation_code</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">100%</span></div>
+              <div class="bar-row"><span class="bar-label">user_email</span><div class="bar-track"><div class="bar-fill" style="width:99%"></div></div><span class="bar-val">99%</span></div>
+              <div class="bar-row"><span class="bar-label">user_full_name</span><div class="bar-track"><div class="bar-fill" style="width:97%"></div></div><span class="bar-val">97%</span></div>
+              <div class="bar-row"><span class="bar-label">gdpr_consent</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val">95%</span></div>
+              <div class="bar-row"><span class="bar-label">machine_name</span><div class="bar-track"><div class="bar-fill" style="width:88%;background:var(--ac);opacity:.6"></div></div><span class="bar-val">88%</span></div>
+            </div>
+          </div>
+          <div class="ac-card">
+            <div class="ac-hdr">DAW / Plugin Host</div>
+            <div class="ac-body">
+              <div class="bar-row"><span class="bar-label">Ableton Live</span><div class="bar-track"><div class="bar-fill" style="width:38%"></div></div><span class="bar-val">38%</span></div>
+              <div class="bar-row"><span class="bar-label">Logic Pro</span><div class="bar-track"><div class="bar-fill" style="width:27%"></div></div><span class="bar-val">27%</span></div>
+              <div class="bar-row"><span class="bar-label">FL Studio</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><span class="bar-val">15%</span></div>
+              <div class="bar-row"><span class="bar-label">Reaper</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">10%</span></div>
+              <div class="bar-row"><span class="bar-label">Other</span><div class="bar-track"><div class="bar-fill" style="width:10%;opacity:.5"></div></div><span class="bar-val">10%</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ac-card">
+          <div class="ac-hdr">Recent Submissions</div>
+          <table class="resp-table">
+            <thead><tr><th>Email</th><th>Machine</th><th>DAW</th><th>Submitted</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>tom@whitfield.co.uk</td><td style="font-family:var(--mono);font-size:11.5px;color:var(--mu)">MacBook Pro</td><td style="color:var(--mu)">Ableton Live</td><td style="color:var(--mu);font-size:12px">2h ago</td><td><span class="badge bac">Active</span></td></tr>
+              <tr><td>sarah.k@gmail.com</td><td style="font-family:var(--mono);font-size:11.5px;color:var(--mu)">iMac Pro</td><td style="color:var(--mu)">Logic Pro</td><td style="color:var(--mu);font-size:12px">5h ago</td><td><span class="badge bac">Active</span></td></tr>
+              <tr><td>djmike@outlook.com</td><td style="font-family:var(--mono);font-size:11.5px;color:var(--mu)">Windows PC</td><td style="color:var(--mu)">FL Studio</td><td style="color:var(--mu);font-size:12px">1d ago</td><td><span class="badge bac">Active</span></td></tr>
+              <tr><td>studio@rekordlabel.de</td><td style="font-family:var(--mono);font-size:11.5px;color:var(--mu)">Mac Studio</td><td style="color:var(--mu)">Reaper</td><td style="color:var(--mu);font-size:12px">2d ago</td><td><span class="badge bac">Active</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- API DOCS TAB -->
+      <div id="ptab-docs" class="docs-body hidden">
+        <div style="font-size:17px;font-weight:700;margin-bottom:6px">API &amp; SDK References</div>
+        <div style="font-size:13px;color:var(--mu);margin-bottom:16px">Use these endpoints in your JUCE plugin to fetch the schema and submit activation data.</div>
+        <div class="jblock" style="margin-bottom:16px">
+          <div class="jhdr"><span class="jlbl">JUCE SDK — GUI Template mode</span></div>
+<pre class="json"><span class="jc">// One-line integration for GUI Template mode</span>
+<span class="jk">PolarisClient</span> client(<span class="js">"YOUR_API_KEY"</span>);
+client.<span class="jk">openActivationForm</span>(<span class="js">"surge-xt"</span>); <span class="jc">// Polaris renders the hosted form</span></pre>
+        </div>
+        <div class="jblock" style="margin-bottom:16px">
+          <div class="jhdr"><span class="jlbl">JUCE SDK — API-driven mode</span></div>
+<pre class="json"><span class="jc">// Fetch schema, render your own UI, then submit</span>
+auto schema = client.<span class="jk">getFormSchema</span>(<span class="js">"surge-xt"</span>);
+juce::<span class="jk">var</span> data;
+data.setProperty(<span class="js">"user_full_name"</span>, nameInput.getText());
+data.setProperty(<span class="js">"user_email"</span>,    emailInput.getText());
+data.setProperty(<span class="js">"activation_code"</span>, keyInput.getText());
+<span class="jc">// machine_name and plugin_host are captured automatically</span>
+auto result = client.<span class="jk">activateLicense</span>(licenseKey, data);</pre>
+        </div>
+        <a class="doc-link" href="#"><span class="dli">📄</span><div><div class="dlt">JSON Schema Specification</div><div class="dld">W3C Draft 2020-12 · Full reference for types, formats, validation</div></div><span style="color:var(--di)">↗</span></a>
+        <a class="doc-link" href="#"><span class="dli">🔌</span><div><div class="dlt">Polaris JUCE SDK</div><div class="dld">C++ SDK · openActivationForm(), getFormSchema(), activateLicense()</div></div><span style="color:var(--di)">↗</span></a>
+        <a class="doc-link" href="#"><span class="dli">🔔</span><div><div class="dlt">Webhook Reference</div><div class="dld">Payload schema, retry logic, signature verification</div></div><span style="color:var(--di)">↗</span></a>
+        <a class="doc-link" href="#"><span class="dli">🛡️</span><div><div class="dlt">GDPR &amp; Data Retention</div><div class="dld">Data ownership, deletion requests, retention policies</div></div><span style="color:var(--di)">↗</span></a>
+      </div>
+    </div>
+
+    <!-- ══ SCREEN 2: LICENSE DETAIL ══ -->
+    <div id="main-license" class="hidden" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+      <div class="phdr">
+        <div class="bc"><a href="#">Dashboard</a><span class="sep">/</span><a href="#">Licenses</a><span class="sep">/</span><span class="cur" style="font-family:var(--mono);font-size:11.5px">SXRT-4K2M-9QLP-7WNB</span></div>
+        <div class="hact"><button class="btn btng">Revoke</button><button class="btn btng">Transfer</button></div>
+      </div>
+      <div class="ld-body">
+        <div class="card">
+          <div class="card-hdr">
+            <div><div class="card-title" style="display:flex;align-items:center;gap:8px">License Key <span class="badge bac"><span class="sdot s-ac"></span>Active</span></div><div style="display:flex;align-items:center;gap:7px;margin-top:8px"><span class="kchip">SXRT-4K2M-9QLP-7WNB</span><button class="cpbtn">⧉</button></div></div>
+            <div style="text-align:right"><div style="font-size:11px;color:var(--mu);margin-bottom:3px">Product</div><div style="font-weight:600">Surge XT</div></div>
+          </div>
+          <div class="card-body">
+            <div class="igrid">
+              <div><div class="ilbl">Owner</div><div class="ival">Tom Whitfield</div></div>
+              <div><div class="ilbl">Email</div><div class="ival">tom@whitfield.co.uk</div></div>
+              <div><div class="ilbl">Minted</div><div class="ival">14 Mar 2025</div></div>
+              <div><div class="ilbl">Activations</div><div class="ival"><span style="color:var(--ac);font-weight:700">2</span> <span style="color:var(--mu)">/ 3 seats</span></div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Form Responses -->
+        <div class="card">
+          <div class="card-hdr">
+            <div class="card-title" style="display:flex;align-items:center;gap:8px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--ac)"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Form Responses
+              <span class="badge bdr" style="font-size:10px">Activation Form v2</span>
+            </div>
+            <div style="font-size:11.5px;color:var(--mu)">Submitted 15 Mar 2025 · 14:23 UTC</div>
+          </div>
+          <table class="frt">
+            <thead><tr><th>Field ID</th><th>Value</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td class="fk">user_full_name</td><td class="fv">Tom Whitfield</td><td class="ft">string</td></tr>
+              <tr><td class="fk">user_email</td><td class="fv">tom@whitfield.co.uk</td><td class="ft">email</td></tr>
+              <tr><td class="fk">activation_code</td><td class="fv" style="font-family:var(--mono);font-size:12px">SXRT-4K2M-9QLP-7WNB</td><td class="ft" style="color:var(--wa)">license-key</td></tr>
+              <tr><td class="fk">machine_name</td><td class="fv">Tom's MacBook Pro</td><td class="ft" style="color:var(--ac)">machine-id</td></tr>
+              <tr><td class="fk">plugin_host</td><td class="fv">Ableton Live</td><td class="ft" style="color:var(--ac)">plugin-host</td></tr>
+              <tr><td class="fk">gdpr_consent</td><td class="fv" style="color:var(--ac)">true</td><td class="ft" style="color:var(--ac)">gdpr</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+var currentStep = 1;
+var selectedMode = 'gui';
+var totalSteps = 4;
+
+function showMain(s){
+  document.getElementById('main-builder').style.display = s==='builder'?'flex':'none';
+  var lic = document.getElementById('main-license');
+  lic.classList.toggle('hidden', s!=='license');
+  if(s!=='license') lic.style.display='';
+  else lic.style.display='flex';
+  document.querySelectorAll('.swbtn').forEach((b,i)=>b.classList.toggle('on',(i===0)===(s==='builder')));
+}
+
+function selectMode(m){
+  selectedMode = m;
+  document.getElementById('mode-gui').classList.toggle('sel', m==='gui');
+  document.getElementById('mode-api').classList.toggle('sel', m==='api');
+  document.getElementById('step-hint').textContent = m==='gui'?'Choose type selected — click Next':'API mode selected — click Next to build your schema';
+  // update step labels for api mode
+  if(m==='api'){
+    document.getElementById('si-2').querySelector('.steplabel').textContent='Build Schema';
+    document.getElementById('si-3').querySelector('.steplabel').textContent='Configure';
+    document.getElementById('si-4').querySelector('.steplabel').textContent='Done';
+  } else {
+    document.getElementById('si-2').querySelector('.steplabel').textContent='Pick Template';
+    document.getElementById('si-3').querySelector('.steplabel').textContent='Configure';
+    document.getElementById('si-4').querySelector('.steplabel').textContent='Preview';
+  }
+}
+
+function hideAllSteps(){
+  [1,2,3,4].forEach(function(i){
+    var el=document.getElementById('step-'+i);
+    if(el) el.classList.add('hidden');
+  });
+  var api=document.getElementById('step-api');
+  if(api){ api.classList.add('hidden'); api.style.display='none'; }
+}
+
+function goToStep(n){
+  hideAllSteps();
+  var el=document.getElementById('step-'+n);
+  if(el) el.classList.remove('hidden');
+  for(var i=1;i<=4;i++){
+    var si=document.getElementById('si-'+i);
+    if(si){si.classList.remove('active','done');if(i===n)si.classList.add('active');else if(i<n)si.classList.add('done')}
+    var sl=document.getElementById('sl-'+i);
+    if(sl) sl.classList.toggle('done',i<n);
+  }
+  currentStep=n;
+  document.getElementById('btn-back').style.display=n>1?'':'none';
+  var hint=document.getElementById('step-hint');
+  var next=document.getElementById('btn-next');
+  next.onclick=stepNext;
+  if(n===1){hint.textContent='Select a mode to continue';next.textContent='Next →';next.style.display=''}
+  else if(n===2){hint.textContent='Pick a template to continue';next.textContent='Next →';next.style.display=''}
+  else if(n===3){hint.textContent='Configure your form';next.textContent='Preview →';next.style.display=''}
+  else if(n===4){hint.textContent='';next.textContent='Save & Publish';next.style.display='';
+    next.onclick=function(){document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';alert('Form published! End users can now activate via the JUCE SDK.');}}
+}
+
+function goToApiBuilder(){
+  hideAllSteps();
+  var api=document.getElementById('step-api');
+  api.classList.remove('hidden');
+  api.style.display='flex';
+  // update step indicator: step 1 done, step 2 active
+  [1,2,3,4].forEach(function(i){
+    var si=document.getElementById('si-'+i);
+    if(si){si.classList.remove('active','done');if(i===2)si.classList.add('active');else if(i<2)si.classList.add('done');}
+    var sl=document.getElementById('sl-'+i);
+    if(sl) sl.classList.toggle('done',i<2);
+  });
+  currentStep=99; // sentinel: api mode
+  document.getElementById('btn-back').style.display='';
+  var hint=document.getElementById('step-hint');
+  var next=document.getElementById('btn-next');
+  hint.textContent='Build your field schema';
+  next.textContent='Save & Publish';
+  next.onclick=function(){document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';alert('Form schema published! Fetch at GET /api/v1/products/surge-xt/form');};
+}
+
+function stepNext(){
+  if(currentStep===1 && selectedMode==='api'){ goToApiBuilder(); return; }
+  if(currentStep===99){ return; }
+  if(currentStep<totalSteps) goToStep(currentStep+1);
+}
+
+function stepBack(){
+  if(currentStep===99){ goToStep(1); return; }
+  if(currentStep>1) goToStep(currentStep-1);
+}
+
+
+function showPTab(tab, el){
+  ['builder','schema','analytics','docs'].forEach(t=>{
+    document.getElementById('ptab-'+t).classList.toggle('hidden',t!==tab);
+  });
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('on'));
+  el.classList.add('on');
+}
+
+function selTpl(t){
+  ['dark','light','warm','compact'].forEach(id=>document.getElementById('tpl-'+id).classList.remove('sel'));
+  document.getElementById('tpl-'+t).classList.add('sel');
+}
+
+function toggleGDPR(){
+  var t=document.getElementById('gdpr-toggle');
+  t.classList.toggle('on'); t.classList.toggle('off');
+  document.getElementById('gdpr-fields').style.display=t.classList.contains('on')?'':'none';
+}
+
+function toggleWebhook(){
+  var t=document.getElementById('wh-toggle');
+  t.classList.toggle('on'); t.classList.toggle('off');
+  document.getElementById('wh-fields').style.display=t.classList.contains('on')?'':'none';
+}
+
+function showSuccess(){
+  document.getElementById('pv-form').classList.add('hidden');
+  document.getElementById('pv-success').classList.remove('hidden');
+}
+function showForm(){
+  document.getElementById('pv-success').classList.add('hidden');
+  document.getElementById('pv-form').classList.remove('hidden');
+}
+
+
+function selField(card, label, fieldId, typeName, typeVal, placeholder){
+  document.querySelectorAll('.ffcard').forEach(c=>c.classList.remove('sel'));
+  card.classList.add('sel');
+  document.getElementById('cp-title').textContent = 'Field Config — ' + label;
+  document.getElementById('cp-label').value = label;
+  var fidEl = document.getElementById('cp-fieldid');
+  fidEl.value = fieldId;
+  document.getElementById('cp-fid-ref').textContent = fieldId;
+  document.getElementById('cp-placeholder').value = placeholder || '';
+  // update type select
+  var sel = document.getElementById('cp-type');
+  for(var i=0;i<sel.options.length;i++){
+    if(sel.options[i].text === typeName){ sel.selectedIndex=i; break; }
+  }
+}
+
+function showApiTab(tab){
+  ['builder','schema','docs'].forEach(function(t){
+    document.getElementById('ac-'+t).classList.toggle('hidden', t!==tab);
+    document.getElementById('actab-'+t).classList.toggle('on', t===tab);
+  });
+}
+
+// init
+document.getElementById('btn-next').onclick = stepNext;
+</script>
+</body>
+</html>
