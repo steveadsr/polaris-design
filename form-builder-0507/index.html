@@ -1339,7 +1339,7 @@ function saveCustomTemplate(){
     + '<div style="width:80%;height:16px;border-radius:4px;background:'+_accentColor+';font-size:8px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700">Activate</div>'
     + '</div>'
     + '<div class="tpl-label"><div class="tpl-name">'+name+'</div><div class="tpl-desc">Custom template</div></div>'
-    + '<div class="tpl-del" onclick="deleteCustomTemplate(event,''+id+'')">✕</div>';
+    + '<div class="tpl-del" onclick="deleteCustomTemplate(event,\'' + id + '\')">✕</div>';
   card.onclick = function(){ selTpl(id); };
   row.insertBefore(card, createCard);
 
