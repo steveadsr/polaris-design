@@ -106,7 +106,7 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
     <div class="logom"><svg viewBox="0 0 12 12" fill="currentColor"><polygon points="6,1 11,4 11,8 6,11 1,8 1,4"/></svg></div>
     Polaris
   </div>
-  <a class="topbar-link" href="index.html">Open Interactive Mockup →</a>
+  <a class="topbar-link" href="../fb/">Open Interactive Mockup →</a>
 </div>
 
 <div class="page">
@@ -159,7 +159,8 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
           <div class="step-num">1</div>
           <div class="step-body">
             <div class="step-title">Choose Type</div>
-            <div class="step-desc">Click the <strong style="color:var(--tx)">GUI Template</strong> card (left option). It highlights with a teal border. Click <strong style="color:var(--tx)">Next →</strong> to continue.</div>
+            <div class="step-desc">Click the <strong style="color:var(--tx)">GUI Template</strong> card (left option). It highlights with a teal border and automatically advances to step 2 — no Next button needed.</div>
+            <div class="step-tip">↳ Completed step circles in the step bar are clickable — you can jump back to any previous step at any point.</div>
           </div>
         </div>
         <div class="step">
@@ -167,14 +168,18 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
           <div class="step-body">
             <div class="step-title">Pick a Template</div>
             <div class="step-desc">Choose from 4 visual styles: Dark Minimal, Light Clean, Warm Dark, Compact. Click any thumbnail to select it. <strong style="color:var(--tx)">Dark Minimal</strong> matches the Polaris brand. <strong style="color:var(--tx)">Compact</strong> is designed for small plugin windows.</div>
-            <div class="step-tip">↳ In production: branding (logo, colours) will be applied automatically from your account settings.</div>
+            <div class="step-tip">↳ A custom templates row sits below the system templates with a "+ Create Template" button. The create modal lets you name and save a custom template. In production: branding (logo, colours) will be applied automatically from your account settings.</div>
           </div>
         </div>
         <div class="step">
           <div class="step-num">3</div>
           <div class="step-body">
             <div class="step-title">Configure the Form</div>
-            <div class="step-desc">Left column: toggle individual fields on/off. Full Name, Email, License Key are on by default. Company and Phone are off. License Key is locked — it's always required. Right column: company logo (auto from settings), success screen copy, GDPR consent toggle, webhook URL.</div>
+            <div class="step-desc"><strong style="color:var(--tx)">Left panel — Form Fields:</strong> toggle individual fields on/off and drag to reorder. Full Name, Email, License Key are on by default. Company and Phone are off. License Key is locked — always required.<br><br><strong style="color:var(--tx)">Right panel — tabbed settings:</strong><br>
+            · <strong style="color:var(--tx)">Branding</strong> — mini template switcher, product name, tagline<br>
+            · <strong style="color:var(--tx)">GDPR &amp; Privacy</strong> — consent toggle, privacy policy URL, consent text<br>
+            · <strong style="color:var(--tx)">Success Screen</strong> — heading, sub-message, close button label<br>
+            · <strong style="color:var(--tx)">Notifications</strong> — dashboard bell alert, webhook URL with Test button</div>
             <div class="step-tip">↳ Try toggling GDPR and Webhooks — each section collapses/expands. All inputs are editable.</div>
           </div>
         </div>
@@ -182,7 +187,7 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
           <div class="step-num">4</div>
           <div class="step-body">
             <div class="step-title">Preview &amp; Publish</div>
-            <div class="step-desc">Live preview of the form as it appears in the plugin window. Fill in the fields and click <strong style="color:var(--tx)">Activate Plugin →</strong> to see the success screen. Click <strong style="color:var(--tx)">Save &amp; Publish</strong> to mark the form live.</div>
+            <div class="step-desc">Live preview of the form as it appears in the plugin window, with a sidebar showing active fields and template metadata. Fill in the fields and click <strong style="color:var(--tx)">Activate Plugin →</strong> to see the success screen. Click <strong style="color:var(--tx)">Save &amp; Publish</strong> — a modal opens showing the JUCE one-liner integration code with a copy button.</div>
           </div>
         </div>
       </div>
@@ -200,7 +205,7 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
           <div class="step-num">1</div>
           <div class="step-body">
             <div class="step-title">Choose Type</div>
-            <div class="step-desc">Click the <strong style="color:var(--tx)">API-Driven</strong> card (right option). Click <strong style="color:var(--tx)">Next →</strong> — this skips directly to the schema builder, bypassing template selection.</div>
+            <div class="step-desc">Click the <strong style="color:var(--tx)">API-Driven</strong> card (right option). It auto-advances directly to the schema builder, bypassing template selection.</div>
           </div>
         </div>
         <div class="step">
@@ -364,6 +369,20 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
     </div>
 
     <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Custom templates — where do they live and who can use them?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>The mockup includes a "+ Create Template" flow where a developer can save a customised template. Open questions:</p>
+        <ul>
+          <li><strong>Scope:</strong> are custom templates per-product, or shared across all products in an account?</li>
+          <li><strong>What makes a custom template?</strong> The current modal only asks for a name. Does a custom template fork from an existing system template, or is it a saved snapshot of the current configure state?</li>
+          <li><strong>Team access:</strong> if multiple team members work on the same account, can they all see and edit each other's custom templates?</li>
+          <li><strong>Limits:</strong> should there be a cap on custom templates per account (plan-tier gating)?</li>
+        </ul>
+        <p>Recommendation: custom templates are account-scoped (shared across products), created by forking a system template. Cap at 5 on free plan, unlimited on paid.</p>
+      </div>
+    </div>
+
+    <div class="qa">
       <div class="q" onclick="toggle(this)"><span>Multiple forms per product — activation form vs. registration form?</span><span class="arrow">▾</span></div>
       <div class="a">
         <p>Currently one form per product. A developer might want:</p>
@@ -394,12 +413,17 @@ h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
     <h2><span class="num">✓</span> What's Designed vs. What Needs Decisions</h2>
     <div class="status-row">
       <div class="status-pill"><span class="sdot s-green"></span>GUI Template flow (Steps 1–4)</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Auto-advance on card select</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Clickable back-navigation on steps</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Custom template creation (modal)</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Tabbed configure panel</div>
       <div class="status-pill"><span class="sdot s-green"></span>API-driven 3-panel builder</div>
       <div class="status-pill"><span class="sdot s-green"></span>Field toggles &amp; ordering</div>
       <div class="status-pill"><span class="sdot s-green"></span>GDPR consent config</div>
       <div class="status-pill"><span class="sdot s-green"></span>Webhook config</div>
       <div class="status-pill"><span class="sdot s-green"></span>Success screen config</div>
       <div class="status-pill"><span class="sdot s-green"></span>Form preview (live)</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Publish modal with JUCE code</div>
       <div class="status-pill"><span class="sdot s-green"></span>Analytics tab</div>
       <div class="status-pill"><span class="sdot s-green"></span>License detail — form data</div>
       <div class="status-pill"><span class="sdot s-green"></span>JSON Schema output</div>
