@@ -382,8 +382,14 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 .tp-field{height:28px;border-radius:6px;border:1px solid var(--bv);background:var(--sur2);display:flex;align-items:center;padding:0 9px;font-size:11px;color:var(--di)}
 .tp-btn{height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 
-/* configure full width - 3 col */
-.cfg-layout-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;width:100%}
+/* configure 2-col: fields + tabbed settings */
+.cfg-layout-2{display:grid;grid-template-columns:2fr 3fr;gap:16px;width:100%;align-items:start}
+.cfg-settings{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.cfg-tabs{display:flex;border-bottom:1px solid var(--bs);background:var(--sur2)}
+.cfg-tab{padding:10px 16px;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .12s;white-space:nowrap}
+.cfg-tab.on{color:var(--tx);border-bottom-color:var(--ac)}
+.cfg-tab-panel{display:none;padding:16px}
+.cfg-tab-panel.on{display:block}
 
 /* mini template selector in branding */
 .mini-tpl-row{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
@@ -584,173 +590,149 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 
           <!-- STEP 3: configure -->
           <div id="step-3" class="wbody hidden">
-            <div class="cfg-layout-3">
-              <!-- Col 1: Fields -->
-              <div>
-                <div class="cfg-card">
-                  <div class="cfg-card-hdr">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                    Form Fields
-                  </div>
-                  <div class="cfg-card-body">
-                    <div style="font-size:11.5px;color:var(--mu);margin-bottom:10px">Toggle fields on/off. Drag to reorder. License Key is always required.</div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname">Full Name</span>
-                      <span class="frid">user_full_name</span>
-                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname">Email Address</span>
-                      <span class="frid">user_email</span>
-                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname" style="color:var(--ac)">License Key</span>
-                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">activation_code</span>
-                      <span class="frlocked">locked</span>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname" style="color:var(--mu)">Company</span>
-                      <span class="frid">user_company</span>
-                      <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname" style="color:var(--mu)">Phone Number</span>
-                      <span class="frid">user_phone</span>
-                      <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname" style="color:var(--ac)">Computer Name</span>
-                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">machine_name</span>
-                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="field-row">
-                      <span class="frdrag">⠿</span>
-                      <span class="frname" style="color:var(--ac)">DAW / Plugin Host</span>
-                      <span class="frid" style="color:var(--ac);border-color:var(--abr)">plugin_host</span>
-                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /col1 -->
+            <div class="cfg-layout-2">
 
-              <!-- Col 2: Branding + Success -->
-              <div>
-                <!-- placeholder - branding card already below (right col) -->
-                <!-- GDPR (col 1 overflow → placed here for layout) -->
-                <div class="cfg-card">
-                  <div class="cfg-card-hdr">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    GDPR &amp; Privacy
+              <!-- LEFT: Form Fields -->
+              <div class="cfg-card">
+                <div class="cfg-card-hdr">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                  Form Fields
+                </div>
+                <div class="cfg-card-body">
+                  <div style="font-size:11.5px;color:var(--mu);margin-bottom:10px">Toggle fields on/off. Drag to reorder. License Key is always required.</div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname">Full Name</span>
+                    <span class="frid">user_full_name</span>
+                    <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
                   </div>
-                  <div class="cfg-card-body">
-                    <div class="cfg-row">
-                      <div><div class="cfg-row-label">Require consent checkbox</div><div class="cfg-row-sub">User must tick before submitting</div></div>
-                      <div class="toggle on" id="gdpr-toggle" onclick="toggleGDPR()"></div>
-                    </div>
-                    <div id="gdpr-fields">
-                      <div class="cfg-label">Privacy Policy URL</div>
-                      <input class="cfg-input" type="text" value="https://surgext.com/privacy" style="margin-bottom:10px"/>
-                      <div class="cfg-label">Consent Text</div>
-                      <textarea class="cfg-textarea" rows="2">I agree to the processing of my personal data in accordance with the Privacy Policy.</textarea>
-                      <div class="note" style="margin-top:8px">Data is stored per-license and accessible via API. <a href="#">Data retention settings →</a></div>
-                    </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname">Email Address</span>
+                    <span class="frid">user_email</span>
+                    <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                  </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname" style="color:var(--ac)">License Key</span>
+                    <span class="frid" style="color:var(--ac);border-color:var(--abr)">activation_code</span>
+                    <span class="frlocked">locked</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname" style="color:var(--mu)">Company</span>
+                    <span class="frid">user_company</span>
+                    <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                  </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname" style="color:var(--mu)">Phone Number</span>
+                    <span class="frid">user_phone</span>
+                    <div class="toggle off" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                  </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname" style="color:var(--ac)">Computer Name</span>
+                    <span class="frid" style="color:var(--ac);border-color:var(--abr)">machine_name</span>
+                    <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
+                  </div>
+                  <div class="field-row">
+                    <span class="frdrag">⠿</span>
+                    <span class="frname" style="color:var(--ac)">DAW / Plugin Host</span>
+                    <span class="frid" style="color:var(--ac);border-color:var(--abr)">plugin_host</span>
+                    <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Right: Branding + Success + Webhooks -->
-              <div>
-                <!-- Branding -->
-                <div class="cfg-card" style="margin-bottom:14px">
-                  <div class="cfg-card-hdr">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
-                    Branding
+              <!-- RIGHT: Tabbed settings panel -->
+              <div class="cfg-settings">
+                <div class="cfg-tabs">
+                  <div class="cfg-tab on" onclick="showCfgTab('branding',this)">Branding</div>
+                  <div class="cfg-tab" onclick="showCfgTab('gdpr',this)">GDPR &amp; Privacy</div>
+                  <div class="cfg-tab" onclick="showCfgTab('success',this)">Success Screen</div>
+                  <div class="cfg-tab" onclick="showCfgTab('notifications',this)">Notifications</div>
+                </div>
+
+                <!-- Branding tab -->
+                <div class="cfg-tab-panel on" id="cfgpanel-branding">
+                  <div class="logo-preview">
+                    <div class="logo-box">BA</div>
+                    <div class="logo-info">
+                      <div class="logo-name">Baby Audio</div>
+                      <div class="logo-src">From account settings · <a href="#" style="color:var(--ac);text-decoration:none">Change →</a></div>
+                    </div>
                   </div>
-                  <div class="cfg-card-body">
-                    <div class="logo-preview">
-                      <div class="logo-box">BA</div>
-                      <div class="logo-info">
-                        <div class="logo-name">Baby Audio</div>
-                        <div class="logo-src">From account settings · <a href="#" style="color:var(--ac);text-decoration:none">Change →</a></div>
-                      </div>
+                  <div class="cfg-label" style="margin-top:16px">Template <span style="color:var(--di);font-size:9px">— change anytime</span></div>
+                  <div class="mini-tpl-row">
+                    <div class="mini-tpl sel" onclick="selMiniTpl(this,'dark')" title="Dark Minimal">
+                      <div class="mini-tpl-thumb tt-dark td" style="padding:6px"><div class="tfl td" style="height:5px;margin-bottom:3px"></div><div class="tfi td" style="height:14px;margin-bottom:3px"></div><div class="tfbtn td" style="height:12px;font-size:7px">Go</div></div>
+                      <div class="mini-tpl-lbl">Dark</div>
                     </div>
-                    <div class="cfg-label" style="margin-top:14px">Template <span style="color:var(--di);font-size:9px">— change anytime</span></div>
-                    <div class="mini-tpl-row">
-                      <div class="mini-tpl sel" onclick="selMiniTpl(this,'dark')" title="Dark Minimal">
-                        <div class="mini-tpl-thumb tt-dark td" style="padding:6px"><div class="tfl td" style="height:5px;margin-bottom:3px"></div><div class="tfi td" style="height:14px;margin-bottom:3px"></div><div class="tfbtn td" style="height:12px;font-size:7px">Go</div></div>
-                        <div class="mini-tpl-lbl">Dark</div>
-                      </div>
-                      <div class="mini-tpl" onclick="selMiniTpl(this,'light')" title="Light Clean">
-                        <div class="mini-tpl-thumb tt-light tl" style="background:#EFEFEF;padding:6px"><div class="tfl tl" style="height:5px;margin-bottom:3px"></div><div class="tfi tl" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tl" style="height:12px;font-size:7px;background:#1A1A1A;color:#FFF">Go</div></div>
-                        <div class="mini-tpl-lbl">Light</div>
-                      </div>
-                      <div class="mini-tpl" onclick="selMiniTpl(this,'warm')" title="Warm Dark">
-                        <div class="mini-tpl-thumb tt-warm tw" style="padding:6px"><div class="tfl tw" style="height:5px;margin-bottom:3px"></div><div class="tfi tw" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tw" style="height:12px;font-size:7px;background:#F0A040;color:#000">Go</div></div>
-                        <div class="mini-tpl-lbl">Warm</div>
-                      </div>
-                      <div class="mini-tpl" onclick="selMiniTpl(this,'compact')" title="Compact">
-                        <div class="mini-tpl-thumb tt-compact tc" style="padding:5px"><div class="tfl tc" style="height:4px;margin-bottom:2px"></div><div class="tfi tc" style="height:13px;margin-bottom:2px"></div><div class="tfbtn tc" style="height:11px;font-size:6px;background:#22D9A0;color:#000">Go</div></div>
-                        <div class="mini-tpl-lbl">Compact</div>
-                      </div>
+                    <div class="mini-tpl" onclick="selMiniTpl(this,'light')" title="Light Clean">
+                      <div class="mini-tpl-thumb tt-light tl" style="background:#EFEFEF;padding:6px"><div class="tfl tl" style="height:5px;margin-bottom:3px"></div><div class="tfi tl" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tl" style="height:12px;font-size:7px;background:#1A1A1A;color:#FFF">Go</div></div>
+                      <div class="mini-tpl-lbl">Light</div>
                     </div>
-                    <div class="cfg-label">Product Name</div>
-                    <input class="cfg-input" type="text" value="Surge XT" style="margin-bottom:10px"/>
-                    <div class="cfg-label">Tagline (optional)</div>
-                    <input class="cfg-input" type="text" placeholder="e.g. Next-gen synthesis engine" style="margin-bottom:0"/>
+                    <div class="mini-tpl" onclick="selMiniTpl(this,'warm')" title="Warm Dark">
+                      <div class="mini-tpl-thumb tt-warm tw" style="padding:6px"><div class="tfl tw" style="height:5px;margin-bottom:3px"></div><div class="tfi tw" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tw" style="height:12px;font-size:7px;background:#F0A040;color:#000">Go</div></div>
+                      <div class="mini-tpl-lbl">Warm</div>
+                    </div>
+                    <div class="mini-tpl" onclick="selMiniTpl(this,'compact')" title="Compact">
+                      <div class="mini-tpl-thumb tt-compact tc" style="padding:5px"><div class="tfl tc" style="height:4px;margin-bottom:2px"></div><div class="tfi tc" style="height:13px;margin-bottom:2px"></div><div class="tfbtn tc" style="height:11px;font-size:6px;background:#22D9A0;color:#000">Go</div></div>
+                      <div class="mini-tpl-lbl">Compact</div>
+                    </div>
+                  </div>
+                  <div class="cfg-label" style="margin-top:16px">Product Name</div>
+                  <input class="cfg-input" type="text" value="Surge XT" style="margin-bottom:12px"/>
+                  <div class="cfg-label">Tagline (optional)</div>
+                  <input class="cfg-input" type="text" placeholder="e.g. Next-gen synthesis engine"/>
+                </div>
+
+                <!-- GDPR tab -->
+                <div class="cfg-tab-panel" id="cfgpanel-gdpr">
+                  <div class="cfg-row">
+                    <div><div class="cfg-row-label">Require consent checkbox</div><div class="cfg-row-sub">User must tick before submitting</div></div>
+                    <div class="toggle on" id="gdpr-toggle" onclick="toggleGDPR()"></div>
+                  </div>
+                  <div id="gdpr-fields">
+                    <div class="cfg-label" style="margin-top:14px">Privacy Policy URL</div>
+                    <input class="cfg-input" type="text" value="https://surgext.com/privacy" style="margin-bottom:12px"/>
+                    <div class="cfg-label">Consent Text</div>
+                    <textarea class="cfg-textarea" rows="3">I agree to the processing of my personal data in accordance with the Privacy Policy.</textarea>
+                    <div class="note" style="margin-top:10px">Data is stored per-license and accessible via API. <a href="#" style="color:var(--ac);text-decoration:none">Data retention settings →</a></div>
                   </div>
                 </div>
 
-                <!-- Success screen -->
-                <div class="cfg-card" style="margin-bottom:14px">
-                  <div class="cfg-card-hdr">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    Success Screen
+                <!-- Success screen tab -->
+                <div class="cfg-tab-panel" id="cfgpanel-success">
+                  <div class="cfg-label">Heading</div>
+                  <input class="cfg-input" type="text" value="Surge XT is now activated" style="margin-bottom:12px"/>
+                  <div class="cfg-label">Sub-message</div>
+                  <textarea class="cfg-textarea" rows="3">Thank you for your purchase. All features are now unlocked on this machine.</textarea>
+                  <div class="cfg-label" style="margin-top:12px">Close Button Label</div>
+                  <input class="cfg-input" type="text" value="Close"/>
+                </div>
+
+                <!-- Notifications tab -->
+                <div class="cfg-tab-panel" id="cfgpanel-notifications">
+                  <div class="cfg-row">
+                    <div><div class="cfg-row-label">Dashboard notification</div><div class="cfg-row-sub">Bell alert on each activation</div></div>
+                    <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
                   </div>
-                  <div class="cfg-card-body">
-                    <div class="cfg-label">Heading</div>
-                    <input class="cfg-input" type="text" value="Surge XT is now activated" style="margin-bottom:10px"/>
-                    <div class="cfg-label">Sub-message</div>
-                    <textarea class="cfg-textarea" rows="2">Thank you for your purchase. All features are now unlocked on this machine.</textarea>
-                    <div class="cfg-label" style="margin-top:10px">Close Button Label</div>
-                    <input class="cfg-input" type="text" value="Close" style="margin-bottom:0"/>
+                  <div class="cfg-row" style="border-top:1px solid var(--bs);padding-top:10px">
+                    <div><div class="cfg-row-label">Webhook on submission</div><div class="cfg-row-sub">POST form data to your endpoint</div></div>
+                    <div class="toggle on" id="wh-toggle" onclick="toggleWebhook()"></div>
+                  </div>
+                  <div id="wh-fields">
+                    <div class="webhook-input-row" style="margin-top:10px">
+                      <input class="cfg-input" type="text" placeholder="https://your-server.com/webhook" value="https://api.surgext.com/polaris-webhook"/>
+                      <button class="btn btns" style="font-size:11.5px;white-space:nowrap">Test</button>
+                    </div>
+                    <div class="note" style="margin-top:8px">Polaris sends a POST with <code style="font-family:var(--mono);font-size:10.5px;color:var(--ac)">{ license_key, form_data, product_id, activated_at }</code></div>
                   </div>
                 </div>
 
-              </div><!-- /col2 -->
-              <!-- Col 3: GDPR + Webhooks -->
-              <div>
-                <!-- Webhooks -->
-                <div class="cfg-card">
-                  <div class="cfg-card-hdr">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-                    Notifications &amp; Webhooks
-                  </div>
-                  <div class="cfg-card-body">
-                    <div class="cfg-row">
-                      <div><div class="cfg-row-label">Dashboard notification</div><div class="cfg-row-sub">Bell alert on each activation</div></div>
-                      <div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div>
-                    </div>
-                    <div class="cfg-row" style="border-top:1px solid var(--bs);padding-top:10px">
-                      <div><div class="cfg-row-label">Webhook on submission</div><div class="cfg-row-sub">POST form data to your endpoint</div></div>
-                      <div class="toggle on" id="wh-toggle" onclick="toggleWebhook()"></div>
-                    </div>
-                    <div id="wh-fields">
-                      <div class="webhook-input-row">
-                        <input class="cfg-input" type="text" placeholder="https://your-server.com/webhook" value="https://api.surgext.com/polaris-webhook"/>
-                        <button class="btn btns" style="font-size:11.5px;white-space:nowrap">Test</button>
-                      </div>
-                      <div class="note">Polaris sends a POST with <code style="font-family:var(--mono);font-size:10.5px;color:var(--ac)">{ license_key, form_data, product_id, activated_at }</code></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div><!-- /cfg-settings -->
             </div>
           </div>
 
@@ -1369,6 +1351,14 @@ function deleteCustomTemplate(e, id){
   if(card) card.remove();
   if(mini) mini.remove();
   _customTemplates = _customTemplates.filter(t=>t.id!==id);
+}
+
+function showCfgTab(tab, el){
+  ['branding','gdpr','success','notifications'].forEach(function(t){
+    document.getElementById('cfgpanel-'+t).classList.toggle('on', t===tab);
+  });
+  el.closest('.cfg-tabs').querySelectorAll('.cfg-tab').forEach(function(t){ t.classList.remove('on'); });
+  el.classList.add('on');
 }
 
 function selMiniTpl(el, id){
