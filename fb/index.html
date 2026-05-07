@@ -80,6 +80,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);font-size:13.5
 .step-item.done .steplabel{color:var(--mu)}
 .stepline{flex:1;height:1px;background:var(--bs);margin:0 10px;min-width:20px;transition:background .2s}
 .stepline.done{background:var(--ac)}
+.step-item.done .stepnum:hover{opacity:.75;transform:scale(1.1);transition:all .15s}
 .wbody{flex:1;overflow-y:auto;padding:22px}
 .wnav{padding:14px 22px;border-top:1px solid var(--bs);background:var(--sur);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .wnav-left{display:flex;gap:8px}
@@ -437,7 +438,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
       <div class="phdr">
         <div class="bc"><a href="#">Dashboard</a><span class="sep">/</span><a href="#">Products</a><span class="sep">/</span><span class="cur">Surge XT</span><span class="sep">/</span><span class="cur">Form Builder</span></div>
         <div class="hact">
-          <button class="btn btng" onclick="previewForm()">Preview Form</button>
           <button class="btn btng">View API</button>
           <button class="btn btnp" onclick="document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';openModal('modal-gui-publish')">Save &amp; Publish</button>
         </div>
@@ -484,7 +484,7 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
                 <div class="mode-card sel" id="mode-gui" onclick="selectMode('gui')">
                   <span class="mode-card-tag">Recommended</span>
                   <div class="mode-card-title">GUI Template</div>
-                  <div class="mode-card-desc">Polaris renders a hosted activation form. Choose a visual template, toggle fields, add your branding. No code required in the plugin — just call <code style="font-family:var(--mono);font-size:11px;color:var(--ac)">openActivationForm()</code>.</div>
+                  <div class="mode-card-desc">Polaris renders a hosted activation form. No code required in the plugin.</div>
                   <div class="mode-preview" style="margin-top:14px">
                     <div class="td">
                       <div class="tfl td" style="background:#222;height:10px;width:45%;margin-bottom:8px"></div>
@@ -500,7 +500,7 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
                 <div class="mode-card" id="mode-api" onclick="selectMode('api')">
                   <span class="mode-card-tag">Advanced</span>
                   <div class="mode-card-title">API-Driven</div>
-                  <div class="mode-card-desc">Define a JSON Schema. Your plugin fetches the schema and renders its own native activation UI. Full control over every pixel. Use Polaris field types for license key validation and machine capture.</div>
+                  <div class="mode-card-desc">Your plugin fetches a JSON Schema and renders its own native UI. Full control over every pixel.</div>
                   <div class="mode-preview" style="margin-top:14px">
                     <div style="display:flex;flex-direction:column;gap:5px">
                       <div style="display:flex;gap:6px;align-items:center"><div class="mpchip">user_full_name</div><span style="font-size:9px;color:var(--di)">→</span><div class="mpchip">string</div></div>
@@ -524,7 +524,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 
             <!-- System Templates -->
             <div class="tpl-section">
-              <div class="tpl-section-hdr">System Templates</div>
               <div class="tpl-grid-row">
                 <div class="tpl-card sel" id="tpl-dark" onclick="selTpl('dark')">
                   <div class="tpl-thumb"><div class="tt-dark td" style="width:100%;height:100%;padding:16px">
@@ -574,7 +573,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 
             <!-- My Templates -->
             <div class="tpl-section">
-              <div class="tpl-section-hdr">My Templates</div>
               <div class="tpl-grid-row" id="my-templates-row">
                 <!-- custom templates injected here -->
                 <div class="tpl-create" onclick="openModal('modal-create-tpl')">
@@ -596,7 +594,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
                   Form Fields
                 </div>
                 <div class="cfg-card-body">
-                  <div style="font-size:11.5px;color:var(--mu);margin-bottom:10px">Toggle fields on/off. Drag to reorder. License Key is always required.</div>
                   <div class="field-row">
                     <span class="frdrag">⠿</span>
                     <span class="frname">Full Name</span>
@@ -735,10 +732,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 
           <!-- STEP 4: preview -->
           <div id="step-4" class="wbody hidden">
-            <div style="margin-bottom:20px;text-align:center">
-              <div style="font-size:17px;font-weight:700;margin-bottom:4px">Form Preview</div>
-              <div style="font-size:13px;color:var(--mu)">This is how the activation form will appear in your plugin. Click Activate to see the success screen.</div>
-            </div>
             <div class="preview-wrap">
               <div class="preview-frame">
                 <div class="preview-topbar">
@@ -1146,7 +1139,6 @@ function selectMode(m){
   selectedMode = m;
   document.getElementById('mode-gui').classList.toggle('sel', m==='gui');
   document.getElementById('mode-api').classList.toggle('sel', m==='api');
-  document.getElementById('step-hint').textContent = m==='gui'?'Choose type selected — click Next':'API mode selected — click Next to build your schema';
   // update step labels for api mode
   if(m==='api'){
     document.getElementById('si-2').querySelector('.steplabel').textContent='Build Schema';
@@ -1157,6 +1149,8 @@ function selectMode(m){
     document.getElementById('si-3').querySelector('.steplabel').textContent='Configure';
     document.getElementById('si-4').querySelector('.steplabel').textContent='Preview';
   }
+  // auto-advance after a brief visual pause
+  setTimeout(stepNext, 180);
 }
 
 function hideAllSteps(){
@@ -1174,7 +1168,16 @@ function goToStep(n){
   if(el) el.classList.remove('hidden');
   for(var i=1;i<=4;i++){
     var si=document.getElementById('si-'+i);
-    if(si){si.classList.remove('active','done');if(i===n)si.classList.add('active');else if(i<n)si.classList.add('done')}
+    if(si){
+      si.classList.remove('active','done');
+      if(i===n) si.classList.add('active');
+      else if(i<n) si.classList.add('done');
+      var snum=si.querySelector('.stepnum');
+      if(snum){
+        if(i<n){snum.style.cursor='pointer';snum.onclick=(function(step){return function(){goToStep(step);};})(i);}
+        else{snum.style.cursor='';snum.onclick=null;}
+      }
+    }
     var sl=document.getElementById('sl-'+i);
     if(sl) sl.classList.toggle('done',i<n);
   }
@@ -1183,9 +1186,9 @@ function goToStep(n){
   var hint=document.getElementById('step-hint');
   var next=document.getElementById('btn-next');
   next.onclick=stepNext;
-  if(n===1){hint.textContent='Select a mode to continue';next.textContent='Next →';next.style.display=''}
-  else if(n===2){hint.textContent='Pick a template to continue';next.textContent='Next →';next.style.display=''}
-  else if(n===3){hint.textContent='Configure your form';next.textContent='Preview →';next.style.display=''}
+  if(n===1){hint.textContent='';next.textContent='Next →';next.style.display=''}
+  else if(n===2){hint.textContent='';next.textContent='Next →';next.style.display=''}
+  else if(n===3){hint.textContent='';next.textContent='Preview →';next.style.display=''}
   else if(n===4){hint.textContent='';next.textContent='Save & Publish';next.style.display='';
     next.onclick=function(){document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';openModal('modal-gui-publish');}}
 }
