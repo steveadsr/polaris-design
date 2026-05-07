@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Polaris Form Builder — Colleague Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0A0A0A;--sur:#111111;--sur2:#161616;--bs:#1E1E1E;--bv:#2A2A2A;--ac:#22D9A0;--adim:rgba(34,217,160,.10);--abr:rgba(34,217,160,.28);--tx:#EFEFEF;--mu:#888;--di:#444;--er:#FF5A5A;--wa:#F0A040;--font:'Space Grotesk',system-ui,sans-serif;--mono:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);font-size:15px;line-height:1.65;padding:0}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--bv);border-radius:3px}
+
+/* layout */
+.topbar{background:var(--sur);border-bottom:1px solid var(--bv);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:9px;font-weight:700;font-size:15px;letter-spacing:-.02em}
+.logom{width:24px;height:24px;border-radius:5px;background:var(--ac);display:flex;align-items:center;justify-content:center}
+.logom svg{width:12px;height:12px;color:#000}
+.topbar-link{background:var(--ac);color:#000;font-weight:700;font-size:13px;padding:7px 16px;border-radius:8px;text-decoration:none;transition:background .15s}
+.topbar-link:hover{background:#1fc48f}
+
+.page{max-width:800px;margin:0 auto;padding:48px 32px 80px}
+h1{font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:8px}
+.subtitle{font-size:16px;color:var(--mu);margin-bottom:40px}
+
+/* section */
+.section{margin-bottom:40px}
+h2{font-size:19px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+h2 .num{width:26px;height:26px;border-radius:50%;background:var(--adim);border:1px solid var(--abr);color:var(--ac);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--mono)}
+h3{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--tx)}
+
+/* cards */
+.card{background:var(--sur);border:1px solid var(--bv);border-radius:12px;padding:20px 22px;margin-bottom:12px}
+.card-title{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card p{font-size:14px;color:var(--mu);line-height:1.65}
+
+/* mode cards */
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.mode-card{background:var(--sur);border:1px solid var(--bv);border-radius:12px;padding:18px 20px}
+.mode-card.gui{border-color:var(--abr);background:var(--adim)}
+.mode-label{font-size:12px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.mode-label.gui{color:var(--ac)}
+.mode-label.api{color:var(--wa)}
+.mode-title{font-size:15px;font-weight:700;margin-bottom:6px}
+.mode-desc{font-size:13px;color:var(--mu);line-height:1.6}
+
+/* steps */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--bs)}
+.step:last-child{border-bottom:none}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--sur2);border:1px solid var(--bv);color:var(--mu);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-family:var(--mono)}
+.step-body{}
+.step-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.step-desc{font-size:13px;color:var(--mu);line-height:1.6}
+.step-tip{font-size:12px;color:var(--ac);margin-top:4px}
+
+/* Q&A */
+.qa{border:1px solid var(--bv);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.q{padding:14px 18px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .15s;user-select:none}
+.q:hover{background:var(--sur2)}
+.q .arrow{color:var(--mu);font-size:12px;transition:transform .2s;flex-shrink:0}
+.q.open .arrow{transform:rotate(180deg)}
+.a{display:none;padding:0 18px 14px;font-size:13.5px;color:var(--mu);line-height:1.7;border-top:1px solid var(--bs);background:var(--sur)}
+.a.show{display:block}
+.a code{font-family:var(--mono);font-size:12px;color:var(--ac);background:var(--sur2);padding:1px 5px;border-radius:4px}
+.a ul{padding-left:18px;margin-top:6px}
+.a ul li{margin-bottom:5px}
+.a p{margin-bottom:8px}
+.a p:last-child{margin-bottom:0}
+
+/* badge */
+.badge{display:inline-flex;align-items:center;padding:2px 8px;border-radius:100px;font-size:11px;font-weight:600;font-family:var(--mono)}
+.bac{background:var(--adim);color:var(--ac)}
+.bwa{background:rgba(240,160,64,.1);color:var(--wa)}
+.bmu{background:var(--sur2);border:1px solid var(--bv);color:var(--mu)}
+
+/* note */
+.note{font-size:13px;color:var(--mu);background:var(--sur);border:1px solid var(--bs);border-radius:8px;padding:12px 14px;border-left:2px solid var(--abr);margin-top:12px}
+.note strong{color:var(--tx)}
+
+/* field id explainer */
+.fid-example{background:var(--sur);border:1px solid var(--bv);border-radius:10px;padding:14px 16px;margin:10px 0}
+.fid-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:13px}
+.fid-row:last-child{margin-bottom:0}
+.fid-code{font-family:var(--mono);font-size:12px;color:var(--ac);background:var(--adim);border:1px solid var(--abr);padding:3px 9px;border-radius:100px;flex-shrink:0}
+.fid-label{color:var(--mu)}
+.fid-type{font-family:var(--mono);font-size:11px;color:var(--di)}
+
+/* divider */
+.divider{height:1px;background:var(--bs);margin:36px 0}
+
+/* status pill */
+.status-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.status-pill{display:flex;align-items:center;gap:6px;background:var(--sur);border:1px solid var(--bv);border-radius:100px;padding:5px 12px;font-size:12.5px}
+.sdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.s-green{background:var(--ac)}
+.s-amber{background:var(--wa)}
+.s-red{background:var(--er)}
+.s-grey{background:var(--di)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <div class="logom"><svg viewBox="0 0 12 12" fill="currentColor"><polygon points="6,1 11,4 11,8 6,11 1,8 1,4"/></svg></div>
+    Polaris
+  </div>
+  <a class="topbar-link" href="index.html">Open Interactive Mockup →</a>
+</div>
+
+<div class="page">
+
+  <h1>Form Builder — Colleague Brief</h1>
+  <p class="subtitle">What this feature does, how to navigate the mockup, and open questions to discuss.</p>
+
+  <!-- Overview -->
+  <div class="section">
+    <h2><span class="num">↗</span> What Is the Form Builder?</h2>
+    <div class="card">
+      <p>Plugin developers using the Polaris licensing platform can build an <strong style="color:var(--tx)">activation form</strong> that appears inside their JUCE plugin when a user activates their license. The form collects user data (name, email, machine info) and stores it against the license record in Polaris.</p>
+    </div>
+    <div class="card" style="margin-top:0">
+      <p>Each form is <strong style="color:var(--tx)">product-scoped</strong> — Surge XT has its own form, Syna-X has its own form. The form lives under the product in the dashboard: <span style="font-family:var(--mono);font-size:12px;color:var(--ac)">Products → Surge XT → Form Builder</span></p>
+    </div>
+    <div class="note">
+      <strong>Why it matters for developers:</strong> submitted form data is retrievable via the Polaris API, visible on each license's detail page in the dashboard, and can trigger a webhook to your own server on each activation.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Mode select -->
+  <div class="section">
+    <h2><span class="num">1</span> Two Modes — Choose One</h2>
+    <div class="mode-grid">
+      <div class="mode-card gui">
+        <div class="mode-label gui">Option 1</div>
+        <div class="mode-title">GUI Template</div>
+        <div class="mode-desc">Polaris renders a hosted activation form inside the plugin. Developer picks a visual template, toggles which fields appear, adds their branding. One line of JUCE code — <code style="font-family:var(--mono);font-size:11px;color:var(--ac)">openActivationForm()</code>.</div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-label api">Option 2</div>
+        <div class="mode-title">API-Driven</div>
+        <div class="mode-desc">Developer defines a JSON Schema field-by-field. The JUCE SDK fetches the schema and the developer renders their own native plugin UI. Full visual control, more code required.</div>
+      </div>
+    </div>
+    <div class="note"><strong>Rule of thumb:</strong> Most indie plugin devs will choose GUI Template. API-driven is for studios with a dedicated UI dev who wants pixel-perfect control.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Walkthrough GUI -->
+  <div class="section">
+    <h2><span class="num">2</span> GUI Template — Click-Through Steps</h2>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="steps" style="padding:0 20px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Choose Type</div>
+            <div class="step-desc">Click the <strong style="color:var(--tx)">GUI Template</strong> card (left option). It highlights with a teal border. Click <strong style="color:var(--tx)">Next →</strong> to continue.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Pick a Template</div>
+            <div class="step-desc">Choose from 4 visual styles: Dark Minimal, Light Clean, Warm Dark, Compact. Click any thumbnail to select it. <strong style="color:var(--tx)">Dark Minimal</strong> matches the Polaris brand. <strong style="color:var(--tx)">Compact</strong> is designed for small plugin windows.</div>
+            <div class="step-tip">↳ In production: branding (logo, colours) will be applied automatically from your account settings.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Configure the Form</div>
+            <div class="step-desc">Left column: toggle individual fields on/off. Full Name, Email, License Key are on by default. Company and Phone are off. License Key is locked — it's always required. Right column: company logo (auto from settings), success screen copy, GDPR consent toggle, webhook URL.</div>
+            <div class="step-tip">↳ Try toggling GDPR and Webhooks — each section collapses/expands. All inputs are editable.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <div class="step-title">Preview &amp; Publish</div>
+            <div class="step-desc">Live preview of the form as it appears in the plugin window. Fill in the fields and click <strong style="color:var(--tx)">Activate Plugin →</strong> to see the success screen. Click <strong style="color:var(--tx)">Save &amp; Publish</strong> to mark the form live.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Walkthrough API -->
+  <div class="section">
+    <h2><span class="num">3</span> API-Driven — Click-Through Steps</h2>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="steps" style="padding:0 20px">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <div class="step-title">Choose Type</div>
+            <div class="step-desc">Click the <strong style="color:var(--tx)">API-Driven</strong> card (right option). Click <strong style="color:var(--tx)">Next →</strong> — this skips directly to the schema builder, bypassing template selection.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <div class="step-title">Build Schema — 3-Panel Builder</div>
+            <div class="step-desc">
+              <strong style="color:var(--tx)">Left panel:</strong> field library. Standard types (Text, Email, Number, Select…) plus Polaris types (License Key, Machine ID, Plugin Host, OS Version). Drag or click to add.<br><br>
+              <strong style="color:var(--tx)">Centre panel:</strong> form canvas. Fields listed in order with drag handles. Click any field card to select it. Sub-tabs switch between Builder view, JSON Schema output, and API Docs.<br><br>
+              <strong style="color:var(--tx)">Right panel:</strong> field config. Label, Field ID code, type, placeholder, required toggle, validation rules.
+            </div>
+            <div class="step-tip">↳ Click each field card — the right panel updates. Try the JSON Schema and API Docs tabs in the centre.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <div class="step-title">Save &amp; Publish</div>
+            <div class="step-desc">Once fields are configured, click <strong style="color:var(--tx)">Save &amp; Publish</strong>. The schema is served at <code style="font-family:var(--mono);font-size:12px;color:var(--ac)">GET /api/v1/products/{slug}/form</code>. The JUCE SDK fetches this endpoint and the dev renders their own UI from it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Field IDs -->
+  <div class="section">
+    <h2><span class="num">4</span> Field IDs — The Key Concept</h2>
+    <div class="card">
+      <p>Every form field has a <strong style="color:var(--tx)">Field ID</strong> — a snake_case code identifier. This is how submitted data is stored against the license and how the JUCE SDK references each field. It appears in the JSON Schema and in the license detail page.</p>
+    </div>
+    <div class="fid-example">
+      <div class="fid-row"><span class="fid-code">user_full_name</span><span class="fid-label">Full Name</span><span class="fid-type">string</span></div>
+      <div class="fid-row"><span class="fid-code">user_email</span><span class="fid-label">Email Address</span><span class="fid-type">email</span></div>
+      <div class="fid-row"><span class="fid-code">activation_code</span><span class="fid-label">License Key</span><span class="fid-type">license-key · polaris</span></div>
+      <div class="fid-row"><span class="fid-code">machine_name</span><span class="fid-label">Computer Name</span><span class="fid-type">machine-id · auto-captured</span></div>
+      <div class="fid-row"><span class="fid-code">plugin_host</span><span class="fid-label">DAW / Plugin Host</span><span class="fid-type">plugin-host · auto-detected</span></div>
+    </div>
+    <div class="note"><strong>Important:</strong> once a form is published and users have activated, renaming a Field ID breaks the mapping — existing license records store data under the old key. The UI warns developers about this.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Other screens -->
+  <div class="section">
+    <h2><span class="num">5</span> Other Screens in the Mockup</h2>
+    <h3>Analytics Tab</h3>
+    <p style="font-size:14px;color:var(--mu);margin-bottom:10px">Switch to the <strong style="color:var(--tx)">Analytics</strong> tab in the top product nav. Shows total activations, completion rate, average time to fill, field completion rates (bar chart), DAW breakdown, and a recent submissions table.</p>
+    <h3>License Detail — Form Responses</h3>
+    <p style="font-size:14px;color:var(--mu);margin-bottom:10px">Use the screen switcher at the very top of the mockup to switch to <strong style="color:var(--tx)">Screen 2 — License Detail</strong>. Scroll down to see the <strong style="color:var(--tx)">Form Responses</strong> card — this shows submitted data for that license, keyed by Field ID, including GDPR consent.</p>
+    <h3>JSON Schema Tab</h3>
+    <p style="font-size:14px;color:var(--mu)">Switch to the <strong style="color:var(--tx)">JSON Schema</strong> tab. Shows the W3C Draft 2020-12 compliant schema output, including <code>x-polaris-type</code> extensions for Polaris-specific fields.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Q&A -->
+  <div class="section">
+    <h2><span class="num">?</span> Open Questions &amp; Discussion Points</h2>
+    <p style="font-size:14px;color:var(--mu);margin-bottom:18px">These are the questions likely to come up in review. Some have a proposed answer; some need a decision from the team.</p>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Form versioning — what happens when a developer edits a published form?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p><strong>The problem:</strong> if a dev removes a field after 500 users have activated, those 500 license records have data under a field ID that no longer exists in the current schema. If they add a field, new activations have it, old ones don't.</p>
+        <p><strong>Proposed approach:</strong> introduce a Draft / Published state. Edits happen in Draft. Publishing creates a new version (v1, v2…). Each license record stores which schema version it was submitted against. The dashboard shows the form version alongside Form Responses.</p>
+        <p><strong>Decision needed:</strong> can a dev have two active versions simultaneously (e.g. for existing users re-activating on a new machine using an old key)? Or is the latest published version always the one used?</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Field ID locking — should field IDs be locked after publishing?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>Currently the mockup warns developers but doesn't prevent them from renaming a Field ID post-publish. Two options:</p>
+        <ul>
+          <li><strong>Warn only (current):</strong> editable with a yellow warning. Dev accepts responsibility.</li>
+          <li><strong>Hard lock:</strong> Field ID becomes read-only once the form is published. Dev can add new fields but cannot rename existing ones. If they need a new ID, they add a new field and deprecate the old one.</li>
+        </ul>
+        <p>Hard lock is safer for data integrity. Recommend this approach.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Form analytics — what metrics matter most to plugin developers?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>The mockup includes: total activations, completion rate, avg fill time, field completion rates, DAW breakdown, recent submissions table.</p>
+        <p>Additional metrics worth discussing:</p>
+        <ul>
+          <li><strong>Activation-to-purchase lag</strong> — time between license minted and first activation</li>
+          <li><strong>Re-activation rate</strong> — how often users activate on a second machine</li>
+          <li><strong>Failed activations</strong> — invalid license key entry rate</li>
+          <li><strong>Geographic breakdown</strong> — country from IP at activation time</li>
+        </ul>
+        <p>Decision needed: is analytics a Phase 1 feature or Phase 2?</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>GDPR &amp; data privacy — who owns the collected data?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>The form collects personal data (name, email) on behalf of the plugin developer. This creates a data controller / processor relationship. Key questions:</p>
+        <ul>
+          <li>Is Polaris the data processor and the plugin developer the controller? (Most likely yes.)</li>
+          <li>Does the developer need to provide their own Privacy Policy URL in the consent checkbox? (Yes — mockup already has this field.)</li>
+          <li>Can an end user request deletion of their form data? If so, Polaris needs a deletion API and the dashboard needs a "Delete form data" action on each license.</li>
+          <li>Data retention: how long is form data kept after a license is revoked?</li>
+        </ul>
+        <p>Recommend: legal review before shipping this feature publicly.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Webhooks — what happens if the webhook endpoint is down?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>If the developer's webhook URL returns an error or times out, the activation should still succeed — the webhook is a notification, not part of the activation flow.</p>
+        <p><strong>Proposed behaviour:</strong> retry up to 3 times with exponential backoff (30s, 5min, 30min). Failed deliveries are logged and visible in the dashboard. Developer can replay a failed webhook from the license detail page.</p>
+        <p>Decision needed: is webhook delivery logging a Phase 1 requirement?</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Re-activation — does the user fill the form again on a second machine?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>Two options:</p>
+        <ul>
+          <li><strong>Form once per license:</strong> on second activation, Polaris skips the form (or pre-fills from stored data). The <code>machine_name</code> and <code>plugin_host</code> fields are still captured for the new activation record.</li>
+          <li><strong>Form every activation:</strong> user fills it each time. Creates a separate form data record per activation, which is richer but adds friction.</li>
+        </ul>
+        <p>Recommend: form once per license, Polaris types (<code>machine_name</code>, <code>plugin_host</code>) captured silently on every activation regardless.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Offline activation — what if the plugin launches without internet?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>Both modes require an internet connection at activation time — the JUCE SDK needs to reach the Polaris API to validate the license key and store form data.</p>
+        <p>Options for offline users:</p>
+        <ul>
+          <li><strong>Offline grace period:</strong> allow the plugin to run for N days before requiring activation (e.g. 7 days). After that, requires online activation.</li>
+          <li><strong>Machine-locked offline file:</strong> Polaris generates a signed activation file the user can transfer manually. More complex to implement.</li>
+        </ul>
+        <p>This is likely out of scope for Form Builder Phase 1 but worth flagging to the SDK team.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Template customisation depth — can developers go beyond field toggles?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>The current mockup allows: choosing a template style, toggling fields on/off, reordering fields, setting the company logo (from account settings), and editing success screen copy.</p>
+        <p>Developers may also want:</p>
+        <ul>
+          <li>Custom accent colour override (beyond the 4 template presets)</li>
+          <li>Custom font to match their plugin brand</li>
+          <li>Custom form width (for different plugin window sizes)</li>
+          <li>Adding a custom header image or illustration</li>
+        </ul>
+        <p>Recommendation: ship with the 4 presets + logo/branding from settings. Custom colour/font as a Phase 2 "Advanced Branding" feature.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>Multiple forms per product — activation form vs. registration form?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>Currently one form per product. A developer might want:</p>
+        <ul>
+          <li>An <strong>activation form</strong> — shown on first launch, collects registration data</li>
+          <li>A <strong>support form</strong> — collects bug reports or feedback from within the plugin</li>
+          <li>An <strong>upgrade form</strong> — shown when a user upgrades from v1 to v2</li>
+        </ul>
+        <p>This is a meaningful product expansion but adds significant complexity (form targeting, triggers, multiple form data records per license). Recommend: single form per product for v1. Log this as a roadmap item.</p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="q" onclick="toggle(this)"><span>API-driven mode — does Polaris validate the submitted data server-side?</span><span class="arrow">▾</span></div>
+      <div class="a">
+        <p>Yes. When the JUCE SDK calls <code>activateLicense(licenseKey, formData)</code>, Polaris runs the submitted data through the published JSON Schema using Ajv (server-side validation) before storing it.</p>
+        <p>If validation fails (e.g. email format invalid, required field missing), the activation is rejected and the SDK receives an error response with the validation errors. The developer's UI should surface these to the user.</p>
+        <p>In GUI Template mode, client-side validation in the hosted form catches errors before submission.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Status summary -->
+  <div class="section">
+    <h2><span class="num">✓</span> What's Designed vs. What Needs Decisions</h2>
+    <div class="status-row">
+      <div class="status-pill"><span class="sdot s-green"></span>GUI Template flow (Steps 1–4)</div>
+      <div class="status-pill"><span class="sdot s-green"></span>API-driven 3-panel builder</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Field toggles &amp; ordering</div>
+      <div class="status-pill"><span class="sdot s-green"></span>GDPR consent config</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Webhook config</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Success screen config</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Form preview (live)</div>
+      <div class="status-pill"><span class="sdot s-green"></span>Analytics tab</div>
+      <div class="status-pill"><span class="sdot s-green"></span>License detail — form data</div>
+      <div class="status-pill"><span class="sdot s-green"></span>JSON Schema output</div>
+      <div class="status-pill"><span class="sdot s-amber"></span>Form versioning — needs decision</div>
+      <div class="status-pill"><span class="sdot s-amber"></span>Field ID locking — needs decision</div>
+      <div class="status-pill"><span class="sdot s-amber"></span>Re-activation behaviour</div>
+      <div class="status-pill"><span class="sdot s-amber"></span>Webhook retry / failure log</div>
+      <div class="status-pill"><span class="sdot s-red"></span>GDPR — legal review required</div>
+      <div class="status-pill"><span class="sdot s-red"></span>Offline activation — SDK decision</div>
+      <div class="status-pill"><span class="sdot s-grey"></span>Multiple forms per product — v2</div>
+      <div class="status-pill"><span class="sdot s-grey"></span>Advanced template branding — v2</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function toggle(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+</script>
+</body>
+</html>
