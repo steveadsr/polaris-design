@@ -180,7 +180,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);font-size:13.5
 
 /* preview screen */
 .preview-wrap{display:flex;gap:24px;width:100%;align-items:flex-start;justify-content:center}
-.preview-frame{width:420px;flex-shrink:0;background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
+.preview-frame{width:520px;flex-shrink:0;background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
 .preview-topbar{background:#1A1A1A;padding:8px 14px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--bs)}
 .preview-dot{width:8px;height:8px;border-radius:50%}
 .preview-title{flex:1;text-align:center;font-size:11px;color:var(--mu);font-family:var(--mono)}
@@ -383,7 +383,7 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
 .tp-btn{height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 
 /* configure 2-col: fields + tabbed settings */
-.cfg-layout-2{display:grid;grid-template-columns:2fr 3fr;gap:16px;width:100%;align-items:start}
+.cfg-layout-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;align-items:start}
 .cfg-settings{background:var(--sur);border:1px solid var(--bv);border-radius:var(--rl);overflow:hidden}
 .cfg-tabs{display:flex;border-bottom:1px solid var(--bs);background:var(--sur2)}
 .cfg-tab{padding:10px 16px;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .12s;white-space:nowrap}
@@ -483,7 +483,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
               <div class="mode-cards">
                 <div class="mode-card sel" id="mode-gui" onclick="selectMode('gui')">
                   <span class="mode-card-tag">Recommended</span>
-                  <div class="mode-card-icon">🎨</div>
                   <div class="mode-card-title">GUI Template</div>
                   <div class="mode-card-desc">Polaris renders a hosted activation form. Choose a visual template, toggle fields, add your branding. No code required in the plugin — just call <code style="font-family:var(--mono);font-size:11px;color:var(--ac)">openActivationForm()</code>.</div>
                   <div class="mode-preview" style="margin-top:14px">
@@ -500,7 +499,6 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
                 </div>
                 <div class="mode-card" id="mode-api" onclick="selectMode('api')">
                   <span class="mode-card-tag">Advanced</span>
-                  <div class="mode-card-icon">⚙️</div>
                   <div class="mode-card-title">API-Driven</div>
                   <div class="mode-card-desc">Define a JSON Schema. Your plugin fetches the schema and renders its own native activation UI. Full control over every pixel. Use Polaris field types for license key validation and machine capture.</div>
                   <div class="mode-preview" style="margin-top:14px">
@@ -752,6 +750,7 @@ pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8
                 <!-- Form state -->
                 <div id="pv-form" class="preview-body">
                   <div class="preview-logo">
+                    <div class="preview-logo-box">BA</div>
                     <div><div class="preview-product">Surge XT</div><div class="preview-sub">Baby Audio · Activation</div></div>
                   </div>
                   <div class="pv-label">Full Name</div>
