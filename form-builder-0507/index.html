@@ -326,6 +326,72 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
 .vtag{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:var(--sur2);border:1px solid var(--bv);border-radius:100px;font-size:10.5px;color:var(--mu);margin:2px;cursor:pointer}
 .vtag.on{background:var(--adim);border-color:var(--abr);color:var(--ac)}
 .jview{padding:14px;overflow-y:auto;flex:1}
+
+/* modal overlay */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal-box{background:var(--sur);border:1px solid var(--bv);border-radius:16px;width:560px;max-width:94vw;max-height:90vh;overflow-y:auto;display:flex;flex-direction:column}
+.modal-box.wide{width:700px}
+.modal-hdr{padding:18px 22px 14px;border-bottom:1px solid var(--bs);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-title{font-size:16px;font-weight:700;display:flex;align-items:center;gap:9px}
+.modal-close{background:transparent;border:1px solid var(--bv);color:var(--mu);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.modal-close:hover{color:var(--tx);border-color:var(--di)}
+.modal-body{padding:20px 22px;flex:1}
+.modal-footer{padding:14px 22px;border-top:1px solid var(--bs);display:flex;justify-content:flex-end;gap:8px;flex-shrink:0}
+
+/* copy row */
+.copy-row{display:flex;gap:7px;margin-bottom:12px}
+.copy-row .mono-box{flex:1;background:var(--sur2);border:1px solid var(--bv);border-radius:6px;padding:8px 11px;font-family:var(--mono);font-size:12px;color:var(--ac);overflow-x:auto;white-space:nowrap}
+.copy-btn-sm{background:var(--sur2);border:1px solid var(--bv);color:var(--mu);padding:0 12px;border-radius:6px;font-family:var(--font);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
+.copy-btn-sm:hover{color:var(--tx);border-color:var(--di)}
+.copy-btn-sm.copied{border-color:var(--abr);color:var(--ac)}
+pre.modal-code{background:var(--sur2);border:1px solid var(--bv);border-radius:8px;padding:13px 14px;font-family:var(--mono);font-size:11.5px;line-height:1.65;color:var(--mu);overflow-x:auto;margin-bottom:12px}
+.modal-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.modal-meta-item{background:var(--sur2);border:1px solid var(--bs);border-radius:8px;padding:10px 12px}
+.mmi-label{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--di);margin-bottom:3px}
+.mmi-val{font-size:13px;font-weight:600}
+
+/* template section headers */
+.tpl-section-hdr{font-size:10.5px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--mu);margin:0 0 10px;padding-bottom:6px;border-bottom:1px solid var(--bs)}
+.tpl-section{margin-bottom:22px}
+.tpl-grid-row{display:flex;flex-wrap:wrap;gap:12px}
+.tpl-card{width:180px;flex-shrink:0}
+.tpl-create{border:2px dashed var(--bv);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;transition:all .2s;width:180px;flex-shrink:0;border-radius:var(--rl)}
+.tpl-create:hover{border-color:var(--ac);background:var(--adim)}
+.tpl-create-icon{font-size:24px;margin-bottom:8px;color:var(--mu)}
+.tpl-create-lbl{font-size:12.5px;font-weight:600;color:var(--mu)}
+.tpl-create:hover .tpl-create-icon,.tpl-create:hover .tpl-create-lbl{color:var(--ac)}
+.tpl-del{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:4px;background:rgba(255,90,90,.15);border:1px solid rgba(255,90,90,.3);color:var(--er);font-size:10px;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.tpl-card:hover .tpl-del{display:flex}
+.tpl-card{position:relative}
+
+/* theme builder */
+.tb-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--bs)}
+.tb-row:last-child{border-bottom:none}
+.tb-label{font-size:13px;font-weight:500}
+.tb-sub{font-size:11px;color:var(--mu)}
+.color-swatches{display:flex;gap:6px}
+.cswatch{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;flex-shrink:0}
+.cswatch.sel{border-color:white;box-shadow:0 0 0 2px var(--abr)}
+.cswatch.custom{background:conic-gradient(red,yellow,lime,cyan,blue,magenta,red);border-color:var(--bv)}
+.style-btns{display:flex;gap:5px}
+.style-btn{padding:4px 11px;border-radius:5px;border:1px solid var(--bv);background:transparent;color:var(--mu);font-family:var(--font);font-size:12px;cursor:pointer;transition:all .15s}
+.style-btn.sel{background:var(--adim);border-color:var(--abr);color:var(--ac)}
+.tb-preview{background:var(--bg);border:1px solid var(--bv);border-radius:10px;padding:16px;margin-top:14px}
+.tb-preview-lbl{font-size:10px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--di);margin-bottom:10px}
+.tp-inner{display:flex;flex-direction:column;gap:8px}
+.tp-field{height:28px;border-radius:6px;border:1px solid var(--bv);background:var(--sur2);display:flex;align-items:center;padding:0 9px;font-size:11px;color:var(--di)}
+.tp-btn{height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+
+/* configure full width - 3 col */
+.cfg-layout-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;width:100%}
+
+/* mini template selector in branding */
+.mini-tpl-row{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap}
+.mini-tpl{width:64px;border-radius:7px;overflow:hidden;border:2px solid var(--bv);cursor:pointer;transition:all .15s;flex-shrink:0}
+.mini-tpl.sel{border-color:var(--ac)}
+.mini-tpl-thumb{height:44px}
+.mini-tpl-lbl{font-size:8.5px;font-family:var(--mono);text-align:center;padding:3px 2px;color:var(--mu);background:var(--sur);border-top:1px solid var(--bs);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-tpl.sel .mini-tpl-lbl{color:var(--ac)}
 </style>
 </head>
 <body>
@@ -447,78 +513,70 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
 
           <!-- STEP 2: template picker -->
           <div id="step-2" class="wbody hidden">
-            <div style="max-width:900px;margin:0 auto">
-              <div style="margin-bottom:16px">
-                <div style="font-size:17px;font-weight:700;margin-bottom:4px">Choose a template</div>
-                <div style="font-size:13px;color:var(--mu)">Your company logo and product name are applied automatically. You can toggle individual fields in the next step.</div>
-              </div>
-              <div class="tpl-grid">
-                <!-- Dark Minimal -->
+            <div style="margin-bottom:20px">
+              <div style="font-size:17px;font-weight:700;margin-bottom:4px">Choose a template</div>
+              <div style="font-size:13px;color:var(--mu)">Your company logo and product name are applied automatically. You can toggle individual fields in the next step.</div>
+              <div style="font-size:12.5px;color:var(--ac);margin-top:6px;display:flex;align-items:center;gap:5px"><span>ℹ</span> You can change the template at any time — it won't affect your field configuration or saved data.</div>
+            </div>
+
+            <!-- System Templates -->
+            <div class="tpl-section">
+              <div class="tpl-section-hdr">System Templates</div>
+              <div class="tpl-grid-row">
                 <div class="tpl-card sel" id="tpl-dark" onclick="selTpl('dark')">
-                  <div class="tpl-thumb">
-                    <div class="tt-dark td" style="width:100%;height:100%;padding:16px">
-                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#22D9A0"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2A2A"></div></div>
-                      <div class="tfl td" style="height:7px;width:80%;margin-bottom:10px"></div>
-                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi td" style="margin-bottom:7px"></div>
-                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi td" style="margin-bottom:7px"></div>
-                      <div class="tfl td" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi td" style="border-color:#22D9A0;margin-bottom:9px"></div>
-                      <div class="tfbtn td">Activate</div>
-                    </div>
-                  </div>
+                  <div class="tpl-thumb"><div class="tt-dark td" style="width:100%;height:100%;padding:16px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#22D9A0"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2A2A"></div></div>
+                    <div class="tfl td" style="height:7px;width:80%;margin-bottom:10px"></div>
+                    <div class="tfl td" style="height:6px;margin-bottom:3px"></div><div class="tfi td" style="margin-bottom:7px"></div>
+                    <div class="tfl td" style="height:6px;margin-bottom:3px"></div><div class="tfi td" style="margin-bottom:7px"></div>
+                    <div class="tfl td" style="height:6px;margin-bottom:3px"></div><div class="tfi td" style="border-color:#22D9A0;margin-bottom:9px"></div>
+                    <div class="tfbtn td">Activate</div>
+                  </div></div>
                   <div class="tpl-label"><div class="tpl-name">Dark Minimal</div><div class="tpl-desc">Matches Polaris brand</div></div>
                 </div>
-                <!-- Light Clean -->
                 <div class="tpl-card" id="tpl-light" onclick="selTpl('light')">
-                  <div class="tpl-thumb" style="background:#EFEFEF">
-                    <div class="tt-light tl" style="width:100%;height:100%;padding:16px">
-                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#1A1A1A"></div><div style="width:50px;height:8px;border-radius:2px;background:#DDD"></div></div>
-                      <div class="tfl tl" style="height:7px;width:80%;margin-bottom:10px"></div>
-                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tl" style="margin-bottom:7px"></div>
-                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tl" style="margin-bottom:7px"></div>
-                      <div class="tfl tl" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tl" style="margin-bottom:9px"></div>
-                      <div class="tfbtn tl" style="background:#1A1A1A;color:#FFF">Activate</div>
-                    </div>
-                  </div>
+                  <div class="tpl-thumb" style="background:#EFEFEF"><div class="tt-light tl" style="width:100%;height:100%;padding:16px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#1A1A1A"></div><div style="width:50px;height:8px;border-radius:2px;background:#DDD"></div></div>
+                    <div class="tfl tl" style="height:7px;width:80%;margin-bottom:10px"></div>
+                    <div class="tfl tl" style="height:6px;margin-bottom:3px"></div><div class="tfi tl" style="margin-bottom:7px"></div>
+                    <div class="tfl tl" style="height:6px;margin-bottom:3px"></div><div class="tfi tl" style="margin-bottom:7px"></div>
+                    <div class="tfl tl" style="height:6px;margin-bottom:3px"></div><div class="tfi tl" style="margin-bottom:9px"></div>
+                    <div class="tfbtn tl" style="background:#1A1A1A;color:#FFF">Activate</div>
+                  </div></div>
                   <div class="tpl-label"><div class="tpl-name">Light Clean</div><div class="tpl-desc">Neutral, works anywhere</div></div>
                 </div>
-                <!-- Warm Dark -->
                 <div class="tpl-card" id="tpl-warm" onclick="selTpl('warm')">
-                  <div class="tpl-thumb">
-                    <div class="tt-warm tw" style="width:100%;height:100%;padding:16px">
-                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#F0A040"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2520"></div></div>
-                      <div class="tfl tw" style="height:7px;width:80%;margin-bottom:10px"></div>
-                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tw" style="margin-bottom:7px"></div>
-                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tw" style="margin-bottom:7px"></div>
-                      <div class="tfl tw" style="height:6px;margin-bottom:3px"></div>
-                      <div class="tfi tw" style="margin-bottom:9px"></div>
-                      <div class="tfbtn tw" style="background:#F0A040;color:#000">Activate</div>
-                    </div>
-                  </div>
+                  <div class="tpl-thumb"><div class="tt-warm tw" style="width:100%;height:100%;padding:16px">
+                    <div style="display:flex;align-items:center;gap:7px;margin-bottom:12px"><div style="width:18px;height:18px;border-radius:3px;background:#F0A040"></div><div style="width:50px;height:8px;border-radius:2px;background:#2A2520"></div></div>
+                    <div class="tfl tw" style="height:7px;width:80%;margin-bottom:10px"></div>
+                    <div class="tfl tw" style="height:6px;margin-bottom:3px"></div><div class="tfi tw" style="margin-bottom:7px"></div>
+                    <div class="tfl tw" style="height:6px;margin-bottom:3px"></div><div class="tfi tw" style="margin-bottom:7px"></div>
+                    <div class="tfl tw" style="height:6px;margin-bottom:3px"></div><div class="tfi tw" style="margin-bottom:9px"></div>
+                    <div class="tfbtn tw" style="background:#F0A040;color:#000">Activate</div>
+                  </div></div>
                   <div class="tpl-label"><div class="tpl-name">Warm Dark</div><div class="tpl-desc">Amber accent, rich tone</div></div>
                 </div>
-                <!-- Compact -->
                 <div class="tpl-card" id="tpl-compact" onclick="selTpl('compact')">
-                  <div class="tpl-thumb">
-                    <div class="tt-compact tc" style="width:100%;height:100%;padding:12px">
-                      <div style="display:flex;align-items:center;gap:5px;margin-bottom:8px"><div style="width:14px;height:14px;border-radius:2px;background:#22D9A0"></div><div style="width:40px;height:7px;border-radius:2px;background:#222"></div></div>
-                      <div class="tfl tc" style="margin-bottom:2px"></div>
-                      <div class="tfi tc" style="margin-bottom:5px"></div>
-                      <div class="tfl tc" style="margin-bottom:2px"></div>
-                      <div class="tfi tc" style="margin-bottom:5px"></div>
-                      <div class="tfl tc" style="margin-bottom:2px"></div>
-                      <div class="tfi tc" style="margin-bottom:5px"></div>
-                      <div class="tfbtn tc" style="background:#22D9A0;color:#000;margin-top:4px">Activate →</div>
-                    </div>
-                  </div>
+                  <div class="tpl-thumb"><div class="tt-compact tc" style="width:100%;height:100%;padding:12px">
+                    <div style="display:flex;align-items:center;gap:5px;margin-bottom:8px"><div style="width:14px;height:14px;border-radius:2px;background:#22D9A0"></div><div style="width:40px;height:7px;border-radius:2px;background:#222"></div></div>
+                    <div class="tfl tc" style="margin-bottom:2px"></div><div class="tfi tc" style="margin-bottom:5px"></div>
+                    <div class="tfl tc" style="margin-bottom:2px"></div><div class="tfi tc" style="margin-bottom:5px"></div>
+                    <div class="tfl tc" style="margin-bottom:2px"></div><div class="tfi tc" style="margin-bottom:5px"></div>
+                    <div class="tfbtn tc" style="background:#22D9A0;color:#000;margin-top:4px">Activate →</div>
+                  </div></div>
                   <div class="tpl-label"><div class="tpl-name">Compact</div><div class="tpl-desc">Small plugin windows</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- My Templates -->
+            <div class="tpl-section">
+              <div class="tpl-section-hdr">My Templates</div>
+              <div class="tpl-grid-row" id="my-templates-row">
+                <!-- custom templates injected here -->
+                <div class="tpl-create" onclick="openModal('modal-create-tpl')">
+                  <div class="tpl-create-icon">＋</div>
+                  <div class="tpl-create-lbl">Create Template</div>
                 </div>
               </div>
             </div>
@@ -526,10 +584,10 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
 
           <!-- STEP 3: configure -->
           <div id="step-3" class="wbody hidden">
-            <div class="cfg-layout">
-              <!-- Left: Fields -->
+            <div class="cfg-layout-3">
+              <!-- Col 1: Fields -->
               <div>
-                <div class="cfg-card" style="margin-bottom:14px">
+                <div class="cfg-card">
                   <div class="cfg-card-hdr">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                     Form Fields
@@ -580,8 +638,12 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
                     </div>
                   </div>
                 </div>
+              </div><!-- /col1 -->
 
-                <!-- GDPR -->
+              <!-- Col 2: Branding + Success -->
+              <div>
+                <!-- placeholder - branding card already below (right col) -->
+                <!-- GDPR (col 1 overflow → placed here for layout) -->
                 <div class="cfg-card">
                   <div class="cfg-card-hdr">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -619,6 +681,25 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
                         <div class="logo-src">From account settings · <a href="#" style="color:var(--ac);text-decoration:none">Change →</a></div>
                       </div>
                     </div>
+                    <div class="cfg-label" style="margin-top:14px">Template <span style="color:var(--di);font-size:9px">— change anytime</span></div>
+                    <div class="mini-tpl-row">
+                      <div class="mini-tpl sel" onclick="selMiniTpl(this,'dark')" title="Dark Minimal">
+                        <div class="mini-tpl-thumb tt-dark td" style="padding:6px"><div class="tfl td" style="height:5px;margin-bottom:3px"></div><div class="tfi td" style="height:14px;margin-bottom:3px"></div><div class="tfbtn td" style="height:12px;font-size:7px">Go</div></div>
+                        <div class="mini-tpl-lbl">Dark</div>
+                      </div>
+                      <div class="mini-tpl" onclick="selMiniTpl(this,'light')" title="Light Clean">
+                        <div class="mini-tpl-thumb tt-light tl" style="background:#EFEFEF;padding:6px"><div class="tfl tl" style="height:5px;margin-bottom:3px"></div><div class="tfi tl" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tl" style="height:12px;font-size:7px;background:#1A1A1A;color:#FFF">Go</div></div>
+                        <div class="mini-tpl-lbl">Light</div>
+                      </div>
+                      <div class="mini-tpl" onclick="selMiniTpl(this,'warm')" title="Warm Dark">
+                        <div class="mini-tpl-thumb tt-warm tw" style="padding:6px"><div class="tfl tw" style="height:5px;margin-bottom:3px"></div><div class="tfi tw" style="height:14px;margin-bottom:3px"></div><div class="tfbtn tw" style="height:12px;font-size:7px;background:#F0A040;color:#000">Go</div></div>
+                        <div class="mini-tpl-lbl">Warm</div>
+                      </div>
+                      <div class="mini-tpl" onclick="selMiniTpl(this,'compact')" title="Compact">
+                        <div class="mini-tpl-thumb tt-compact tc" style="padding:5px"><div class="tfl tc" style="height:4px;margin-bottom:2px"></div><div class="tfi tc" style="height:13px;margin-bottom:2px"></div><div class="tfbtn tc" style="height:11px;font-size:6px;background:#22D9A0;color:#000">Go</div></div>
+                        <div class="mini-tpl-lbl">Compact</div>
+                      </div>
+                    </div>
                     <div class="cfg-label">Product Name</div>
                     <input class="cfg-input" type="text" value="Surge XT" style="margin-bottom:10px"/>
                     <div class="cfg-label">Tagline (optional)</div>
@@ -642,6 +723,9 @@ pre.json{font-family:var(--mono);font-size:11.5px;line-height:1.7;padding:16px;c
                   </div>
                 </div>
 
+              </div><!-- /col2 -->
+              <!-- Col 3: GDPR + Webhooks -->
+              <div>
                 <!-- Webhooks -->
                 <div class="cfg-card">
                   <div class="cfg-card-hdr">
@@ -1145,7 +1229,7 @@ function goToApiBuilder(){
   var next=document.getElementById('btn-next');
   hint.textContent='Build your field schema';
   next.textContent='Save & Publish';
-  next.onclick=function(){document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';alert('Form schema published! Fetch at GET /api/v1/products/surge-xt/form');};
+  next.onclick=function(){document.getElementById('form-status-badge').textContent='Published';document.getElementById('form-status-badge').className='badge bac';openModal('modal-api-publish');};
 }
 
 function stepNext(){
@@ -1195,6 +1279,105 @@ function showForm(){
 }
 
 
+
+function openModal(id){ document.getElementById(id).classList.remove('hidden'); }
+function closeModal(id){ document.getElementById(id).classList.add('hidden'); }
+
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(function(){
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent = orig; btn.classList.remove('copied'); }, 1800);
+  });
+}
+
+var _accentColor = '#22D9A0';
+
+function setAccent(color, el){
+  _accentColor = color;
+  document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('sel'));
+  el.classList.add('sel');
+  updatePreview();
+}
+
+function setAccentFromPicker(color){
+  _accentColor = color;
+  document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('sel'));
+  updatePreview();
+}
+
+function updatePreview(){
+  var logo = document.getElementById('tp-logo');
+  var btn  = document.getElementById('tp-btn');
+  if(logo) logo.style.background = _accentColor;
+  if(btn){ btn.style.background = _accentColor; btn.style.color = '#000'; }
+}
+
+function selStyleBtn(el, group){
+  el.closest('.style-btns').querySelectorAll('.style-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+var _customTemplates = [];
+
+function saveCustomTemplate(){
+  var name = document.getElementById('new-tpl-name').value.trim() || 'My Template';
+  var id = 'custom-' + Date.now();
+  _customTemplates.push({ id: id, name: name, accent: _accentColor });
+
+  // add card to my-templates row
+  var row = document.getElementById('my-templates-row');
+  var createCard = row.querySelector('.tpl-create');
+  var card = document.createElement('div');
+  card.className = 'tpl-card';
+  card.id = 'tpl-' + id;
+  card.innerHTML = '<div class="tpl-thumb" style="background:#0A0A0A;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px">'
+    + '<div style="width:28px;height:28px;border-radius:6px;background:'+_accentColor+'"></div>'
+    + '<div style="width:60%;height:7px;border-radius:3px;background:#2A2A2A"></div>'
+    + '<div style="width:80%;height:16px;border-radius:4px;border:1px solid #2A2A2A"></div>'
+    + '<div style="width:80%;height:16px;border-radius:4px;background:'+_accentColor+';font-size:8px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700">Activate</div>'
+    + '</div>'
+    + '<div class="tpl-label"><div class="tpl-name">'+name+'</div><div class="tpl-desc">Custom template</div></div>'
+    + '<div class="tpl-del" onclick="deleteCustomTemplate(event,''+id+'')">✕</div>';
+  card.onclick = function(){ selTpl(id); };
+  row.insertBefore(card, createCard);
+
+  closeModal('modal-create-tpl');
+  document.getElementById('new-tpl-name').value = '';
+  selTpl(id);
+
+  // also add to mini selector in configure
+  var miniRow = document.querySelector('.mini-tpl-row');
+  var mini = document.createElement('div');
+  mini.className = 'mini-tpl';
+  mini.setAttribute('title', name);
+  mini.id = 'mini-tpl-'+id;
+  mini.innerHTML = '<div class="mini-tpl-thumb" style="background:#0A0A0A;padding:5px;display:flex;flex-direction:column;gap:2px">'
+    + '<div style="height:5px;border-radius:2px;background:#2A2A2A;margin-bottom:2px"></div>'
+    + '<div style="flex:1;border-radius:3px;border:1px solid #2A2A2A"></div>'
+    + '<div style="height:11px;border-radius:3px;background:'+_accentColor+';font-size:6px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700">Go</div>'
+    + '</div><div class="mini-tpl-lbl">'+name+'</div>';
+  mini.onclick = function(){ selMiniTpl(mini, id); };
+  miniRow.appendChild(mini);
+}
+
+function deleteCustomTemplate(e, id){
+  e.stopPropagation();
+  var card = document.getElementById('tpl-'+id);
+  var mini = document.getElementById('mini-tpl-'+id);
+  if(card) card.remove();
+  if(mini) mini.remove();
+  _customTemplates = _customTemplates.filter(t=>t.id!==id);
+}
+
+function selMiniTpl(el, id){
+  document.querySelectorAll('.mini-tpl').forEach(m=>m.classList.remove('sel'));
+  el.classList.add('sel');
+  // sync with step-2 selector
+  selTpl(id);
+}
+
 function selField(card, label, fieldId, typeName, typeVal, placeholder){
   document.querySelectorAll('.ffcard').forEach(c=>c.classList.remove('sel'));
   card.classList.add('sel');
@@ -1221,5 +1404,133 @@ function showApiTab(tab){
 // init
 document.getElementById('btn-next').onclick = stepNext;
 </script>
+
+<!-- ── Template Creator Modal ── -->
+<div class="modal-overlay hidden" id="modal-create-tpl" onclick="if(event.target===this)closeModal('modal-create-tpl')">
+  <div class="modal-box wide">
+    <div class="modal-hdr">
+      <div class="modal-title">🎨 Create a Template</div>
+      <button class="modal-close" onclick="closeModal('modal-create-tpl')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:14px">
+        <div class="cplbl" style="margin-bottom:6px">Template Name</div>
+        <input class="cpinput" type="text" placeholder="e.g. My Dark Theme" id="new-tpl-name" style="margin-bottom:0"/>
+      </div>
+      <div style="background:var(--sur2);border:1px solid var(--bv);border-radius:10px;padding:14px 16px">
+        <div class="tb-row">
+          <div><div class="tb-label">Accent Colour</div><div class="tb-sub">Button, active states, highlights</div></div>
+          <div class="color-swatches">
+            <div class="cswatch sel" style="background:#22D9A0" onclick="setAccent('#22D9A0',this)" title="Teal"></div>
+            <div class="cswatch" style="background:#F0A040" onclick="setAccent('#F0A040',this)" title="Amber"></div>
+            <div class="cswatch" style="background:#7B6FEE" onclick="setAccent('#7B6FEE',this)" title="Violet"></div>
+            <div class="cswatch" style="background:#4A9EFF" onclick="setAccent('#4A9EFF',this)" title="Blue"></div>
+            <div class="cswatch" style="background:#FF5A5A" onclick="setAccent('#FF5A5A',this)" title="Red"></div>
+            <input type="color" id="custom-accent" style="width:22px;height:22px;border-radius:50%;border:none;background:transparent;cursor:pointer;padding:0" value="#22D9A0" oninput="setAccentFromPicker(this.value)" title="Custom"/>
+          </div>
+        </div>
+        <div class="tb-row">
+          <div><div class="tb-label">Background</div><div class="tb-sub">Form window background</div></div>
+          <div class="style-btns">
+            <button class="style-btn sel" onclick="selStyleBtn(this,'bg')">Dark</button>
+            <button class="style-btn" onclick="selStyleBtn(this,'bg')">Light</button>
+            <button class="style-btn" onclick="selStyleBtn(this,'bg')">Warm</button>
+          </div>
+        </div>
+        <div class="tb-row">
+          <div><div class="tb-label">Button Style</div><div class="tb-sub">Activation button shape</div></div>
+          <div class="style-btns">
+            <button class="style-btn sel" onclick="selStyleBtn(this,'btn')">Rounded</button>
+            <button class="style-btn" onclick="selStyleBtn(this,'btn')">Pill</button>
+            <button class="style-btn" onclick="selStyleBtn(this,'btn')">Square</button>
+          </div>
+        </div>
+        <div class="tb-row">
+          <div><div class="tb-label">Density</div><div class="tb-sub">Padding and field spacing</div></div>
+          <div class="style-btns">
+            <button class="style-btn" onclick="selStyleBtn(this,'density')">Compact</button>
+            <button class="style-btn sel" onclick="selStyleBtn(this,'density')">Normal</button>
+            <button class="style-btn" onclick="selStyleBtn(this,'density')">Spacious</button>
+          </div>
+        </div>
+      </div>
+      <!-- live preview -->
+      <div class="tb-preview">
+        <div class="tb-preview-lbl">Live Preview</div>
+        <div class="tp-inner">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+            <div style="width:20px;height:20px;border-radius:4px;background:var(--ac)" id="tp-logo"></div>
+            <div style="font-size:12px;font-weight:700">Surge XT</div>
+          </div>
+          <div class="tp-field">Full name</div>
+          <div class="tp-field">Email address</div>
+          <div class="tp-field" style="border-color:var(--abr);color:var(--mu)">License key</div>
+          <div class="tp-btn" id="tp-btn" style="background:var(--ac);color:#000;border-radius:6px">Activate Plugin →</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btng" onclick="closeModal('modal-create-tpl')">Cancel</button>
+      <button class="btn btnp" onclick="saveCustomTemplate()">Save Template</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── API Publish Modal ── -->
+<div class="modal-overlay hidden" id="modal-api-publish" onclick="if(event.target===this)closeModal('modal-api-publish')">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="modal-title">
+        <span style="width:26px;height:26px;border-radius:50%;background:var(--adim);border:1px solid var(--abr);display:flex;align-items:center;justify-content:center;font-size:13px">✓</span>
+        Form Schema Published
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-api-publish')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:13.5px;color:var(--mu);margin-bottom:16px">Your JSON Schema is live. Use the endpoint below in your JUCE plugin to fetch the form definition at activation time.</p>
+
+      <div class="cplbl" style="margin-bottom:6px">Schema Endpoint</div>
+      <div class="copy-row">
+        <div class="mono-box">GET https://api.polaris.dev/v1/products/surge-xt/form</div>
+        <button class="copy-btn-sm" onclick="copyText('GET https://api.polaris.dev/v1/products/surge-xt/form', this)">Copy</button>
+      </div>
+
+      <div class="cplbl" style="margin-bottom:6px">JUCE SDK Integration</div>
+      <pre class="modal-code"><span class="jk">PolarisClient</span> client(<span class="js">"YOUR_API_KEY"</span>);
+
+<span class="jc">// Fetch schema at plugin startup</span>
+auto schema = client.<span class="jk">getFormSchema</span>(<span class="js">"surge-xt"</span>);
+
+<span class="jc">// On user activation — submit your form data</span>
+juce::<span class="jk">var</span> data;
+data.setProperty(<span class="js">"user_full_name"</span>, nameField.getText());
+data.setProperty(<span class="js">"user_email"</span>,    emailField.getText());
+data.setProperty(<span class="js">"activation_code"</span>, keyField.getText());
+<span class="jc">// machine_name + plugin_host captured automatically</span>
+auto result = client.<span class="jk">activateLicense</span>(licenseKey, data);</pre>
+      <div style="display:flex;justify-content:flex-end;margin-top:-6px;margin-bottom:14px">
+        <button class="copy-btn-sm" onclick="copyText('PolarisClient client(YOUR_API_KEY);
+auto schema = client.getFormSchema(surge-xt);
+juce::var data;
+data.setProperty(user_full_name, nameField.getText());
+data.setProperty(user_email, emailField.getText());
+data.setProperty(activation_code, keyField.getText());
+auto result = client.activateLicense(licenseKey, data);', this)">Copy Code</button>
+      </div>
+
+      <div class="modal-meta">
+        <div class="modal-meta-item"><div class="mmi-label">Fields</div><div class="mmi-val">5 active</div></div>
+        <div class="modal-meta-item"><div class="mmi-label">Version</div><div class="mmi-val">v1 · just published</div></div>
+        <div class="modal-meta-item"><div class="mmi-label">Required</div><div class="mmi-val">user_full_name, user_email, activation_code</div></div>
+        <div class="modal-meta-item"><div class="mmi-label">Polaris Types</div><div class="mmi-val">machine_name, plugin_host</div></div>
+      </div>
+
+      <div class="note" style="margin-top:0">Submitted data is stored per-license and visible on each license's detail page. <a href="#" style="color:var(--ac);text-decoration:none">View API docs →</a></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btnp" onclick="closeModal('modal-api-publish')">Done</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
